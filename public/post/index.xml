@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Learning Out Loud- (LOL)</title>
+    <link>http://localhost:1313/post/</link>
+    <description>Recent content in Posts on Learning Out Loud- (LOL)</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 01 Mar 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Eigenvalues &amp; Eigenvectors - What do they actually represent ? 🚧 (Under Construction)</title>
+      <link>http://localhost:1313/post/eigenvalues_and_eigenvectors/</link>
+      <pubDate>Sat, 01 Mar 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/eigenvalues_and_eigenvectors/</guid>
+      <description>&lt;!-- raw HTML omitted --&gt;&#xA;&lt;p&gt;I&amp;rsquo;ve heard the terms &lt;strong&gt;eigenvalues&lt;/strong&gt; and &lt;strong&gt;eigenvectors&lt;/strong&gt; countless times, but if I&amp;rsquo;m being honest, I&amp;rsquo;ve never truly grasped their meaning. That&amp;rsquo;s kind of a bummer as they seem to appear everywhere from plain mathematics to machine learning which makes it feel like something worth understanding.&lt;/p&gt;&#xA;&lt;p&gt;This is my attempt to break them down in a way that makes sense, not just mathematically but intuitively. Let&amp;rsquo;s start from the basics and build up from there.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
