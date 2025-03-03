@@ -1,7 +1,7 @@
 baseURL = 'https://example.org/'
 languageCode = 'en-us'
 title = 'Learning Out Loud- (LOL)'
-theme = 'github-style'
+theme = 'paper'
 
 [markup]
   [markup.goldmark]
@@ -11,5 +11,26 @@ theme = 'github-style'
         [markup.goldmark.extensions.passthrough.delimiters]
           block = [['\[', '\]'], ['$$', '$$']]
           inline = [['\(', '\)']]
+
+
 [params]
-  math = true
+  # color style
+  color = 'linen'                           # linen, wheat, gray, light
+
+  # header social icons
+  github = 'https://github.com/gaspardthrl'                 # github.com/YOUR_GITHUB_ID
+  linkedin = 'https://www.linkedin.com/in/gaspard-thoral-49538a230/'
+
+  # home page profile
+  name = 'Gaspard Thoral'
+  bio = "I realised that there is a lot I don't understand. Let's not understand together :)"
+
+
+  # misc
+  disableHLJS = true                        # disable highlight.js
+  disablePostNavigation = true              # disable post navigation
+  monoDarkIcon = true                       # show monochrome dark mode icon
+  math = true                               # enable KaTeX math typesetting globally
+  localKatex = false                        # use local KaTeX js/css instead of CDN
+  graphCommentId = "YOUR_GRAPH_COMMENT_ID"  # use graph comment (disqus alternative)
+  favicon = "favicon.ico"                   # customize the default favicon
