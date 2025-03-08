@@ -3,7 +3,8 @@ languageCode = 'en-us'
 title = ' Learning Out Loud - (LOL)'
 theme = 'paper'
 renderer.unsafe= true
-
+relativeURLs = true
+canonifyURLs = true
 [markup]
   [markup.goldmark]
     [markup.goldmark.extensions]
@@ -19,8 +20,8 @@ renderer.unsafe= true
   color = 'linen'                           # linen, wheat, gray, light
 
   # header social icons
-  github = 'https://github.com/gaspardthrl'                 # github.com/YOUR_GITHUB_ID
-  linkedin = 'https://www.linkedin.com/in/gaspard-thoral-49538a230/'
+  github = 'gaspardthrl'                 # github.com/YOUR_GITHUB_ID
+  linkedin = 'gaspard-thoral-49538a230/'
 
   # home page profile
   name = 'Gaspard Thoral'
