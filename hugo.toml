@@ -1,4 +1,4 @@
-baseURL = 'https://example.org/'
+baseURL = 'https://learning-out-loud.vercel.app/'
 languageCode = 'en-us'
 title = ' Learning Out Loud - (LOL)'
 theme = 'paper'
