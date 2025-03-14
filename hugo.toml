@@ -1,4 +1,4 @@
-baseURL = 'https://learning-out-loud.vercel.app/'
+adbaseURL = 'https://learning-out-loud.vercel.app/'
 languageCode = 'en-us'
 title = ' Learning Out Loud - (LOL)'
 theme = 'paper'
@@ -35,5 +35,7 @@ canonifyURLs = true
   math = true                               # enable KaTeX math typesetting globally
   localKatex = false                        # use local KaTeX js/css instead of CDN
   graphCommentId = "YOUR_GRAPH_COMMENT_ID"  # use graph comment (disqus alternative)
-  favicon = "favicon.ico"                   # customize the default favicon
 
+
+[params.meta]
+  favicon = false
