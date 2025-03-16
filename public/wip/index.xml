@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Wips on  Learning Out Loud - (LOL)</title>
+    <link>//localhost:1313/wip/</link>
+    <description>Recent content in Wips on  Learning Out Loud - (LOL)</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 14 Mar 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/wip/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Unpacked: Double Machine Learning</title>
+      <link>//localhost:1313/wip/double_ml/</link>
+      <pubDate>Fri, 14 Mar 2025 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/wip/double_ml/</guid>
+      <description>&lt;!-- raw HTML omitted --&gt;&#xA;&lt;p&gt;You&amp;rsquo;ve all heard about Machine Learning. Some say it&amp;rsquo;s amazing; I say it&amp;rsquo;s meh. I&amp;rsquo;d rather &lt;em&gt;double it&lt;/em&gt; and give it to the next person (See what I did there?). This next person happens to be you. You guessed it today we will talk about &lt;strong&gt;Double Machine Learning (Double ML)&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;For now, we’ll focus on how Double ML is used to compute the &lt;strong&gt;Average Treatment Effect (ATE)&lt;/strong&gt;. Conditional ATE (CATE) might come later.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -26,9 +26,8 @@
     <meta name="theme-color" />
   
     <meta name="description" content="
-Before anything I want to thank Matheus Facure Alves for his material Causal Inference for The Brave and True which was of great help to understand this topic.
-
-You&rsquo;ve all heard about Machine Learning. Some say it&rsquo;s amazing; I say it&rsquo;s meh. I&rsquo;d rather double it and give it to the next person (See what I did there?). This next person happens to be you. You guessed it today we will talk about Double Machine Learning" />
+You&rsquo;ve all heard about Machine Learning. Some say it&rsquo;s amazing; I say it&rsquo;s meh. I&rsquo;d rather double it and give it to the next person (See what I did there?). This next person happens to be you. You guessed it today we will talk about Double Machine Learning (Double ML)
+For now, we’ll focus on how Double ML is used to compute the Average Treatment Effect (ATE). Conditional ATE (CATE) might come later." />
     <meta name="author" content="Gaspard Thoral" /><link rel="preload stylesheet" as="style" href="../../main.min.css" />
   
     
@@ -170,9 +169,7 @@ You&rsquo;ve all heard about Machine Learning. Some say it&rsquo;s amazing; I sa
     <h1 class="!my-0 pb-2.5">Unpacked: Double Machine Learning</h1><div class="text-xs antialiased opacity-60"></div></header>
 
   <section><!-- raw HTML omitted -->
-<p>Before anything I want to thank <strong>Matheus Facure Alves</strong> for his material <!-- raw HTML omitted --><em>Causal Inference for The Brave and True</em><!-- raw HTML omitted --> which was of great help to understand this topic.</p>
-<hr>
-<p>You&rsquo;ve all heard about Machine Learning. Some say it&rsquo;s amazing; I say it&rsquo;s meh. I&rsquo;d rather <em>double it</em> and give it to the next person (See what I did there?). This next person happens to be you. You guessed it today we will talk about <strong>Double Machine Learning</strong></p>
+<p>You&rsquo;ve all heard about Machine Learning. Some say it&rsquo;s amazing; I say it&rsquo;s meh. I&rsquo;d rather <em>double it</em> and give it to the next person (See what I did there?). This next person happens to be you. You guessed it today we will talk about <strong>Double Machine Learning (Double ML)</strong></p>
 <p>For now, we’ll focus on how Double ML is used to compute the <strong>Average Treatment Effect (ATE)</strong>. Conditional ATE (CATE) might come later.</p>
 <h1 id="introduction-causation-vs-correlation">Introduction: Causation vs. Correlation</h1>
 <p>Before diving into Double ML, let’s talk about <strong>causation</strong> and <strong>correlation</strong>.</p>
@@ -394,40 +391,12 @@ E[\vec{Y}(1) - \vec{Y}(0)] &= E[\vec{\tau} + \bold{f}(\bold{X})\vec{\beta} - \bo
 &= E[\vec{\tau}]
 \end{align*}
 $$<p>We see that it is indeed what it claims to be: <em>the average effect of a treatment</em> which we will denote $\tau$.</p>
-<hr>
+<h1 id="computing-the-ate">Computing the ATE</h1>
 <p>A great way to estimate $\tau$ is through <strong>regression</strong>:</p>
 $$
-\vec{Y} = \tau \vec{T} + \bold{f}(\bold{X})\vec{\beta} + \vec{\epsilon}
-$$<p>It&rsquo;s all fun and games until you find out that the previously introduced function $\bold{f}$ was not <em>just</em> a pretty face but also a gigantic spoilsport. This function represents the relationship between covariates and the outcome. It can be highly flexible and <strong>may introduce non-linearity</strong>, making it difficult to isolate the treatment effect using simple regression.</p>
-<p>However, we would like some sort of <strong>linear regression</strong> technique so that we can easily isolate $\tau$ in the final result.</p>
-<p>We are stuck with the following probematic: &ldquo;We want to use a linear model for regression to gain interpretability over a non-linear relation.&rdquo;</p>
-<p>Since our primary goal is estimating $\tau$, we might be tempted to ignore $\bold{f}(\bold{X})$ and fit a simple regression $\vec{Y} \sim \tau \vec{T}$. However, if $T$ is correlated with $\bold{X}$, omitting confounders introduces bias. Ideally, we&rsquo;d like to remove their effect before running the regression.</p>
-<h1 id="the-frisch-waugh-lovell-theorem">The Frisch-Waugh-Lovell Theorem</h1>
-<p>This <!-- raw HTML omitted -->beautiful theorem<!-- raw HTML omitted --> states that in a linear regression model, the coefficients of a subset of regressors can be obtained by first partialling out the effects of the other regressors from both the dependent variable and the subset of interest, and then regressing the residuals of the dependent variable on the residuals of the subset. This simplifies the estimation of coefficients in the presence of multiple regressors.</p>
-<p>Essentially, we first remove the effects of $\bold{X}_2$ from $\vec{Y}$ and $\bold{X}_1$, then regress the residualized $\vec{Y}$ on the residualized $\bold{X}_1$ to estimate $\vec{\beta_1}$.</p>
-<p>Take the following expression:</p>
-$$
-\vec{Y} = \bold{X_1} \vec{\beta_1} + \bold{X_2} \vec{\beta_2} + \vec{\epsilon}
-$$<p>This theorem states that the estimate of $\vec{\beta_1}$ will be the same as the estimate of it from a modified regression of the form</p>
-$$
-\bold{M_{X_2}}\vec{Y} = \bold{M_{X_2}X_1}\vec{\beta_1} + \bold{M_{X_2}}\vec{\epsilon}
-$$<p>where the vector $\bold{M_{X_2}}\vec{Y}$ is the vector of residuals from the regression of $\vec{Y}$ on the columns of $\bold{X_2}$.</p>
-<p>The Frisch-Waugh-Lovell theorem gives us a clever way to estimate treatment effects in a linear regression setting, even in the presence of confounders. By first removing the influence of confounders and then regressing the residualized outcome on the residualized treatment, we could isolate the effect of treatment.</p>
-<p>But remember $\bold{f}$ ? In practice, it could be <strong>highly non-linear</strong> and <strong>high-dimensional</strong>. This breaks the assumptions required for FWL to work directly.</p>
-<p>So, what can we do? <strong>We borrow the core idea of FWL</strong>, that is removing confounders before estimation, and replace the linear regressions with <strong>Machine Learning</strong>.</p>
-<h1 id="extending-fwl-with-machine-learning">Extending FWL with Machine Learning</h1>
-<p>Rather than assuming a fixed, linear form for $\bold{f}(\bold{X})$, we let <strong>Machine Learning estimate it for us</strong>. The key insight is that if we can accurately capture the influence of confounders on both the outcome $Y$ and the treatment $T$, we can remove their effects before estimating the treatment effect.</p>
-<p>This leads to <strong>Double Machine Learning</strong>, which follows a two-step process:</p>
-<ol>
-<li>
-<p>Learn the nuisance functions: Use flexible ML models to estimate the relationships $Y \sim \bold{X}$ and $T \sim \bold{X}$.</p>
-</li>
-<li>
-<p>Partial out the confounders: Remove the estimated confounder effects and estimate $\tau$ from the residualized outcome and treatment.</p>
-</li>
-</ol>
-<h1 id="conclusion">Conclusion</h1>
-<p>There we have it, a way of computing the <strong>average treatment effect</strong>! Even if our initial regression equation, $\vec{Y} = \tau \vec{T} + \bold{f}(\bold{X})\vec{\beta} + \vec{\epsilon}$ is non-linear and complex, Double-ML allows us to isolate the computation of $\tau$ by first using ML to account for $\bold{f}(\bold{X})$. This way, we retain the core intuition of FWL while overcoming its limitations.</p>
+\vec{Y} \approx \tau \vec{T} + \bold{f}(\bold{X})\vec{\beta} + \vec{\epsilon}
+$$<p>Ideally, we would use some sort of <strong>linear regression</strong> technique so that we can easily isolate $\tau$ in the final result.</p>
+<p>It&rsquo;s all fun and games until you find out that the previously introduced function $\bold{f}$ was not <em>just</em> a pretty face but also a gigantic spoilsport.</p>
 </section>
 
   <div class="mt-24" id="graphcomment"></div>
