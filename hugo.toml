@@ -13,7 +13,12 @@ canonifyURLs = true
         [markup.goldmark.extensions.passthrough.delimiters]
           block = [['\[', '\]'], ['$$', '$$']]
           inline = [['\(', '\)']]
-
+    [markup.goldmark.parser]
+      wrapStandAloneImageWithinParagraph = false
+      [markup.goldmark.parser.attribute]
+        block = true    
+    [markup.goldmark.renderer]
+      unsafe = true
 
 [params]
   # color style
