@@ -18,7 +18,7 @@ tr:nth-child(even) {
 }
 </style>
 
-Before anything I want to thank **Matheus Facure Alves** for his material <a href="https://matheusfacure.github.io/python-causality-handbook/landing-page.html#acknowledgments">_Causal Inference for The Brave and True_</a> which was of great help to understand this topic.
+Before anything I want to thank **Matheus Facure Alves** for his material [_Causal Inference for The Brave and True_](https://matheusfacure.github.io/python-causality-handbook/landing-page.html#acknowledgments) which was of great help to understand this topic.
 
 ---
 
@@ -215,29 +215,126 @@ Since our primary goal is estimating $\tau$, we might be tempted to ignore $\bol
 
 # The Frisch-Waugh-Lovell Theorem
 
-This <a href="https://en.wikipedia.org/wiki/Frisch%E2%80%93Waugh%E2%80%93Lovell_theorem">beautiful theorem</a> states that in a linear regression model, the coefficients of a subset of regressors can be obtained by first partialling out the effects of the other regressors from both the dependent variable and the subset of interest, and then regressing the residuals of the dependent variable on the residuals of the subset. This simplifies the estimation of coefficients in the presence of multiple regressors.
+This [beautiful theorem](https://en.wikipedia.org/wiki/Frisch%E2%80%93Waugh%E2%80%93Lovell_theorem) states that in a linear regression model, the coefficients of a subset of regressors can be obtained by first partialling out the effects of the other regressors from both the dependent variable and the subset of interest, and then regressing the residuals of the dependent variable on the residuals of the subset. This simplifies the estimation of coefficients in the presence of multiple regressors.
 
 Essentially, we first remove the effects of $\bold{X}_2$ from $\vec{Y}$ and $\bold{X}_1$, then regress the residualized $\vec{Y}$ on the residualized $\bold{X}_1$ to estimate $\vec{\beta_1}$.
 
 Take the following expression:
 
 $$
-\vec{Y} = \bold{X_1} \vec{\beta_1} + \bold{X_2} \vec{\beta_2} + \vec{\epsilon}
+\vec{Y} = \bold{X_1} \vec{\beta_1} + \bold{X_2} \vec{\beta_2}
 $$
 
 This theorem states that the estimate of $\vec{\beta_1}$ will be the same as the estimate of it from a modified regression of the form
 
 $$
-\bold{M_{X_2}}\vec{Y} = \bold{M_{X_2}X_1}\vec{\beta_1} + \bold{M_{X_2}}\vec{\epsilon}
+\bold{M_{X_2}}\vec{Y} = \bold{M_{X_2}X_1}\vec{\beta_1}
 $$
 
 where the vector $\bold{M_{X_2}}\vec{Y}$ is the vector of residuals from the regression of $\vec{Y}$ on the columns of $\bold{X_2}$.
 
 The Frisch-Waugh-Lovell theorem gives us a clever way to estimate treatment effects in a linear regression setting, even in the presence of confounders. By first removing the influence of confounders and then regressing the residualized outcome on the residualized treatment, we could isolate the effect of treatment.
 
-But remember $\bold{f}$ ? In practice, it could be **highly non-linear** and **high-dimensional**. This breaks the assumptions required for FWL to work directly.
+## A small python example
 
-So, what can we do? **We borrow the core idea of FWL**, that is removing confounders before estimation, and replace the linear regressions with **Machine Learning**.
+We will define the following relation between $\bold{X}_1$, $\bold{X}_2$, $\vec{T}$, and $\vec{Y}$:
+
+$$
+\vec{Y} = 2 \vec{T} + 4 \bold{X}_1 + 3 \bold{X}_2
+$$
+
+where $\tau = 2$, $\vec{\beta}_1 = 4$, and $\vec{\beta}_2 = 3$.
+
+```python
+import numpy as np
+from sklearn.linear_model import LinearRegression
+
+N = 100_000
+
+rdm = np.random.RandomState(seed=42)
+
+X_1 = rdm.normal(0, 1, size=(N, 5))
+X_2 = rdm.normal(0, 1, size=(N, 5))
+T = 0.5 * X_1[:, 0] + 0.3 * X_2[:, 0] - 0.2 * rdm.normal(0, 1, size=N)
+
+tau = 2
+beta_1 = 4
+beta_2 = 3
+
+Y = tau * T + beta_1 * X_1[:, 0] + beta_2 * X_2[:, 0]
+
+X = np.concatenate((X_1, X_2), axis=1)
+
+# Computing the residuals from the regression of Y on X_1 and X_2
+lr1 = LinearRegression()
+lr1.fit(X, linear_Y)
+res_YX = linear_Y - lr1.predict(X)
+
+# Computing the residuals from the regression of T on X_1 and X_2
+lr2 = LinearRegression()
+lr2.fit(X, T)
+res_TX = T - lr2.predict(X)
+
+# Computing the final regression's coefficient
+lr3 = LinearRegression()
+lr3.fit(res_TX.reshape(-1, 1), res_YX)
+
+print(lr3.coef_[0])
+```
+
+```python
+2.0
+```
+
+Isn't this amazing ? Let me answer this for you: it is !
+
+---
+
+But remember $\bold{f}$ ? In practice, it could be **highly non-linear** and **high-dimensional**. In theory, this is not a problem for this theorem if we are able to perfectly model $\bold{f}$.
+
+## A second small python example
+
+Let's now define the following relation:
+
+$$
+\vec{Y} = 2 \vec{T} + 4 \sin{(\bold{X}_1)} + 3 \exp{(\bold{X}_2)}
+$$
+
+```python
+# Our new relation
+Y = tau * T + beta_1 * np.sin(X_1[:, 0]) + beta_2 * np.exp(X_2[:, 0])
+
+# We have an exact representation of f
+X = np.concatenate((np.sin(X_1), np.exp(X_2)), axis=1)
+
+# Computing the residuals from the regression of Y on X_1 and X_2
+lr1 = LinearRegression()
+lr1.fit(X, Y)
+res_YX = Y - lr1.predict(X)
+
+# Computing the residuals from the regression of T on X_1 and X_2
+lr2 = LinearRegression()
+lr2.fit(X, T)
+res_TX = T - lr2.predict(X)
+
+# Computing the final regression's coefficient
+lr3 = LinearRegression()
+lr3.fit(res_TX.reshape(-1, 1), res_YX)
+
+print(lr3.coef_[0])
+```
+
+```python
+2.0
+```
+
+Isn't this amazing ? Once again, it is !
+
+---
+
+There is one tiny issue though... In practice we never have this exact knowledge of what $\bold{f}$ is.
+
+So, what can we do? **We estimate $\bold{f}$ using machine learning**.
 
 # Extending FWL with Machine Learning
 
@@ -249,6 +346,46 @@ This leads to **Double Machine Learning**, which follows a two-step process:
 
 2. Partial out the confounders: Remove the estimated confounder effects and estimate $\tau$ from the residualized outcome and treatment.
 
-# Conclusion
+## A final small python example
 
-There we have it, a way of computing the **average treatment effect**! Even if our initial regression equation, $\vec{Y} = \tau \vec{T} + \bold{f}(\bold{X})\vec{\beta} + \vec{\epsilon}$ is non-linear and complex, Double-ML allows us to isolate the computation of $\tau$ by first using ML to account for $\bold{f}(\bold{X})$. This way, we retain the core intuition of FWL while overcoming its limitations.
+Let's take back our previous setup with
+
+$$
+\vec{Y} = 2 \vec{T} + 4 \sin{(\bold{X}_1)} + 3 \exp{(\bold{X}_2)}
+$$
+
+However, this time we don't have the true form of $\bold{f}$.
+
+```python
+from xgboost import XGBRegressor
+
+# We do not know the form of f
+# We simply consider the confounders as one single matrix
+X = np.concatenate((X_1, X_2), axis=1)
+
+# Computing the residuals from the regression of Y on X_1 and X_2
+regressor1 = XGBRegressor()
+regressor1.fit(X, axis=1), Y)
+res_YX = Y - regressor1.predict(X, axis=1))
+
+# Computing the residuals from the regression of T on X_1 and X_2
+regressor2 = XGBRegressor()
+regressor2.fit(X, axis=1), T)
+res_TX = T - regressor2.predict(X, axis=1))
+
+# Computing the final regression's coefficient
+lr = LinearRegression()
+lr.fit(res_TX.reshape(-1, 1), res_YX)
+
+print(lr.coef_[0])
+```
+
+```python
+2.0065155821816973
+```
+
+Well... that's pretty nice isn't it ?
+
+---
+
+There we have it, a way of computing the **average treatment effect**! Even if our initial regression equation, $\vec{Y} = \tau \vec{T} + \bold{f}(\bold{X})\vec{\beta} + \vec{\epsilon}$ is non-linear and complex, Double-ML allows us to isolate the computation of $\tau$ by first using ML to account for $\bold{f}(\bold{X})$.
