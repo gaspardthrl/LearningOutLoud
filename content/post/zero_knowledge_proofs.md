@@ -43,6 +43,6 @@ To **formally describe** proofs, especially in computational complexity and cryp
 
 ---
 
-Note that we will only consider [NP-Complete](https://en.wikipedia.org/wiki/NP-completeness) problems here. I won't elaborate on them, but just think of them as all problems for which a solution is **easy to verify** but **hard to find** (e.g., a _sudoku_). If you're interested, [here](https://www.claymath.org/millennium/p-vs-np/)'s an easy way to make some _pocket money_ (just solve one of the hardest problems in computer science!)
+Note that we will only consider [NP-Complete](https://en.wikipedia.org/wiki/NP-completeness) problems here. I won't elaborate on them, but just think of them as all problems for which a solution is **easy to verify** but **hard to find** (e.g., a _sudoku_). If you're interested, [here](https://www.claymath.org/millennium/p-vs-np/)'s an easy way to make some _pocket money_.
 
 <img src="/zero_knowledge_proofs/p_equals_np_meme.png" style="display: block; margin: auto;" />
