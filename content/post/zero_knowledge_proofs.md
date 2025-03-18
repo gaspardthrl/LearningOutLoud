@@ -98,7 +98,7 @@ There are four possible outcomes:
 
 If you exit through $B$ when asked to use $A$, I'll **reject** your claim because you either don't have the password, or you have the password but are _too dumb_ for me to accept you. If you exit through $A$, I won't immediately accept your claim, as **you might have been lucky**.
 
-If we perform this experience only once, and you happen to exit the cave taking path $A$, there is a $50\%$ chance that you don't have the password and were just lucky.
+If we perform this experience only once, and you happen to exit the cave taking path $A$, there is a $50$ percent chance that you don't have the password and were just lucky.
 
 That's where the **iterative** aspect of these proofs comes into play: Each time we replay this cave adventure, with me randomly picking your exit path, your odds of consistently lucking out plummet. It's like trying to win a coin toss not just once, but over and over again.
 
