@@ -87,18 +87,18 @@ How can I be sure that you indeed know the password without you telling me the p
 
 Here's how we can achieve this:
 - You enter the cave without me seeing which path you take.
-- I then ask you to exit the cave using a specific path, say $A$.
+- I then ask you to exit the cave using a **specific path**, say $A$.
 
 There are four possible outcomes:
 
-- You don't know the password but luckily chose path $A$ initially.
-- You don't know the password and chose path $B$, so you exit through $B$.
-- You know the password and happened to choose path $A$ initially.
-- You know the password, initially chose $B$, but can use the password to exit through $A$.
+- You _don't know_ the password but **luckily chose path** $A$ initially.
+- You _don't know_ the password and chose path $B$, so you exit through $B$.
+- You _know_ the password and happened to choose path $A$ initially.
+- You _know_ the password, initially chose $B$, but **can use the password** to exit through $A$.
 
-If you exit through $B$ when asked to use $A$, I'll reject your claim because you either don't have the password, or you have the password but are _too dumb_ for me to accept you. If you exit through $A$, I won't immediately accept your claim, as you might have been lucky.
+If you exit through $B$ when asked to use $A$, I'll **reject** your claim because you either don't have the password, or you have the password but are _too dumb_ for me to accept you. If you exit through $A$, I won't immediately accept your claim, as **you might have been lucky**.
 
-If we perform this experience only once, and you exit the cave taking path $A$, there is a $50%$ chance that you don't have the password and were just lucky.
+If we perform this experience only once, and you happen to exit the cave taking path $A$, there is a $50\%$ chance that you don't have the password and were just lucky.
 
 That's where the **iterative** aspect of these proofs comes into play: Each time we replay this cave adventure, with me randomly picking your exit path, your odds of consistently lucking out plummet. It's like trying to win a coin toss not just once, but over and over again.
 
