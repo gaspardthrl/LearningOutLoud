@@ -2,3 +2,4 @@
 .lock
 .hugo_build.lock
 .vercel
+src/
