@@ -1,5 +1,5 @@
 +++
-title = 'Unpacked: Statistical Lingo'
+title = 'Unpacked: Statistical Mayhem'
 date = '2025-03-01'
 [params]
   math = true
@@ -12,7 +12,7 @@ sujects _after college_ is that you may realize that **passing a class is very d
 
 This morning I add a _wait moment_ (kind of like _DeepSeek_) regarding statistics. Thus, I (and you alongside with me) will try to get a better understanding of some **fundamental** concepts.
 
-<img src="/statistical_lingo/hold_up_meme.png" style="display: block; margin: auto;" />
+<img src="/statistical_mayhem/hold_up_meme.png" style="display: block; margin: auto;" />
 
 Let's start with one if not **the most important** concept in statistics: _Expected Value_
 
@@ -98,7 +98,7 @@ we find that the expected value of $\bold{X}$ is the point $(-\frac{1}{2}, -\fra
 
 All this is great but check the following data points.
 
-<img src="/statistical_lingo/same_mean.png" style="display: block; margin: auto;" />
+<img src="/statistical_mayhem/same_mean.png" style="display: block; margin: auto;" />
 
 Even though they have the same mean it is clear the yellow dots are closer to their mean than red dots. This observation leads us to an important question: how can we measure this difference in spread when the means are identical?
 
