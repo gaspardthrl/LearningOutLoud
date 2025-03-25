@@ -1,0 +1,359 @@
+<!doctype html>
+
+
+
+
+
+
+
+<html
+  class="not-ready lg:text-base"
+  style="--bg:#faf8f1"
+  lang="en-us"
+  dir="ltr"
+><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+  
+    
+    <title>Unpacked: Statistical Lingo- Learning Out Loud - (LOL)</title>
+  
+    
+    <meta name="theme-color" />
+  
+    <meta name="description" content="
+The best (or worst) thing about trying to dive deeper into
+sujects after college is that you may realize that passing a class is very different from actually understanding the subject (though not incompatible).
+This morning I add a wait moment (kind of like DeepSeek) regarding statistics. Thus, I (and you alongside with me) will try to get a better understanding of some fundamental concepts.
+
+Let&rsquo;s start with one if not the most important concept in statistics: Expected Value" />
+    <meta name="author" content="Gaspard Thoral" /><link rel="preload stylesheet" as="style" href="../../main.min.css" />
+  
+    
+    <link rel="preload" as="image" href="../../theme.svg" />
+    
+  
+    <link rel="preload" as="image" href="../../github.svg" /><link rel="preload" as="image" href="../../linkedin.svg" />
+  
+    <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css"
+  integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI"
+  crossorigin="anonymous"
+/>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js"
+  integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t"
+  crossorigin="anonymous"
+></script>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js"
+  integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+  crossorigin="anonymous"
+></script><script>
+  document.addEventListener('DOMContentLoaded', () =>
+    renderMathInElement(document.body, {
+      
+      
+      delimiters: [
+        { left: '$$', right: '$$', display: true },
+        { left: '$', right: '$', display: false },
+      ],
+      
+      throwOnError: false,
+    }),
+  );
+</script>
+
+  
+    
+    <link
+      rel="icon"
+      href="../../favicon.ico"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="../../apple-touch-icon.png"
+    />
+  
+    <meta name="generator" content="Hugo 0.145.0">
+  </head><body class="text-black duration-200 ease-out dark:text-white"><header
+  class="mx-auto flex h-[4.5rem] max-w-(--w) px-8 whitespace-nowrap lg:justify-center"
+>
+  <div class="relative z-50 flex items-center ltr:mr-auto rtl:ml-auto">
+    <a class="-translate-y-[1px] text-2xl font-medium" href="//localhost:1313/"> Learning Out Loud - (LOL)</a>
+    <div
+      class="btn-dark text-[0px] ltr:ml-4 rtl:mr-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.svg)_left_center/cover_no-repeat] dark:invert dark:[background-position:right]"
+      role="button"
+      aria-label="Dark"
+    ></div>
+  </div>
+
+  <div
+    class="btn-menu relative z-50 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden ltr:-mr-8 rtl:-ml-8"
+    role="button"
+    aria-label="Menu"
+  ></div>
+
+  <script>
+    
+    const htmlClass = document.documentElement.classList;
+    setTimeout(() => {
+      htmlClass.remove('not-ready');
+    }, 10);
+
+    
+    const btnMenu = document.querySelector('.btn-menu');
+    btnMenu.addEventListener('click', () => {
+      htmlClass.toggle('open');
+    });
+
+    
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    const lightBg = '#faf8f1'.replace(/"/g, '');
+    const setDark = (isDark) => {
+      metaTheme.setAttribute('content', isDark ? '#000' : lightBg);
+      htmlClass[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark);
+    };
+
+    
+    const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    if (htmlClass.contains('dark')) {
+      setDark(true);
+    } else {
+      const darkVal = localStorage.getItem('dark');
+      setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
+    }
+
+    
+    darkScheme.addEventListener('change', (event) => {
+      setDark(event.matches);
+    });
+
+    
+    const btnDark = document.querySelector('.btn-dark');
+    btnDark.addEventListener('click', () => {
+      setDark(localStorage.getItem('dark') !== 'true');
+    });
+  </script>
+
+  <div
+    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full flex-col justify-center pb-16 duration-200 select-none lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none dark:bg-black"
+  ><nav
+      class="mt-12 flex justify-center space-x-10 lg:mt-0 lg:items-center ltr:lg:ml-14 rtl:space-x-reverse rtl:lg:mr-14 dark:invert"
+    >
+      <a
+        class="h-7 w-7 text-[0px] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./github.svg)"
+        href="https://github.com/gaspardthrl"
+        target="_blank"
+        rel="me"
+      >github</a>
+      <a
+        class="h-7 w-7 text-[0px] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./linkedin.svg)"
+        href="https://linkedin.com/in/gaspard-thoral-49538a230/"
+        target="_blank"
+        rel="me"
+      >linkedin</a>
+    </nav>
+  </div>
+</header><main
+      class="prose prose-neutral dark:prose-invert relative mx-auto min-h-[calc(100vh-9rem)] max-w-(--w) px-8 pt-14 pb-16"
+    ><article>
+  <header class="mb-14">
+    <h1 class="!my-0 pb-2.5">Unpacked: Statistical Lingo</h1><div class="text-xs antialiased opacity-60"></div></header>
+
+  <section><div style="text-align: justify">
+<p>The best (or worst) thing about trying to dive deeper into
+sujects <em>after college</em> is that you may realize that <strong>passing a class is very different from actually understanding the subject</strong> (though not incompatible).</p>
+<p>This morning I add a <em>wait moment</em> (kind of like <em>DeepSeek</em>) regarding statistics. Thus, I (and you alongside with me) will try to get a better understanding of some <strong>fundamental</strong> concepts.</p>
+<img src="../../statistical_lingo/hold_up_meme.png" style="display: block; margin: auto;" />
+<p>Let&rsquo;s start with one if not <strong>the most important</strong> concept in statistics: <em>Expected Value</em></p>
+<h1 id="expected-value-the-random-variables-center-of-gravity">Expected Value: The random variable&rsquo;s center of gravity</h1>
+<p>Expected value is a bit of a tricky one due to its simplicity&hellip; I mean this line on its Wikipedia article sums it up pretty well: &ldquo;<em>Informally, the expected value is the mean of the possible values a random variable can take</em>&rdquo;.</p>
+<p>We will start with a quick reminder of the formulas. Given a <em>random variable</em> $X$:</p>
+<ul>
+<li>If $X$ is <strong>discrete</strong>, we define it&rsquo;s expected value to be
+$$
+  \begin{equation}
+  \mathbb{E}[X] = \sum_{x_i \in \Omega}{x_i\mathbb{P}[X = x_i]}
+  \end{equation}
+  $$</li>
+<li>If $X$ is <strong>continuous</strong>, we define it&rsquo;s expected value to be
+$$
+  \begin{equation}
+  \mathbb{E}[X] = \int_{\Omega}{x f(x)\, dx}
+  \end{equation}
+  $$</li>
+</ul>
+<p><em>These definitions are far from being rigorous but they will be sufficient for now.</em></p>
+<p>Under the hood they both convey the <strong>same idea</strong>. To find the expected value of <em>something</em> you need to take the <strong>weighted average</strong> of this <em>something</em>, that is the sum of all possible values of this <em>something</em>, each multiplied by their probability of realisation.</p>
+<hr>
+<p>To illustrate this I won&rsquo;t use the <em>dice example</em> as all of us know about it and will try to adopt a more visual approach.</p>
+<p>Let&rsquo;s modify our initial formula $(1)$ a bit by taking $\bold{X} = (X_1, X_2)$ instead of just $X$:</p>
+$$
+\mathbb{E}[\bold{X}] = \sum_{(x_i, y_i) \in \Omega}{(x_i, y_i)\mathbb{P}[\bold{X} = (x_i, y_i)]}
+$$<p>Furthermore, we set $\Omega = {(1, 1), (1, -1), (-1, 1), (-1, -1)}$.</p>
+<h3 id="uniform-distribution-the-base-case">Uniform distribution: The base case</h3>
+<p>Say that $\Omega$ follows a <em>uniform distribution</em>.</p>
+<p>Computing it&rsquo;s expected value</p>
+$$
+\mathbb{E}[\bold{X}] = \frac{1}{4} \times [(1, 1) + (1, -1) + (-1, 1) + (-1, -1)] = (0, 0)
+$$<p>we find that the expected value of $\bold{X}$ is the origin of the plane.</p>
+<p>We will place these points on a plane and see how their center of gravity evolves.
+To better illustrate what I mean, I displayed the changing probability of each point (as we gradually add points which follow a uniform distribution) as the <em>weight</em>.</p>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/I_u2xAk50gg?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
+    </div>
+
+<p>&hellip;</p>
+<h3 id="from-uniform-to-non-uniform">From uniform to non-uniform:</h3>
+<p>Let&rsquo;s now remove the uniform distribution and say that we now have the following probability distribution:</p>
+$$
+\mathbb{P}[\bold{X} = (x_i, y_i)] =
+\begin{cases}
+\frac{5}{8}, & \text{if } (x_i, y_i) = (-1, -1) \\
+\frac{1}{8}, & \text{otherwise}
+\end{cases}
+$$<p>Computing</p>
+$$
+\mathbb{E}[\bold{X}] = \frac{1}{8} \times [(1, 1) + (1, -1) + (-1, 1)] + \frac{5}{8} \times (-1, -1) = (-\frac{1}{2}, -\frac{1}{2})
+$$<p>we find that the expected value of $\bold{X}$ is the point $(-\frac{1}{2}, -\frac{1}{2})$.</p>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/VR4hqQA372w?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
+    </div>
+
+<p>&hellip;</p>
+<hr>
+<p>All this is great but check the following data points.</p>
+<img src="../../statistical_lingo/same_mean.png" style="display: block; margin: auto;" />
+<p>Even though they have the same mean it is clear the yellow dots are closer to their mean than red dots. This observation leads us to an important question: how can we measure this difference in spread when the means are identical?</p>
+<h1 id="variance-measuring-the-spread-from-center">Variance: Measuring the Spread from Center</h1>
+<p>At first, one may be tempted to compute the difference of each element to the mean</p>
+$$
+X - \mathbb{E}[X]
+$$<p>and then to average it</p>
+$$
+\mathbb{E}[X - \mathbb{E}[X]]
+$$<p>However, if you take a fraction of a second to think about it you will quickly realise that is <strong>always equals zero</strong>.</p>
+<p>It&rsquo;s only logical as the differences will cancel out. One way to fix this would be to take the <strong>absolute value</strong> of each difference</p>
+$$
+\mathbb{E}[|X - \mathbb{E}[X]|]
+$$<p>One of the key things to remember in math is that <strong>nobody likes absolute values</strong> as they are a pain to work with. You know what is one of the things people like to work with and that achieves the same goal ? <strong>Squared values</strong> ! This gives us the following formula:</p>
+$$
+\mathbb{E}[(X - \mathbb{E}[X])^2]
+$$<p>The <del>only</del> downside with variance is that its unit is not the same as our initial one. That is, if $X$ is expressed in meters $m$, $\text{Var}(X)$ will be expressed in meters squared $m^2$ which is harder to visualize.</p>
+<p>This is why many like to work with <em>standard deviation</em>.</p>
+<p>The <em>standard deviation</em> of a random variable $X$ is defined as:</p>
+$$
+\begin{align*}
+\sigma &= \sqrt{\mathbb{E}[(X - \mathbb{E}[X])^2]} \\
+&= \sqrt{\text{Var}(X)}
+\end{align*}
+$$<p>As said above, taking the <strong>square root</strong> of the variance is great as it gives us the original unit of measure !</p>
+<hr>
+<p>Awesome, we now have a way to better understand a random variable ! But hear me out: What if&hellip; what if we are working with <strong>multiple random variables</strong> ?</p>
+<h1 id="covariance-measuring-how-two-variables-move-together">Covariance: Measuring How Two Variables Move Together</h1>
+<p>We define the <em>covariance</em> between two random variables $X$ and $Y$ as:</p>
+$$
+\text{cov}(X, Y) = \mathbb{E}[(X - \mathbb{E}[X])(Y - \mathbb{E}[Y])]
+$$<h3 id="what-does-this-mean-">What does this mean ?</h3>
+<p>Covariance measures the extent to which two random variables vary together. If $X$ and $Y$ tend to increase and decrease together, their covariance is <strong>positive</strong>. If one tends to increase when the other decreases, their covariance is <strong>negative</strong>. If there is no discernible pattern, their covariance is <strong>close to zero</strong>.</p>
+<h3 id="intuition-behind-the-formula">Intuition Behind the Formula</h3>
+<p>As you can see, under the hood this formula is actually the <strong>expected value</strong> of a third random variable $Z$ defined as:</p>
+$$
+Z = (X - \mathbb{E}[X])(Y - \mathbb{E}[Y])
+$$<p>You might ask why can&rsquo;t we simply take look at $Z = XY$ and why subtracting their respective <strong>expected values</strong> is relevant here.</p>
+<p>To develop intuition, let’s consider an example:</p>
+<ul>
+<li>Suppose we track the daily temperature $X$ and the number of ice creams sold $Y$ at a beach.</li>
+<li>We suspect that warmer temperatures might lead to higher ice cream sales.</li>
+<li>The question is: <strong>Do these variables actually move together?</strong></li>
+</ul>
+<h4 id="why-not-just-use-xy">Why Not Just Use $XY$?</h4>
+<p>If we only looked at $XY$, we&rsquo;d face a problem:</p>
+<ul>
+<li>The values of $X$ and $Y$ can be large or small, but without considering their typical (mean) values, we cannot determine their relative movement.</li>
+<li>A large $XY$ does not necessarily mean a strong relationship; it might just mean one variable is large in absolute terms.</li>
+<li>If $X$ and $Y$ are always positive (e.g., temperature and ice cream sales), $XY$ will always be positive, making it misleading as a measure of co-movement.</li>
+</ul>
+<p>By <strong>subtracting their respective expected values</strong> (i.e., taking $Z = (X - \mathbb{E}[X])(Y - \mathbb{E}[Y])$), we normalize these values, ensuring that we measure <em>relative movement</em> rather than <em>absolute magnitudes</em>:</p>
+<ul>
+<li>
+<p>If $Z &gt; 0$, both values are either above or below their respective means.</p>
+<p>$\Rightarrow$ They move <strong>together</strong>.</p>
+</li>
+<li>
+<p>If $Z &lt; 0$, one is above its mean while the other is below.</p>
+<p>$\Rightarrow$ They move <strong>oppositely</strong>.</p>
+</li>
+<li>
+<p>The <strong>magnitude</strong> of $Z$ indicates how strong the relationship is: large deviations imply a strong relationship, small deviations imply a weak one.</p>
+</li>
+</ul>
+<p>By taking the expectation $\mathbb{E}[Z]$, we determine whether these relationships hold <em>on average</em>.</p>
+<p>The problem with covariance is that it is <strong>not scale-free</strong> which means that it is hard to interpret beside whether the variables move together.</p>
+<p>To understand this, take a look at the following example:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>X_1 <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">7</span>, <span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">9</span>, <span style="color:#ae81ff">10</span>]
+</span></span><span style="display:flex;"><span>Y_1 <span style="color:#f92672">=</span> [<span style="color:#ae81ff">2</span><span style="color:#f92672">*</span>x <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> X_1] <span style="color:#75715e"># Define Y_1 = 2*X_1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>X_2 <span style="color:#f92672">=</span> [<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">14</span>, <span style="color:#ae81ff">16</span>, <span style="color:#ae81ff">18</span>, <span style="color:#ae81ff">20</span>]
+</span></span><span style="display:flex;"><span>Y_2 <span style="color:#f92672">=</span> [<span style="color:#ae81ff">2</span><span style="color:#f92672">*</span>x <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> X_2] <span style="color:#75715e"># Define Y_2 = 2*X_2</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Print cov(X, Y) with two decimals</span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Cov(X_1, Y_1) = </span><span style="color:#e6db74">{</span>np<span style="color:#f92672">.</span>cov(X_1, Y_1)[<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>]<span style="color:#e6db74">:</span><span style="color:#e6db74">.2f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Cov(X_2, Y_2) = </span><span style="color:#e6db74">{</span>np<span style="color:#f92672">.</span>cov(X_2, Y_2)[<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>]<span style="color:#e6db74">:</span><span style="color:#e6db74">.2f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>Cov(X_1, Y_1) <span style="color:#f92672">=</span> <span style="color:#ae81ff">18.33</span>
+</span></span><span style="display:flex;"><span>Cov(X_2, Y_2) <span style="color:#f92672">=</span> <span style="color:#ae81ff">73.33</span>
+</span></span></code></pre></div><p>See ? We didn&rsquo;t obtain the same results even though the relationships did not change (i.e., $Y = 2X$).</p>
+<p>But what if&hellip; what if there was a way to make this scale free ?</p>
+<h1 id="correlation-">Correlation: &hellip;</h1>
+<p>We define the <em>correlation</em> between two random variables $X$ and $Y$ as:</p>
+$$
+\text{corr}(X, Y) = \frac{\text{cov}(X, Y)}{\sigma_X\sigma_Y}
+$$</section>
+
+  <div class="mt-24" id="graphcomment"></div>
+  <script type="text/javascript">
+    var __semio__params = {
+      graphcommentId: 'YOUR_GRAPH_COMMENT_ID',
+      behaviour: {
+        
+      },
+      
+    };
+
+    function __semio__onload() {
+      __semio__gc_graphlogin(__semio__params);
+    }
+
+    (function () {
+      var gc = document.createElement('script');
+      gc.type = 'text/javascript';
+      gc.async = true;
+      gc.onload = __semio__onload;
+      gc.defer = true;
+      gc.src =
+        'https://integration.graphcomment.com/gc_graphlogin.js?' + Date.now();
+      (
+        document.getElementsByTagName('head')[0] ||
+        document.getElementsByTagName('body')[0]
+      ).appendChild(gc);
+    })();
+  </script></article></main><footer
+  class="mx-auto flex h-[4.5rem] max-w-(--w) items-center px-8 text-xs tracking-wider uppercase opacity-60"
+>
+  <div class="mr-auto">&copy;2025<a class="link" href="../../"> Learning Out Loud - (LOL)</a></div>
+</footer>
+</body>
+</html>
