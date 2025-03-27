@@ -365,13 +365,13 @@ X = np.concatenate((X_1, X_2), axis=1)
 
 # Computing the residuals from the regression of Y on X_1 and X_2
 regressor1 = XGBRegressor()
-regressor1.fit(X, axis=1), Y)
-res_YX = Y - regressor1.predict(X, axis=1))
+regressor1.fit(X, Y)
+res_YX = Y - regressor1.predict(X)
 
 # Computing the residuals from the regression of T on X_1 and X_2
 regressor2 = XGBRegressor()
-regressor2.fit(X, axis=1), T)
-res_TX = T - regressor2.predict(X, axis=1))
+regressor2.fit(X, T)
+res_TX = T - regressor2.predict(X)
 
 # Computing the final regression's coefficient
 lr = LinearRegression()
