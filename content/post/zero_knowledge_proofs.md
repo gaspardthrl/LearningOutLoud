@@ -138,7 +138,7 @@ To achieve this, we will modify our previous _cave adventure_ and do the followi
 
 - I then ask you to show either the **isomorphism** between $H_i$ and $G$ or a **Hamiltonian cycle** in $H_i$.
 
-I you do know a Hamiltonian cycle in $G$, then it is pretty easy for you to submit a graph $H_i$ that is **isomorphic** to $G$ and for which you know a Hamiltonian cycle.
+If you do know a Hamiltonian cycle in $G$, then it is pretty easy for you to submit a graph $H_i$ that is **isomorphic** to $G$ and for which you know a Hamiltonian cycle.
 
 On the other hand, if you don't know any Hamiltonian cycle in $G$, you have to take a guess on which question I am going to ask:
 
