@@ -1,577 +1,124 @@
-<!doctype html>
-
-
-
-
-
-
-
-<html
-  class="not-ready lg:text-base"
-  style="--bg:#faf8f1"
-  lang="en-us"
-  dir="ltr"
-><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-  
-    
-    <title>Unpacked: Double Machine Learning- Learning Out Loud - (LOL)</title>
-  
-    
-    <meta name="theme-color" />
-  
-    <meta name="description" content="
+<!doctype html><html class="not-ready lg:text-base" style=--bg:#faf8f1 lang=en-us dir=ltr><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><title>Unpacked: Double Machine Learning-Silly Goose's Thoughts</title>
+<meta name=theme-color><meta name=description content="
 
 Before anything I want to thank Matheus Facure Alves for his material Causal Inference for The Brave and True which was of great help to understand this topic.
 
-You&rsquo;ve all heard about Machine Learning. Some say it&rsquo;s amazing; I say it&rsquo;s meh. I&rsquo;d rather double it and give it to the next person (See what I did there?). This next person happens to be you. You guessed it today we will talk about Double Machine Learning" />
-    <meta name="author" content="Gaspard Thoral" /><link rel="preload stylesheet" as="style" href="../../main.min.css" />
-  
-    
-    <link rel="preload" as="image" href="../../theme.svg" />
-    
-  
-    <link rel="preload" as="image" href="../../github.svg" /><link rel="preload" as="image" href="../../linkedin.svg" />
-  
-    <link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css"
-  integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI"
-  crossorigin="anonymous"
-/>
-<script
-  defer
-  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js"
-  integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t"
-  crossorigin="anonymous"
-></script>
-<script
-  defer
-  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js"
-  integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
-  crossorigin="anonymous"
-></script><script>
-  document.addEventListener('DOMContentLoaded', () =>
-    renderMathInElement(document.body, {
-      
-      
-      delimiters: [
-        { left: '$$', right: '$$', display: true },
-        { left: '$', right: '$', display: false },
-      ],
-      
-      throwOnError: false,
-    }),
-  );
-</script>
-
-  
-    
-    <link
-      rel="icon"
-      href="../../favicon.ico"
-    />
-    <link
-      rel="apple-touch-icon"
-      href="../../apple-touch-icon.png"
-    />
-  
-    <meta name="generator" content="Hugo 0.145.0">
-  </head><body class="text-black duration-200 ease-out dark:text-white"><header
-  class="mx-auto flex h-[4.5rem] max-w-(--w) px-8 whitespace-nowrap lg:justify-center"
->
-  <div class="relative z-50 flex items-center ltr:mr-auto rtl:ml-auto">
-    <a class="-translate-y-[1px] text-2xl font-medium" href="//localhost:1313/"> Learning Out Loud - (LOL)</a>
-    <div
-      class="btn-dark text-[0px] ltr:ml-4 rtl:mr-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.svg)_left_center/cover_no-repeat] dark:invert dark:[background-position:right]"
-      role="button"
-      aria-label="Dark"
-    ></div>
-  </div>
-
-  <div
-    class="btn-menu relative z-50 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden ltr:-mr-8 rtl:-ml-8"
-    role="button"
-    aria-label="Menu"
-  ></div>
-
-  <script>
-    
-    const htmlClass = document.documentElement.classList;
-    setTimeout(() => {
-      htmlClass.remove('not-ready');
-    }, 10);
-
-    
-    const btnMenu = document.querySelector('.btn-menu');
-    btnMenu.addEventListener('click', () => {
-      htmlClass.toggle('open');
-    });
-
-    
-    const metaTheme = document.querySelector('meta[name="theme-color"]');
-    const lightBg = '#faf8f1'.replace(/"/g, '');
-    const setDark = (isDark) => {
-      metaTheme.setAttribute('content', isDark ? '#000' : lightBg);
-      htmlClass[isDark ? 'add' : 'remove']('dark');
-      localStorage.setItem('dark', isDark);
-    };
-
-    
-    const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
-    if (htmlClass.contains('dark')) {
-      setDark(true);
-    } else {
-      const darkVal = localStorage.getItem('dark');
-      setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
-    }
-
-    
-    darkScheme.addEventListener('change', (event) => {
-      setDark(event.matches);
-    });
-
-    
-    const btnDark = document.querySelector('.btn-dark');
-    btnDark.addEventListener('click', () => {
-      setDark(localStorage.getItem('dark') !== 'true');
-    });
-  </script>
-
-  <div
-    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full flex-col justify-center pb-16 duration-200 select-none lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none dark:bg-black"
-  ><nav
-      class="mt-12 flex justify-center space-x-10 lg:mt-0 lg:items-center ltr:lg:ml-14 rtl:space-x-reverse rtl:lg:mr-14 dark:invert"
-    >
-      <a
-        class="h-7 w-7 text-[0px] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
-        style="--url: url(./github.svg)"
-        href="https://github.com/gaspardthrl"
-        target="_blank"
-        rel="me"
-      >github</a>
-      <a
-        class="h-7 w-7 text-[0px] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
-        style="--url: url(./linkedin.svg)"
-        href="https://linkedin.com/in/gaspard-thoral-49538a230/"
-        target="_blank"
-        rel="me"
-      >linkedin</a>
-    </nav>
-  </div>
-</header><main
-      class="prose prose-neutral dark:prose-invert relative mx-auto min-h-[calc(100vh-9rem)] max-w-(--w) px-8 pt-14 pb-16"
-    ><article>
-  <header class="mb-14">
-    <h1 class="!my-0 pb-2.5">Unpacked: Double Machine Learning</h1><div class="text-xs antialiased opacity-60"></div></header>
-
-  <section><div style="text-align: justify">
-<style>
-    table {
-        width: 100%;
-    }
-    table :is(td, th) {
-      padding: 0.3em;
-    }
-tr:nth-child(even) {
-  background-color: lightgray;
-}
-</style>
-<p>Before anything I want to thank <strong>Matheus Facure Alves</strong> for his material <a href="https://matheusfacure.github.io/python-causality-handbook/landing-page.html#acknowledgments"><em>Causal Inference for The Brave and True</em></a> which was of great help to understand this topic.</p>
-<hr>
-<p>You&rsquo;ve all heard about Machine Learning. Some say it&rsquo;s amazing; I say it&rsquo;s meh. I&rsquo;d rather <em>double it</em> and give it to the next person (See what I did there?). This next person happens to be you. You guessed it today we will talk about <strong>Double Machine Learning</strong></p>
-<p>For now, we’ll focus on how Double ML is used to compute the <strong>Average Treatment Effect (ATE)</strong>. Conditional ATE (CATE) might come later.</p>
-<h1 id="introduction-causation-vs-correlation">Introduction: Causation vs. Correlation</h1>
-<p>Before diving into Double ML, let’s talk about <strong>causation</strong> and <strong>correlation</strong>.</p>
-<p>Imagine we have a population, and for each individual $i$ we observe an outcome $Y_i$ . Now, suppose we’re interested in understanding the effect of some treatment $T$ on an this outcome.</p>
-<p>Each $Y_i$ has <strong>two potential outcomes</strong>:</p>
-<ul>
-<li>$Y_i(0)$ → The outcome if the individual <strong>did not</strong> receive the treatment.</li>
-<li>$Y_i(1)$ → The outcome if the individual <strong>did</strong> receive the treatment.</li>
-</ul>
-<p>However, here’s the catch: <strong>We can only observe one of these outcomes per individual</strong>. If someone receives the treatment, we’ll see $Y_i(1)$, but we’ll never know what $Y_i(0)$ would have been (and vice versa).</p>
-<p>The goal of <strong>causal inference</strong> is to estimate the effect of the treatment:</p>
-$$
+You&rsquo;ve all heard about Machine Learning. Some say it&rsquo;s amazing; I say it&rsquo;s meh. I&rsquo;d rather double it and give it to the next person (See what I did there?). This next person happens to be you. You guessed it today we will talk about Double Machine Learning"><meta name=author content=" "><link rel="preload stylesheet" as=style href=../../main.min.css><link rel=preload as=image href=../../theme.svg><link rel=preload as=image href=../../github.svg><link rel=preload as=image href=../../linkedin.svg><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css integrity=sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI crossorigin=anonymous><script defer src=https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js integrity=sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t crossorigin=anonymous></script><script defer src=https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js integrity=sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05 crossorigin=anonymous></script><script>document.addEventListener("DOMContentLoaded",()=>renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1}],throwOnError:!1}))</script><link rel=icon href=../../favicon.ico><link rel=apple-touch-icon href=../../apple-touch-icon.png><meta name=generator content="Hugo 0.145.0"><meta itemprop=name content="Unpacked: Double Machine Learning"><meta itemprop=description content="Before anything I want to thank Matheus Facure Alves for his material Causal Inference for The Brave and True which was of great help to understand this topic.
+You’ve all heard about Machine Learning. Some say it’s amazing; I say it’s meh. I’d rather double it and give it to the next person (See what I did there?). This next person happens to be you. You guessed it today we will talk about Double Machine Learning"><meta itemprop=datePublished content="2025-03-14T00:00:00+00:00"><meta itemprop=dateModified content="2025-03-14T00:00:00+00:00"><meta itemprop=wordCount content="2156"><meta property="og:url" content="/post/double_ml/"><meta property="og:site_name" content="Silly Goose's Thoughts"><meta property="og:title" content="Unpacked: Double Machine Learning"><meta property="og:description" content="Before anything I want to thank Matheus Facure Alves for his material Causal Inference for The Brave and True which was of great help to understand this topic.
+You’ve all heard about Machine Learning. Some say it’s amazing; I say it’s meh. I’d rather double it and give it to the next person (See what I did there?). This next person happens to be you. You guessed it today we will talk about Double Machine Learning"><meta property="og:locale" content="en_us"><meta property="og:type" content="article"><meta property="article:section" content="post"><meta property="article:published_time" content="2025-03-14T00:00:00+00:00"><meta property="article:modified_time" content="2025-03-14T00:00:00+00:00"><meta name=twitter:card content="summary"><meta name=twitter:title content="Unpacked: Double Machine Learning"><meta name=twitter:description content="Before anything I want to thank Matheus Facure Alves for his material Causal Inference for The Brave and True which was of great help to understand this topic.
+You’ve all heard about Machine Learning. Some say it’s amazing; I say it’s meh. I’d rather double it and give it to the next person (See what I did there?). This next person happens to be you. You guessed it today we will talk about Double Machine Learning"><link rel=canonical href=../../post/double_ml/></head><body class="text-black duration-200 ease-out dark:text-white"><header class="mx-auto flex h-[4.5rem] max-w-(--w) px-8 whitespace-nowrap lg:justify-center"><div class="relative z-50 flex items-center ltr:mr-auto rtl:ml-auto"><a class="-translate-y-[1px] text-2xl font-medium" href=../../>Silly Goose's Thoughts</a><div class="btn-dark text-[0px] ltr:ml-4 rtl:mr-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.svg)_left_center/cover_no-repeat] dark:invert dark:[background-position:right]" role=button aria-label=Dark></div></div><div class="btn-menu relative z-50 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden ltr:-mr-8 rtl:-ml-8" role=button aria-label=Menu></div><script>const htmlClass=document.documentElement.classList;setTimeout(()=>{htmlClass.remove("not-ready")},10);const btnMenu=document.querySelector(".btn-menu");btnMenu.addEventListener("click",()=>{htmlClass.toggle("open")});const metaTheme=document.querySelector('meta[name="theme-color"]'),lightBg="#faf8f1".replace(/"/g,""),setDark=e=>{metaTheme.setAttribute("content",e?"#000":lightBg),htmlClass[e?"add":"remove"]("dark"),localStorage.setItem("dark",e)},darkScheme=window.matchMedia("(prefers-color-scheme: dark)");if(htmlClass.contains("dark"))setDark(!0);else{const e=localStorage.getItem("dark");setDark(e?e==="true":darkScheme.matches)}darkScheme.addEventListener("change",e=>{setDark(e.matches)});const btnDark=document.querySelector(".btn-dark");btnDark.addEventListener("click",()=>{setDark(localStorage.getItem("dark")!=="true")})</script><div class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full flex-col justify-center pb-16 duration-200 select-none lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none dark:bg-black"><nav class="mt-12 flex justify-center space-x-10 lg:mt-0 lg:items-center ltr:lg:ml-14 rtl:space-x-reverse rtl:lg:mr-14 dark:invert"><a class="h-7 w-7 text-[0px] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6" style=--url:url(./github.svg) href=https://github.com/gaspardthrl target=_blank rel=me>github</a>
+<a class="h-7 w-7 text-[0px] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6" style=--url:url(./linkedin.svg) href=https://linkedin.com/in/gaspard-thoral-49538a230/ target=_blank rel=me>linkedin</a></nav></div></header><main class="prose prose-neutral dark:prose-invert relative mx-auto min-h-[calc(100vh-9rem)] max-w-(--w) px-8 pt-14 pb-16"><article><header class=mb-14><h1 class="!my-0 pb-2.5">Unpacked: Double Machine Learning</h1><div class="text-xs antialiased opacity-60"></div></header><section><div style=text-align:justify><style>table{width:100%}table :is(td,th){padding:.3em}tr:nth-child(even){background-color:#d3d3d3}</style><p>Before anything I want to thank <strong>Matheus Facure Alves</strong> for his material <a href=https://matheusfacure.github.io/python-causality-handbook/landing-page.html#acknowledgments><em>Causal Inference for The Brave and True</em></a> which was of great help to understand this topic.</p><hr><p>You&rsquo;ve all heard about Machine Learning. Some say it&rsquo;s amazing; I say it&rsquo;s meh. I&rsquo;d rather <em>double it</em> and give it to the next person (See what I did there?). This next person happens to be you. You guessed it today we will talk about <strong>Double Machine Learning</strong></p><p>For now, we’ll focus on how Double ML is used to compute the <strong>Average Treatment Effect (ATE)</strong>. Conditional ATE (CATE) might come later.</p><h1 id=introduction-causation-vs-correlation>Introduction: Causation vs. Correlation</h1><p>Before diving into Double ML, let’s talk about <strong>causation</strong> and <strong>correlation</strong>.</p><p>Imagine we have a population, and for each individual $i$ we observe an outcome $Y_i$ . Now, suppose we’re interested in understanding the effect of some treatment $T$ on an this outcome.</p><p>Each $Y_i$ has <strong>two potential outcomes</strong>:</p><ul><li>$Y_i(0)$ → The outcome if the individual <strong>did not</strong> receive the treatment.</li><li>$Y_i(1)$ → The outcome if the individual <strong>did</strong> receive the treatment.</li></ul><p>However, here’s the catch: <strong>We can only observe one of these outcomes per individual</strong>. If someone receives the treatment, we’ll see $Y_i(1)$, but we’ll never know what $Y_i(0)$ would have been (and vice versa).</p><p>The goal of <strong>causal inference</strong> is to estimate the effect of the treatment:</p>$$
 Y_i(1) - Y_i(0)
-$$<p>Since we can’t measure this for each individual, we instead try to estimate the <strong>population-level effect</strong>:</p>
-$$
+$$<p>Since we can’t measure this for each individual, we instead try to estimate the <strong>population-level effect</strong>:</p>$$
 E[Y(1) - Y(0)]
-$$<p>where the expectation is taken over the entire population.</p>
-<h3 id="why-you-cant-just-compare-treated-vs-untreated-groups">Why You Can’t Just Compare Treated vs. Untreated Groups</h3>
-<p>A common mistake is to estimate the treatment effect using:</p>
-$$
+$$<p>where the expectation is taken over the entire population.</p><h3 id=why-you-cant-just-compare-treated-vs-untreated-groups>Why You Can’t Just Compare Treated vs. Untreated Groups</h3><p>A common mistake is to estimate the treatment effect using:</p>$$
 \begin{equation}
 E[Y | T = 1] - E[Y | T = 0]
 \end{equation}
-$$<p>which seems reasonable at first: it compares the average outcome of treated vs. untreated individuals. But <strong>this is wrong</strong> because it captures <strong>association, not causation</strong>.</p>
-<p>Let’s expand the terms:</p>
-$$
+$$<p>which seems reasonable at first: it compares the average outcome of treated vs. untreated individuals. But <strong>this is wrong</strong> because it captures <strong>association, not causation</strong>.</p><p>Let’s expand the terms:</p>$$
 E[Y | T = 1] - E[Y | T = 0] = E[Y(1) | T = 1] - E[Y(0) | T = 0]
-$$<p>By adding and subtracting $E[Y(0) | T = 1]$, we get:</p>
-$$
+$$<p>By adding and subtracting $E[Y(0) | T = 1]$, we get:</p>$$
 \underbrace{E[Y(1) | T = 1] - E[Y(0) | T = 1]}_{\text{ATT (Average Treatment Effect on the Treated)}} + \underbrace{E[Y(0) | T = 1] - E[Y(0) | T = 0]}_{\text{Bias}}
-$$<p>The second term (Bias) represents the difference between treated and untreated individuals <strong>before</strong> treatment. It captures pre-existing differences (<em>confounders</em>) rather than the causal effect.</p>
-<h3 id="what-does-it-look-like-with-a-basic-example-">What does it look like with a basic example ?</h3>
-<p>Let&rsquo;s say we want to understand the impact of a taking a specific <em>food supplement</em> on someone&rsquo;s height but we don&rsquo;t want to perform any <strong>randomized controlled trials</strong> or any experiment that would grant us new data. We only want to work with <strong>already available data</strong>.</p>
-<p>What we have is a population $Y$ inside which some people took this food supplement and others didn&rsquo;t.</p>
-<p><strong>NB:</strong> In our experiment, $Y_i$ represents the <strong>height</strong> of the $i^{\text{th}}$ individual.</p>
-<p>Here is our data:</p>
-<table>
-  <thead>
-      <tr>
-          <th style="text-align: left">$\text{Individual}$</th>
-          <th style="text-align: center">$Y(0)$</th>
-          <th style="text-align: center">$Y(1)$</th>
-          <th style="text-align: center">$T$</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td style="text-align: left">$1$</td>
-          <td style="text-align: center">$\color{red}\textbf{?}$</td>
-          <td style="text-align: center">$186$</td>
-          <td style="text-align: center">$1$</td>
-      </tr>
-      <tr>
-          <td style="text-align: left">$2$</td>
-          <td style="text-align: center">$171$</td>
-          <td style="text-align: center">$\color{red}\textbf{?}$</td>
-          <td style="text-align: center">$0$</td>
-      </tr>
-      <tr>
-          <td style="text-align: left">$3$</td>
-          <td style="text-align: center">$\color{red}\textbf{?}$</td>
-          <td style="text-align: center">$190$</td>
-          <td style="text-align: center">$1$</td>
-      </tr>
-      <tr>
-          <td style="text-align: left">$4$</td>
-          <td style="text-align: center">$174$</td>
-          <td style="text-align: center">$\color{red}\textbf{?}$</td>
-          <td style="text-align: center">$0$</td>
-      </tr>
-      <tr>
-          <td style="text-align: left">$5$</td>
-          <td style="text-align: center">$169$</td>
-          <td style="text-align: center">$\color{red}\textbf{?}$</td>
-          <td style="text-align: center">$0$</td>
-      </tr>
-      <tr>
-          <td style="text-align: left">$6$</td>
-          <td style="text-align: center">$\color{red}\textbf{?}$</td>
-          <td style="text-align: center">$185$</td>
-          <td style="text-align: center">$1$</td>
-      </tr>
-      <tr>
-          <td style="text-align: left">$7$</td>
-          <td style="text-align: center">$\color{red}\textbf{?}$</td>
-          <td style="text-align: center">$195$</td>
-          <td style="text-align: center">$1$</td>
-      </tr>
-      <tr>
-          <td style="text-align: left">$8$</td>
-          <td style="text-align: center">$170$</td>
-          <td style="text-align: center">$\color{red}\textbf{?}$</td>
-          <td style="text-align: center">$0$</td>
-      </tr>
-  </tbody>
-</table>
-<p>Let&rsquo;s try with $(1)$ :</p>
-<ul>
-<li>
-<p>We first compute the average height of <strong>people who did not took the food supplement</strong></p>
-<p>$\Rightarrow E[Y | T = 0] = \frac{171 + 174 + 169 + 170}{4} = 171$</p>
-</li>
-<li>
-<p>We then compute the average height of <strong>people who took the food supplement</strong></p>
-<p>$\Rightarrow E[Y | T = 1] = \frac{186 + 190 + 185 + 195}{4} = 189$</p>
-</li>
-</ul>
-<p>Applying the above formula we find that taking the food supplement results in a height increase of $189 - 171 = 18\text{cm}$.</p>
-<p>Well that&rsquo;s awesome ! Where can I find this amazing supplement ?</p>
-<p>For the sake of this experiment we were granted a time machine. Let&rsquo;s go back in time just to make sure our results are correct.</p>
-<p>After our little trip we are back with this updated table</p>
-<table>
-  <thead>
-      <tr>
-          <th style="text-align: left">$\text{Individual}$</th>
-          <th style="text-align: center">$Y(0)$</th>
-          <th style="text-align: center">$Y(1)$</th>
-          <th style="text-align: center">$T$</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td style="text-align: left">$1$</td>
-          <td style="text-align: center">$186$</td>
-          <td style="text-align: center">$186$</td>
-          <td style="text-align: center">$1$</td>
-      </tr>
-      <tr>
-          <td style="text-align: left">$2$</td>
-          <td style="text-align: center">$171$</td>
-          <td style="text-align: center">$\color{red}\textbf{?}$</td>
-          <td style="text-align: center">$0$</td>
-      </tr>
-      <tr>
-          <td style="text-align: left">$3$</td>
-          <td style="text-align: center">$190$</td>
-          <td style="text-align: center">$190$</td>
-          <td style="text-align: center">$1$</td>
-      </tr>
-      <tr>
-          <td style="text-align: left">$4$</td>
-          <td style="text-align: center">$174$</td>
-          <td style="text-align: center">$\color{red}\textbf{?}$</td>
-          <td style="text-align: center">$0$</td>
-      </tr>
-      <tr>
-          <td style="text-align: left">$5$</td>
-          <td style="text-align: center">$169$</td>
-          <td style="text-align: center">$\color{red}\textbf{?}$</td>
-          <td style="text-align: center">$0$</td>
-      </tr>
-      <tr>
-          <td style="text-align: left">$6$</td>
-          <td style="text-align: center">$185$</td>
-          <td style="text-align: center">$185$</td>
-          <td style="text-align: center">$1$</td>
-      </tr>
-      <tr>
-          <td style="text-align: left">$7$</td>
-          <td style="text-align: center">$195$</td>
-          <td style="text-align: center">$195$</td>
-          <td style="text-align: center">$1$</td>
-      </tr>
-      <tr>
-          <td style="text-align: left">$8$</td>
-          <td style="text-align: center">$170$</td>
-          <td style="text-align: center">$\color{red}\textbf{?}$</td>
-          <td style="text-align: center">$0$</td>
-      </tr>
-  </tbody>
-</table>
-<p>Remember how $(1)$ included a $\text{Bias}$ term when we expanded it ? Let&rsquo;s see what it looks like with our new data.</p>
-<ul>
-<li>
-<p>We compute once again the average height of <strong>people who took the food supplement</strong> before they actually took it</p>
-<p>$\Rightarrow E[Y(0) | T = 0] = \frac{171 + 174 + 169 + 170}{4} = 171$</p>
-</li>
-<li>
-<p>Now, let&rsquo;s compute the average height of these same individuals <strong>before</strong> they took the supplement</p>
-<p>$\Rightarrow E[Y(0) | T = 1] = \frac{186 + 190 + 185 + 195}{4} = 189$</p>
-</li>
-</ul>
-<p>We find that the <em>bias</em>, that is the initial difference between the two sub-populations, is of $18 \text{cm}$.</p>
-<p><em>Wait&hellip; What ???</em></p>
-<p>This means that the $\text{ATT}$, the average treatment effect on the treated, is actually $\text{0}$. In other words, the supplement had no effect at all: the difference we observed was purely due to <strong>pre-existing height differences between the two groups</strong>.</p>
-<p>We were lucky to have our time machine to reveal the truth but as you may have noticed, we don&rsquo;t have that luxury in real life. Since we can never observe both outcomes $Y(0)$ and $Y(1)$ for the same individual, we must be extra cautious. Without a properly designed experiment, we risk mistaking correlation for causation, leading to completely false conclusions.</p>
-<p>This is why randomized controlled trials are so valuable: they <strong>help us separate real effects from misleading associations</strong>.</p>
-<p>But what if we cannot perform RCTs ?</p>
-<h1 id="individual-level-vs-population-level-outcome-model">Individual-Level vs Population-Level Outcome Model</h1>
-<p>Let&rsquo;s recap a bit. We have our outcome $Y_i$ for each individual. It can be expressed as</p>
-$$
+$$<p>The second term (Bias) represents the difference between treated and untreated individuals <strong>before</strong> treatment. It captures pre-existing differences (<em>confounders</em>) rather than the causal effect.</p><h3 id=what-does-it-look-like-with-a-basic-example->What does it look like with a basic example ?</h3><p>Let&rsquo;s say we want to understand the impact of a taking a specific <em>food supplement</em> on someone&rsquo;s height but we don&rsquo;t want to perform any <strong>randomized controlled trials</strong> or any experiment that would grant us new data. We only want to work with <strong>already available data</strong>.</p><p>What we have is a population $Y$ inside which some people took this food supplement and others didn&rsquo;t.</p><p><strong>NB:</strong> In our experiment, $Y_i$ represents the <strong>height</strong> of the $i^{\text{th}}$ individual.</p><p>Here is our data:</p><table><thead><tr><th style=text-align:left>$\text{Individual}$</th><th style=text-align:center>$Y(0)$</th><th style=text-align:center>$Y(1)$</th><th style=text-align:center>$T$</th></tr></thead><tbody><tr><td style=text-align:left>$1$</td><td style=text-align:center>$\color{red}\textbf{?}$</td><td style=text-align:center>$186$</td><td style=text-align:center>$1$</td></tr><tr><td style=text-align:left>$2$</td><td style=text-align:center>$171$</td><td style=text-align:center>$\color{red}\textbf{?}$</td><td style=text-align:center>$0$</td></tr><tr><td style=text-align:left>$3$</td><td style=text-align:center>$\color{red}\textbf{?}$</td><td style=text-align:center>$190$</td><td style=text-align:center>$1$</td></tr><tr><td style=text-align:left>$4$</td><td style=text-align:center>$174$</td><td style=text-align:center>$\color{red}\textbf{?}$</td><td style=text-align:center>$0$</td></tr><tr><td style=text-align:left>$5$</td><td style=text-align:center>$169$</td><td style=text-align:center>$\color{red}\textbf{?}$</td><td style=text-align:center>$0$</td></tr><tr><td style=text-align:left>$6$</td><td style=text-align:center>$\color{red}\textbf{?}$</td><td style=text-align:center>$185$</td><td style=text-align:center>$1$</td></tr><tr><td style=text-align:left>$7$</td><td style=text-align:center>$\color{red}\textbf{?}$</td><td style=text-align:center>$195$</td><td style=text-align:center>$1$</td></tr><tr><td style=text-align:left>$8$</td><td style=text-align:center>$170$</td><td style=text-align:center>$\color{red}\textbf{?}$</td><td style=text-align:center>$0$</td></tr></tbody></table><p>Let&rsquo;s try with $(1)$ :</p><ul><li><p>We first compute the average height of <strong>people who did not took the food supplement</strong></p><p>$\Rightarrow E[Y | T = 0] = \frac{171 + 174 + 169 + 170}{4} = 171$</p></li><li><p>We then compute the average height of <strong>people who took the food supplement</strong></p><p>$\Rightarrow E[Y | T = 1] = \frac{186 + 190 + 185 + 195}{4} = 189$</p></li></ul><p>Applying the above formula we find that taking the food supplement results in a height increase of $189 - 171 = 18\text{cm}$.</p><p>Well that&rsquo;s awesome ! Where can I find this amazing supplement ?</p><p>For the sake of this experiment we were granted a time machine. Let&rsquo;s go back in time just to make sure our results are correct.</p><p>After our little trip we are back with this updated table</p><table><thead><tr><th style=text-align:left>$\text{Individual}$</th><th style=text-align:center>$Y(0)$</th><th style=text-align:center>$Y(1)$</th><th style=text-align:center>$T$</th></tr></thead><tbody><tr><td style=text-align:left>$1$</td><td style=text-align:center>$186$</td><td style=text-align:center>$186$</td><td style=text-align:center>$1$</td></tr><tr><td style=text-align:left>$2$</td><td style=text-align:center>$171$</td><td style=text-align:center>$\color{red}\textbf{?}$</td><td style=text-align:center>$0$</td></tr><tr><td style=text-align:left>$3$</td><td style=text-align:center>$190$</td><td style=text-align:center>$190$</td><td style=text-align:center>$1$</td></tr><tr><td style=text-align:left>$4$</td><td style=text-align:center>$174$</td><td style=text-align:center>$\color{red}\textbf{?}$</td><td style=text-align:center>$0$</td></tr><tr><td style=text-align:left>$5$</td><td style=text-align:center>$169$</td><td style=text-align:center>$\color{red}\textbf{?}$</td><td style=text-align:center>$0$</td></tr><tr><td style=text-align:left>$6$</td><td style=text-align:center>$185$</td><td style=text-align:center>$185$</td><td style=text-align:center>$1$</td></tr><tr><td style=text-align:left>$7$</td><td style=text-align:center>$195$</td><td style=text-align:center>$195$</td><td style=text-align:center>$1$</td></tr><tr><td style=text-align:left>$8$</td><td style=text-align:center>$170$</td><td style=text-align:center>$\color{red}\textbf{?}$</td><td style=text-align:center>$0$</td></tr></tbody></table><p>Remember how $(1)$ included a $\text{Bias}$ term when we expanded it ? Let&rsquo;s see what it looks like with our new data.</p><ul><li><p>We compute once again the average height of <strong>people who took the food supplement</strong> before they actually took it</p><p>$\Rightarrow E[Y(0) | T = 0] = \frac{171 + 174 + 169 + 170}{4} = 171$</p></li><li><p>Now, let&rsquo;s compute the average height of these same individuals <strong>before</strong> they took the supplement</p><p>$\Rightarrow E[Y(0) | T = 1] = \frac{186 + 190 + 185 + 195}{4} = 189$</p></li></ul><p>We find that the <em>bias</em>, that is the initial difference between the two sub-populations, is of $18 \text{cm}$.</p><p><em>Wait&mldr; What ???</em></p><p>This means that the $\text{ATT}$, the average treatment effect on the treated, is actually $\text{0}$. In other words, the supplement had no effect at all: the difference we observed was purely due to <strong>pre-existing height differences between the two groups</strong>.</p><p>We were lucky to have our time machine to reveal the truth but as you may have noticed, we don&rsquo;t have that luxury in real life. Since we can never observe both outcomes $Y(0)$ and $Y(1)$ for the same individual, we must be extra cautious. Without a properly designed experiment, we risk mistaking correlation for causation, leading to completely false conclusions.</p><p>This is why randomized controlled trials are so valuable: they <strong>help us separate real effects from misleading associations</strong>.</p><p>But what if we cannot perform RCTs ?</p><h1 id=individual-level-vs-population-level-outcome-model>Individual-Level vs Population-Level Outcome Model</h1><p>Let&rsquo;s recap a bit. We have our outcome $Y_i$ for each individual. It can be expressed as</p>$$
 Y_i(T) = T\tau_i + \bold{f}(\vec{X}_i)\vec{\beta}
-$$<p>where:</p>
-<ul>
-<li>$T \in {0,1}$ is the treatment indicator.</li>
-<li>$\tau_i$ is the individual-level treatment effect.</li>
-<li>$\vec{X}_i$ is a row vector of individual covariates.</li>
-<li>$\bold{f}(\vec{X}_i)$ is a function of covariates which we will talk about later.</li>
-<li>$\vec{\beta}$ is a column vector of individual-specific coefficients capturing how covariates impact the outcome.</li>
-</ul>
-<p>As you can see, subtracting $Y_i(1) - Y_i(0)$ does give us $\tau_i$, the impact of the treatment.</p>
-<p>Let&rsquo;s now take all individuals into account:</p>
-$$
+$$<p>where:</p><ul><li>$T \in {0,1}$ is the treatment indicator.</li><li>$\tau_i$ is the individual-level treatment effect.</li><li>$\vec{X}_i$ is a row vector of individual covariates.</li><li>$\bold{f}(\vec{X}_i)$ is a function of covariates which we will talk about later.</li><li>$\vec{\beta}$ is a column vector of individual-specific coefficients capturing how covariates impact the outcome.</li></ul><p>As you can see, subtracting $Y_i(1) - Y_i(0)$ does give us $\tau_i$, the impact of the treatment.</p><p>Let&rsquo;s now take all individuals into account:</p>$$
 \vec{Y}(\vec{T}) = \vec{T} \boldsymbol{\circ} \vec{\tau} + \bold{f}(\bold{X})\vec{\beta}
-$$<ul>
-<li>$\vec{Y}, \vec{T}, \vec{\tau} \in \R^{N\times 1}$</li>
-<li>$\bold{X} \in \R^{N \times M}$</li>
-<li>$\bold{f}: \R^{N \times M} \rightarrow \R^{N \times M}$</li>
-<li>$\vec{\beta} \in \R^{M \times 1}$</li>
-</ul>
-<p>As you can see, subtracting $\vec{Y}(\vec{1}) - \vec{Y}(\vec{0})$ does give us $\vec{\tau}$, the impact of the treatment for each individual.</p>
-<p>Remember that we are interested in computing the <strong>ATE</strong> which is defined as
-$E[\vec{Y}(1) - \vec{Y}(0)]$.</p>
-<p>Expanding the expression</p>
-$$
+$$<ul><li>$\vec{Y}, \vec{T}, \vec{\tau} \in \R^{N\times 1}$</li><li>$\bold{X} \in \R^{N \times M}$</li><li>$\bold{f}: \R^{N \times M} \rightarrow \R^{N \times M}$</li><li>$\vec{\beta} \in \R^{M \times 1}$</li></ul><p>As you can see, subtracting $\vec{Y}(\vec{1}) - \vec{Y}(\vec{0})$ does give us $\vec{\tau}$, the impact of the treatment for each individual.</p><p>Remember that we are interested in computing the <strong>ATE</strong> which is defined as
+$E[\vec{Y}(1) - \vec{Y}(0)]$.</p><p>Expanding the expression</p>$$
 \begin{align*}
 E[\vec{Y}(1) - \vec{Y}(0)] &= E[\vec{\tau} + \bold{f}(\bold{X})\vec{\beta} - \bold{f}(\bold{X})\vec{\beta}]
 \\
 &= E[\vec{\tau}]
 \end{align*}
-$$<p>We see that it is indeed what it claims to be: <em>the average effect of a treatment</em> which we will denote $\tau$.</p>
-<hr>
-<p>A great way to estimate $\tau$ is through <strong>regression</strong>:</p>
-$$
+$$<p>We see that it is indeed what it claims to be: <em>the average effect of a treatment</em> which we will denote $\tau$.</p><hr><p>A great way to estimate $\tau$ is through <strong>regression</strong>:</p>$$
 \vec{Y} = \tau \vec{T} + \bold{f}(\bold{X})\vec{\beta} + \vec{\epsilon}
-$$<p>It&rsquo;s all fun and games until you find out that the previously introduced function $\bold{f}$ was not <em>just</em> a pretty face but also a gigantic spoilsport. This function represents the relationship between covariates and the outcome. It can be highly flexible and <strong>may introduce non-linearity</strong>, making it difficult to isolate the treatment effect using simple regression.</p>
-<p>However, we would like some sort of <strong>linear regression</strong> technique so that we can easily isolate $\tau$ in the final result.</p>
-<p>We are stuck with the following probematic: &ldquo;We want to use a linear model for regression to gain interpretability over a non-linear relation.&rdquo;</p>
-<p>Since our primary goal is estimating $\tau$, we might be tempted to ignore $\bold{f}(\bold{X})$ and fit a simple regression $\vec{Y} \sim \tau \vec{T}$. However, if $T$ is correlated with $\bold{X}$, omitting confounders introduces bias. Ideally, we&rsquo;d like to remove their effect before running the regression.</p>
-<h1 id="the-frisch-waugh-lovell-theorem">The Frisch-Waugh-Lovell Theorem</h1>
-<p>This <a href="https://en.wikipedia.org/wiki/Frisch%E2%80%93Waugh%E2%80%93Lovell_theorem">beautiful theorem</a> states that in a linear regression model, the coefficients of a subset of regressors can be obtained by first partialling out the effects of the other regressors from both the dependent variable and the subset of interest, and then regressing the residuals of the dependent variable on the residuals of the subset. This simplifies the estimation of coefficients in the presence of multiple regressors.</p>
-<p>Essentially, we first remove the effects of $\bold{X}_2$ from $\vec{Y}$ and $\bold{X}_1$, then regress the residualized $\vec{Y}$ on the residualized $\bold{X}_1$ to estimate $\vec{\beta_1}$.</p>
-<p>Take the following expression:</p>
-$$
+$$<p>It&rsquo;s all fun and games until you find out that the previously introduced function $\bold{f}$ was not <em>just</em> a pretty face but also a gigantic spoilsport. This function represents the relationship between covariates and the outcome. It can be highly flexible and <strong>may introduce non-linearity</strong>, making it difficult to isolate the treatment effect using simple regression.</p><p>However, we would like some sort of <strong>linear regression</strong> technique so that we can easily isolate $\tau$ in the final result.</p><p>We are stuck with the following probematic: &ldquo;We want to use a linear model for regression to gain interpretability over a non-linear relation.&rdquo;</p><p>Since our primary goal is estimating $\tau$, we might be tempted to ignore $\bold{f}(\bold{X})$ and fit a simple regression $\vec{Y} \sim \tau \vec{T}$. However, if $T$ is correlated with $\bold{X}$, omitting confounders introduces bias. Ideally, we&rsquo;d like to remove their effect before running the regression.</p><h1 id=the-frisch-waugh-lovell-theorem>The Frisch-Waugh-Lovell Theorem</h1><p>This <a href=https://en.wikipedia.org/wiki/Frisch%E2%80%93Waugh%E2%80%93Lovell_theorem>beautiful theorem</a> states that in a linear regression model, the coefficients of a subset of regressors can be obtained by first partialling out the effects of the other regressors from both the dependent variable and the subset of interest, and then regressing the residuals of the dependent variable on the residuals of the subset. This simplifies the estimation of coefficients in the presence of multiple regressors.</p><p>Essentially, we first remove the effects of $\bold{X}_2$ from $\vec{Y}$ and $\bold{X}_1$, then regress the residualized $\vec{Y}$ on the residualized $\bold{X}_1$ to estimate $\vec{\beta_1}$.</p><p>Take the following expression:</p>$$
 \vec{Y} = \bold{X_1} \vec{\beta_1} + \bold{X_2} \vec{\beta_2}
-$$<p>This theorem states that the estimate of $\vec{\beta_1}$ will be the same as the estimate of it from a modified regression of the form</p>
-$$
+$$<p>This theorem states that the estimate of $\vec{\beta_1}$ will be the same as the estimate of it from a modified regression of the form</p>$$
 \bold{M_{X_2}}\vec{Y} = \bold{M_{X_2}X_1}\vec{\beta_1}
-$$<p>where the vector $\bold{M_{X_2}}\vec{Y}$ is the vector of residuals from the regression of $\vec{Y}$ on the columns of $\bold{X_2}$.</p>
-<p>The Frisch-Waugh-Lovell theorem gives us a clever way to estimate treatment effects in a linear regression setting, even in the presence of confounders. By first removing the influence of confounders and then regressing the residualized outcome on the residualized treatment, we could isolate the effect of treatment.</p>
-<h2 id="a-small-python-example">A small python example</h2>
-<p>We will define the following relation between $\bold{X}_1$, $\bold{X}_2$, $\vec{T}$, and $\vec{Y}$:</p>
-$$
+$$<p>where the vector $\bold{M_{X_2}}\vec{Y}$ is the vector of residuals from the regression of $\vec{Y}$ on the columns of $\bold{X_2}$.</p><p>The Frisch-Waugh-Lovell theorem gives us a clever way to estimate treatment effects in a linear regression setting, even in the presence of confounders. By first removing the influence of confounders and then regressing the residualized outcome on the residualized treatment, we could isolate the effect of treatment.</p><h2 id=a-small-python-example>A small python example</h2><p>We will define the following relation between $\bold{X}_1$, $\bold{X}_2$, $\vec{T}$, and $\vec{Y}$:</p>$$
 \vec{Y} = 2 \vec{T} + 4 \bold{X}_1 + 3 \bold{X}_2
-$$<p>where $\tau = 2$, $\vec{\beta}_1 = 4$, and $\vec{\beta}_2 = 3$.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
-</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> sklearn.linear_model <span style="color:#f92672">import</span> LinearRegression
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>N <span style="color:#f92672">=</span> <span style="color:#ae81ff">100_000</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>rdm <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>RandomState(seed<span style="color:#f92672">=</span><span style="color:#ae81ff">42</span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>X_1 <span style="color:#f92672">=</span> rdm<span style="color:#f92672">.</span>normal(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, size<span style="color:#f92672">=</span>(N, <span style="color:#ae81ff">5</span>))
-</span></span><span style="display:flex;"><span>X_2 <span style="color:#f92672">=</span> rdm<span style="color:#f92672">.</span>normal(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, size<span style="color:#f92672">=</span>(N, <span style="color:#ae81ff">5</span>))
-</span></span><span style="display:flex;"><span>T <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.5</span> <span style="color:#f92672">*</span> X_1[:, <span style="color:#ae81ff">0</span>] <span style="color:#f92672">+</span> <span style="color:#ae81ff">0.3</span> <span style="color:#f92672">*</span> X_2[:, <span style="color:#ae81ff">0</span>] <span style="color:#f92672">-</span> <span style="color:#ae81ff">0.2</span> <span style="color:#f92672">*</span> rdm<span style="color:#f92672">.</span>normal(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, size<span style="color:#f92672">=</span>N)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>tau <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
-</span></span><span style="display:flex;"><span>beta_1 <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>
-</span></span><span style="display:flex;"><span>beta_2 <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>Y <span style="color:#f92672">=</span> tau <span style="color:#f92672">*</span> T <span style="color:#f92672">+</span> beta_1 <span style="color:#f92672">*</span> X_1[:, <span style="color:#ae81ff">0</span>] <span style="color:#f92672">+</span> beta_2 <span style="color:#f92672">*</span> X_2[:, <span style="color:#ae81ff">0</span>]
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>X <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>concatenate((X_1, X_2), axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Computing the residuals from the regression of Y on X_1 and X_2</span>
-</span></span><span style="display:flex;"><span>lr1 <span style="color:#f92672">=</span> LinearRegression()
-</span></span><span style="display:flex;"><span>lr1<span style="color:#f92672">.</span>fit(X, linear_Y)
-</span></span><span style="display:flex;"><span>res_YX <span style="color:#f92672">=</span> linear_Y <span style="color:#f92672">-</span> lr1<span style="color:#f92672">.</span>predict(X)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Computing the residuals from the regression of T on X_1 and X_2</span>
-</span></span><span style="display:flex;"><span>lr2 <span style="color:#f92672">=</span> LinearRegression()
-</span></span><span style="display:flex;"><span>lr2<span style="color:#f92672">.</span>fit(X, T)
-</span></span><span style="display:flex;"><span>res_TX <span style="color:#f92672">=</span> T <span style="color:#f92672">-</span> lr2<span style="color:#f92672">.</span>predict(X)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Computing the final regression&#39;s coefficient</span>
-</span></span><span style="display:flex;"><span>lr3 <span style="color:#f92672">=</span> LinearRegression()
-</span></span><span style="display:flex;"><span>lr3<span style="color:#f92672">.</span>fit(res_TX<span style="color:#f92672">.</span>reshape(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>), res_YX)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>print(lr3<span style="color:#f92672">.</span>coef_[<span style="color:#ae81ff">0</span>])
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ae81ff">2.0</span>
-</span></span></code></pre></div><p>Isn&rsquo;t this amazing ? Let me answer this for you: it is !</p>
-<hr>
-<p>But remember $\bold{f}$ ? In practice, it could be <strong>highly non-linear</strong> and <strong>high-dimensional</strong>. In theory, this is not a problem for this theorem if we are able to perfectly model $\bold{f}$.</p>
-<h2 id="a-second-small-python-example">A second small python example</h2>
-<p>Let&rsquo;s now define the following relation:</p>
-$$
+$$<p>where $\tau = 2$, $\vec{\beta}_1 = 4$, and $\vec{\beta}_2 = 3$.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#f92672>import</span> numpy <span style=color:#66d9ef>as</span> np
+</span></span><span style=display:flex><span><span style=color:#f92672>from</span> sklearn.linear_model <span style=color:#f92672>import</span> LinearRegression
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>N <span style=color:#f92672>=</span> <span style=color:#ae81ff>100_000</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>rdm <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>random<span style=color:#f92672>.</span>RandomState(seed<span style=color:#f92672>=</span><span style=color:#ae81ff>42</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>X_1 <span style=color:#f92672>=</span> rdm<span style=color:#f92672>.</span>normal(<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>1</span>, size<span style=color:#f92672>=</span>(N, <span style=color:#ae81ff>5</span>))
+</span></span><span style=display:flex><span>X_2 <span style=color:#f92672>=</span> rdm<span style=color:#f92672>.</span>normal(<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>1</span>, size<span style=color:#f92672>=</span>(N, <span style=color:#ae81ff>5</span>))
+</span></span><span style=display:flex><span>T <span style=color:#f92672>=</span> <span style=color:#ae81ff>0.5</span> <span style=color:#f92672>*</span> X_1[:, <span style=color:#ae81ff>0</span>] <span style=color:#f92672>+</span> <span style=color:#ae81ff>0.3</span> <span style=color:#f92672>*</span> X_2[:, <span style=color:#ae81ff>0</span>] <span style=color:#f92672>-</span> <span style=color:#ae81ff>0.2</span> <span style=color:#f92672>*</span> rdm<span style=color:#f92672>.</span>normal(<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>1</span>, size<span style=color:#f92672>=</span>N)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>tau <span style=color:#f92672>=</span> <span style=color:#ae81ff>2</span>
+</span></span><span style=display:flex><span>beta_1 <span style=color:#f92672>=</span> <span style=color:#ae81ff>4</span>
+</span></span><span style=display:flex><span>beta_2 <span style=color:#f92672>=</span> <span style=color:#ae81ff>3</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>Y <span style=color:#f92672>=</span> tau <span style=color:#f92672>*</span> T <span style=color:#f92672>+</span> beta_1 <span style=color:#f92672>*</span> X_1[:, <span style=color:#ae81ff>0</span>] <span style=color:#f92672>+</span> beta_2 <span style=color:#f92672>*</span> X_2[:, <span style=color:#ae81ff>0</span>]
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>X <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>concatenate((X_1, X_2), axis<span style=color:#f92672>=</span><span style=color:#ae81ff>1</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Computing the residuals from the regression of Y on X_1 and X_2</span>
+</span></span><span style=display:flex><span>lr1 <span style=color:#f92672>=</span> LinearRegression()
+</span></span><span style=display:flex><span>lr1<span style=color:#f92672>.</span>fit(X, linear_Y)
+</span></span><span style=display:flex><span>res_YX <span style=color:#f92672>=</span> linear_Y <span style=color:#f92672>-</span> lr1<span style=color:#f92672>.</span>predict(X)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Computing the residuals from the regression of T on X_1 and X_2</span>
+</span></span><span style=display:flex><span>lr2 <span style=color:#f92672>=</span> LinearRegression()
+</span></span><span style=display:flex><span>lr2<span style=color:#f92672>.</span>fit(X, T)
+</span></span><span style=display:flex><span>res_TX <span style=color:#f92672>=</span> T <span style=color:#f92672>-</span> lr2<span style=color:#f92672>.</span>predict(X)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Computing the final regression&#39;s coefficient</span>
+</span></span><span style=display:flex><span>lr3 <span style=color:#f92672>=</span> LinearRegression()
+</span></span><span style=display:flex><span>lr3<span style=color:#f92672>.</span>fit(res_TX<span style=color:#f92672>.</span>reshape(<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>1</span>), res_YX)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>print(lr3<span style=color:#f92672>.</span>coef_[<span style=color:#ae81ff>0</span>])
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#ae81ff>2.0</span>
+</span></span></code></pre></div><p>Isn&rsquo;t this amazing ? Let me answer this for you: it is !</p><hr><p>But remember $\bold{f}$ ? In practice, it could be <strong>highly non-linear</strong> and <strong>high-dimensional</strong>. In theory, this is not a problem for this theorem if we are able to perfectly model $\bold{f}$.</p><h2 id=a-second-small-python-example>A second small python example</h2><p>Let&rsquo;s now define the following relation:</p>$$
 \vec{Y} = 2 \vec{T} + 4 \sin{(\bold{X}_1)} + 3 \exp{(\bold{X}_2)}
-$$<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Our new relation</span>
-</span></span><span style="display:flex;"><span>Y <span style="color:#f92672">=</span> tau <span style="color:#f92672">*</span> T <span style="color:#f92672">+</span> beta_1 <span style="color:#f92672">*</span> np<span style="color:#f92672">.</span>sin(X_1[:, <span style="color:#ae81ff">0</span>]) <span style="color:#f92672">+</span> beta_2 <span style="color:#f92672">*</span> np<span style="color:#f92672">.</span>exp(X_2[:, <span style="color:#ae81ff">0</span>])
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># We have an exact representation of f</span>
-</span></span><span style="display:flex;"><span>X <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>concatenate((np<span style="color:#f92672">.</span>sin(X_1), np<span style="color:#f92672">.</span>exp(X_2)), axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Computing the residuals from the regression of Y on X_1 and X_2</span>
-</span></span><span style="display:flex;"><span>lr1 <span style="color:#f92672">=</span> LinearRegression()
-</span></span><span style="display:flex;"><span>lr1<span style="color:#f92672">.</span>fit(X, Y)
-</span></span><span style="display:flex;"><span>res_YX <span style="color:#f92672">=</span> Y <span style="color:#f92672">-</span> lr1<span style="color:#f92672">.</span>predict(X)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Computing the residuals from the regression of T on X_1 and X_2</span>
-</span></span><span style="display:flex;"><span>lr2 <span style="color:#f92672">=</span> LinearRegression()
-</span></span><span style="display:flex;"><span>lr2<span style="color:#f92672">.</span>fit(X, T)
-</span></span><span style="display:flex;"><span>res_TX <span style="color:#f92672">=</span> T <span style="color:#f92672">-</span> lr2<span style="color:#f92672">.</span>predict(X)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Computing the final regression&#39;s coefficient</span>
-</span></span><span style="display:flex;"><span>lr3 <span style="color:#f92672">=</span> LinearRegression()
-</span></span><span style="display:flex;"><span>lr3<span style="color:#f92672">.</span>fit(res_TX<span style="color:#f92672">.</span>reshape(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>), res_YX)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>print(lr3<span style="color:#f92672">.</span>coef_[<span style="color:#ae81ff">0</span>])
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ae81ff">2.0</span>
-</span></span></code></pre></div><p>Isn&rsquo;t this amazing ? Once again, it is !</p>
-<hr>
-<p>There is one tiny issue though&hellip; In practice we never have this exact knowledge of what $\bold{f}$ is.</p>
-<p>So, what can we do? <strong>We estimate $\bold{f}$ using machine learning</strong>.</p>
-<h1 id="extending-fwl-with-machine-learning">Extending FWL with Machine Learning</h1>
-<p>Rather than assuming a fixed, linear form for $\bold{f}(\bold{X})$, we let <strong>Machine Learning estimate it for us</strong>. The key insight is that if we can accurately capture the influence of confounders on both the outcome $Y$ and the treatment $T$, we can remove their effects before estimating the treatment effect.</p>
-<p>This leads to <strong>Double Machine Learning</strong>, which follows a two-step process:</p>
-<ol>
-<li>
-<p>Learn the nuisance functions: Use flexible ML models to estimate the relationships $Y \sim \bold{X}$ and $T \sim \bold{X}$.</p>
-</li>
-<li>
-<p>Partial out the confounders: Remove the estimated confounder effects and estimate $\tau$ from the residualized outcome and treatment.</p>
-</li>
-</ol>
-<h2 id="a-final-small-python-example">A final small python example</h2>
-<p>Let&rsquo;s take back our previous setup with</p>
-$$
+$$<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#75715e># Our new relation</span>
+</span></span><span style=display:flex><span>Y <span style=color:#f92672>=</span> tau <span style=color:#f92672>*</span> T <span style=color:#f92672>+</span> beta_1 <span style=color:#f92672>*</span> np<span style=color:#f92672>.</span>sin(X_1[:, <span style=color:#ae81ff>0</span>]) <span style=color:#f92672>+</span> beta_2 <span style=color:#f92672>*</span> np<span style=color:#f92672>.</span>exp(X_2[:, <span style=color:#ae81ff>0</span>])
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># We have an exact representation of f</span>
+</span></span><span style=display:flex><span>X <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>concatenate((np<span style=color:#f92672>.</span>sin(X_1), np<span style=color:#f92672>.</span>exp(X_2)), axis<span style=color:#f92672>=</span><span style=color:#ae81ff>1</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Computing the residuals from the regression of Y on X_1 and X_2</span>
+</span></span><span style=display:flex><span>lr1 <span style=color:#f92672>=</span> LinearRegression()
+</span></span><span style=display:flex><span>lr1<span style=color:#f92672>.</span>fit(X, Y)
+</span></span><span style=display:flex><span>res_YX <span style=color:#f92672>=</span> Y <span style=color:#f92672>-</span> lr1<span style=color:#f92672>.</span>predict(X)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Computing the residuals from the regression of T on X_1 and X_2</span>
+</span></span><span style=display:flex><span>lr2 <span style=color:#f92672>=</span> LinearRegression()
+</span></span><span style=display:flex><span>lr2<span style=color:#f92672>.</span>fit(X, T)
+</span></span><span style=display:flex><span>res_TX <span style=color:#f92672>=</span> T <span style=color:#f92672>-</span> lr2<span style=color:#f92672>.</span>predict(X)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Computing the final regression&#39;s coefficient</span>
+</span></span><span style=display:flex><span>lr3 <span style=color:#f92672>=</span> LinearRegression()
+</span></span><span style=display:flex><span>lr3<span style=color:#f92672>.</span>fit(res_TX<span style=color:#f92672>.</span>reshape(<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>1</span>), res_YX)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>print(lr3<span style=color:#f92672>.</span>coef_[<span style=color:#ae81ff>0</span>])
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#ae81ff>2.0</span>
+</span></span></code></pre></div><p>Isn&rsquo;t this amazing ? Once again, it is !</p><hr><p>There is one tiny issue though&mldr; In practice we never have this exact knowledge of what $\bold{f}$ is.</p><p>So, what can we do? <strong>We estimate $\bold{f}$ using machine learning</strong>.</p><h1 id=extending-fwl-with-machine-learning>Extending FWL with Machine Learning</h1><p>Rather than assuming a fixed, linear form for $\bold{f}(\bold{X})$, we let <strong>Machine Learning estimate it for us</strong>. The key insight is that if we can accurately capture the influence of confounders on both the outcome $Y$ and the treatment $T$, we can remove their effects before estimating the treatment effect.</p><p>This leads to <strong>Double Machine Learning</strong>, which follows a two-step process:</p><ol><li><p>Learn the nuisance functions: Use flexible ML models to estimate the relationships $Y \sim \bold{X}$ and $T \sim \bold{X}$.</p></li><li><p>Partial out the confounders: Remove the estimated confounder effects and estimate $\tau$ from the residualized outcome and treatment.</p></li></ol><h2 id=a-final-small-python-example>A final small python example</h2><p>Let&rsquo;s take back our previous setup with</p>$$
 \vec{Y} = 2 \vec{T} + 4 \sin{(\bold{X}_1)} + 3 \exp{(\bold{X}_2)}
-$$<p>However, this time we don&rsquo;t have the true form of $\bold{f}$.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> xgboost <span style="color:#f92672">import</span> XGBRegressor
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># We do not know the form of f</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># We simply consider the confounders as one single matrix</span>
-</span></span><span style="display:flex;"><span>X <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>concatenate((X_1, X_2), axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Computing the residuals from the regression of Y on X_1 and X_2</span>
-</span></span><span style="display:flex;"><span>regressor1 <span style="color:#f92672">=</span> XGBRegressor()
-</span></span><span style="display:flex;"><span>regressor1<span style="color:#f92672">.</span>fit(X, axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>), Y)
-</span></span><span style="display:flex;"><span>res_YX <span style="color:#f92672">=</span> Y <span style="color:#f92672">-</span> regressor1<span style="color:#f92672">.</span>predict(X, axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>))
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Computing the residuals from the regression of T on X_1 and X_2</span>
-</span></span><span style="display:flex;"><span>regressor2 <span style="color:#f92672">=</span> XGBRegressor()
-</span></span><span style="display:flex;"><span>regressor2<span style="color:#f92672">.</span>fit(X, axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>), T)
-</span></span><span style="display:flex;"><span>res_TX <span style="color:#f92672">=</span> T <span style="color:#f92672">-</span> regressor2<span style="color:#f92672">.</span>predict(X, axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>))
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Computing the final regression&#39;s coefficient</span>
-</span></span><span style="display:flex;"><span>lr <span style="color:#f92672">=</span> LinearRegression()
-</span></span><span style="display:flex;"><span>lr<span style="color:#f92672">.</span>fit(res_TX<span style="color:#f92672">.</span>reshape(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>), res_YX)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>print(lr<span style="color:#f92672">.</span>coef_[<span style="color:#ae81ff">0</span>])
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ae81ff">2.0065155821816973</span>
-</span></span></code></pre></div><p>Well&hellip; that&rsquo;s pretty nice isn&rsquo;t it ?</p>
-<hr>
-<p>There we have it, a way of computing the <strong>average treatment effect</strong>! Even if our initial regression equation, $\vec{Y} = \tau \vec{T} + \bold{f}(\bold{X})\vec{\beta} + \vec{\epsilon}$ is non-linear and complex, Double-ML allows us to isolate the computation of $\tau$ by first using ML to account for $\bold{f}(\bold{X})$.</p>
-</section>
-
-  <div class="mt-24" id="graphcomment"></div>
-  <script type="text/javascript">
-    var __semio__params = {
-      graphcommentId: 'YOUR_GRAPH_COMMENT_ID',
-      behaviour: {
-        
-      },
-      
-    };
-
-    function __semio__onload() {
-      __semio__gc_graphlogin(__semio__params);
-    }
-
-    (function () {
-      var gc = document.createElement('script');
-      gc.type = 'text/javascript';
-      gc.async = true;
-      gc.onload = __semio__onload;
-      gc.defer = true;
-      gc.src =
-        'https://integration.graphcomment.com/gc_graphlogin.js?' + Date.now();
-      (
-        document.getElementsByTagName('head')[0] ||
-        document.getElementsByTagName('body')[0]
-      ).appendChild(gc);
-    })();
-  </script></article></main><footer
-  class="mx-auto flex h-[4.5rem] max-w-(--w) items-center px-8 text-xs tracking-wider uppercase opacity-60"
->
-  <div class="mr-auto">&copy;2025<a class="link" href="../../"> Learning Out Loud - (LOL)</a></div>
-</footer>
-</body>
-</html>
+$$<p>However, this time we don&rsquo;t have the true form of $\bold{f}$.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#f92672>from</span> xgboost <span style=color:#f92672>import</span> XGBRegressor
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># We do not know the form of f</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># We simply consider the confounders as one single matrix</span>
+</span></span><span style=display:flex><span>X <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>concatenate((X_1, X_2), axis<span style=color:#f92672>=</span><span style=color:#ae81ff>1</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Computing the residuals from the regression of Y on X_1 and X_2</span>
+</span></span><span style=display:flex><span>regressor1 <span style=color:#f92672>=</span> XGBRegressor()
+</span></span><span style=display:flex><span>regressor1<span style=color:#f92672>.</span>fit(X, Y)
+</span></span><span style=display:flex><span>res_YX <span style=color:#f92672>=</span> Y <span style=color:#f92672>-</span> regressor1<span style=color:#f92672>.</span>predict(X)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Computing the residuals from the regression of T on X_1 and X_2</span>
+</span></span><span style=display:flex><span>regressor2 <span style=color:#f92672>=</span> XGBRegressor()
+</span></span><span style=display:flex><span>regressor2<span style=color:#f92672>.</span>fit(X, T)
+</span></span><span style=display:flex><span>res_TX <span style=color:#f92672>=</span> T <span style=color:#f92672>-</span> regressor2<span style=color:#f92672>.</span>predict(X)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Computing the final regression&#39;s coefficient</span>
+</span></span><span style=display:flex><span>lr <span style=color:#f92672>=</span> LinearRegression()
+</span></span><span style=display:flex><span>lr<span style=color:#f92672>.</span>fit(res_TX<span style=color:#f92672>.</span>reshape(<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>1</span>), res_YX)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>print(lr<span style=color:#f92672>.</span>coef_[<span style=color:#ae81ff>0</span>])
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#ae81ff>2.0065155821816973</span>
+</span></span></code></pre></div><p>Well&mldr; that&rsquo;s pretty nice isn&rsquo;t it ?</p><hr><p>There we have it, a way of computing the <strong>average treatment effect</strong>! Even if our initial regression equation, $\vec{Y} = \tau \vec{T} + \bold{f}(\bold{X})\vec{\beta} + \vec{\epsilon}$ is non-linear and complex, Double-ML allows us to isolate the computation of $\tau$ by first using ML to account for $\bold{f}(\bold{X})$.</p></section><div class=mt-24 id=graphcomment></div><script type=text/javascript>var __semio__params={graphcommentId:"YOUR_GRAPH_COMMENT_ID",behaviour:{}};function __semio__onload(){__semio__gc_graphlogin(__semio__params)}(function(){var e=document.createElement("script");e.type="text/javascript",e.async=!0,e.onload=__semio__onload,e.defer=!0,e.src="https://integration.graphcomment.com/gc_graphlogin.js?"+Date.now(),(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(e)})()</script></article></main><footer class="mx-auto flex h-[4.5rem] max-w-(--w) items-center px-8 text-xs tracking-wider uppercase opacity-60"><div class=mr-auto>&copy;2025<a class=link href=../../>Silly Goose's Thoughts</a></div></footer></body></html>

@@ -1,5 +1,5 @@
 +++
-title = 'Unpacked: Statistical Mayhem'
+title = 'Statistical Mayhem: Building the Foundation'
 date = '2025-03-23'
 [params]
   math = true
@@ -293,4 +293,4 @@ This one is also very handy as it helps you understand **how two signals move to
 
 ---
 
-Everything we have seen so far are useful tools to understand random variables. However, up until now, we have implicitly assumed that we have access to the **full population distribution**, meaning we know **all possible values and their probabilities**. In reality, we rarely have full knowledge of this distribution. Instead, we work with a **sample**, which is a subset of the population, and we use statistical methods to infer properties of the entire population from this limited data.
+Everything we have seen so far are useful tools to understand random variables. However, up until now, we have implicitly assumed that we have access to the **full population distribution**, meaning we know **all possible values and their probabilities**. In reality, we rarely have full knowledge of this distribution. Instead, we work with a **sample**, which is a subset of the population. This introduces **variability**, **uncertainty**, and therefore the need for some **new techniques**.

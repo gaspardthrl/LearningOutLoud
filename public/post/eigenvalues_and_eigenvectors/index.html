@@ -1,193 +1,16 @@
-<!doctype html>
-
-
-
-
-
-
-
-<html
-  class="not-ready lg:text-base"
-  style="--bg:#faf8f1"
-  lang="en-us"
-  dir="ltr"
-><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-  
-    
-    <title>Unpacked: Eigenvalues &amp; Eigenvectors- Learning Out Loud - (LOL)</title>
-  
-    
-    <meta name="theme-color" />
-  
-    <meta name="description" content="
+<!doctype html><html class="not-ready lg:text-base" style=--bg:#faf8f1 lang=en-us dir=ltr><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><title>Unpacked: Eigenvalues & Eigenvectors-Silly Goose's Thoughts</title>
+<meta name=theme-color><meta name=description content="
 I&rsquo;ve heard the terms eigenvalues and eigenvectors countless times, but if I&rsquo;m being honest, I&rsquo;ve never truly grasped their meaning. That&rsquo;s kind of a bummer as they seem to appear everywhere from plain mathematics to machine learning which makes it feel like something worth understanding.
-This is my attempt to break them down in a way that makes sense, not just mathematically but intuitively. Let&rsquo;s start from the basics and build up from there." />
-    <meta name="author" content="Gaspard Thoral" /><link rel="preload stylesheet" as="style" href="../../main.min.css" />
-  
-    
-    <link rel="preload" as="image" href="../../theme.svg" />
-    
-  
-    <link rel="preload" as="image" href="../../github.svg" /><link rel="preload" as="image" href="../../linkedin.svg" />
-  
-    <link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css"
-  integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI"
-  crossorigin="anonymous"
-/>
-<script
-  defer
-  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js"
-  integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t"
-  crossorigin="anonymous"
-></script>
-<script
-  defer
-  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js"
-  integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
-  crossorigin="anonymous"
-></script><script>
-  document.addEventListener('DOMContentLoaded', () =>
-    renderMathInElement(document.body, {
-      
-      
-      delimiters: [
-        { left: '$$', right: '$$', display: true },
-        { left: '$', right: '$', display: false },
-      ],
-      
-      throwOnError: false,
-    }),
-  );
-</script>
-
-  
-    
-    <link
-      rel="icon"
-      href="../../favicon.ico"
-    />
-    <link
-      rel="apple-touch-icon"
-      href="../../apple-touch-icon.png"
-    />
-  
-    <meta name="generator" content="Hugo 0.145.0">
-  </head><body class="text-black duration-200 ease-out dark:text-white"><header
-  class="mx-auto flex h-[4.5rem] max-w-(--w) px-8 whitespace-nowrap lg:justify-center"
->
-  <div class="relative z-50 flex items-center ltr:mr-auto rtl:ml-auto">
-    <a class="-translate-y-[1px] text-2xl font-medium" href="//localhost:1313/"> Learning Out Loud - (LOL)</a>
-    <div
-      class="btn-dark text-[0px] ltr:ml-4 rtl:mr-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.svg)_left_center/cover_no-repeat] dark:invert dark:[background-position:right]"
-      role="button"
-      aria-label="Dark"
-    ></div>
-  </div>
-
-  <div
-    class="btn-menu relative z-50 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden ltr:-mr-8 rtl:-ml-8"
-    role="button"
-    aria-label="Menu"
-  ></div>
-
-  <script>
-    
-    const htmlClass = document.documentElement.classList;
-    setTimeout(() => {
-      htmlClass.remove('not-ready');
-    }, 10);
-
-    
-    const btnMenu = document.querySelector('.btn-menu');
-    btnMenu.addEventListener('click', () => {
-      htmlClass.toggle('open');
-    });
-
-    
-    const metaTheme = document.querySelector('meta[name="theme-color"]');
-    const lightBg = '#faf8f1'.replace(/"/g, '');
-    const setDark = (isDark) => {
-      metaTheme.setAttribute('content', isDark ? '#000' : lightBg);
-      htmlClass[isDark ? 'add' : 'remove']('dark');
-      localStorage.setItem('dark', isDark);
-    };
-
-    
-    const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
-    if (htmlClass.contains('dark')) {
-      setDark(true);
-    } else {
-      const darkVal = localStorage.getItem('dark');
-      setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
-    }
-
-    
-    darkScheme.addEventListener('change', (event) => {
-      setDark(event.matches);
-    });
-
-    
-    const btnDark = document.querySelector('.btn-dark');
-    btnDark.addEventListener('click', () => {
-      setDark(localStorage.getItem('dark') !== 'true');
-    });
-  </script>
-
-  <div
-    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full flex-col justify-center pb-16 duration-200 select-none lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none dark:bg-black"
-  ><nav
-      class="mt-12 flex justify-center space-x-10 lg:mt-0 lg:items-center ltr:lg:ml-14 rtl:space-x-reverse rtl:lg:mr-14 dark:invert"
-    >
-      <a
-        class="h-7 w-7 text-[0px] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
-        style="--url: url(./github.svg)"
-        href="https://github.com/gaspardthrl"
-        target="_blank"
-        rel="me"
-      >github</a>
-      <a
-        class="h-7 w-7 text-[0px] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
-        style="--url: url(./linkedin.svg)"
-        href="https://linkedin.com/in/gaspard-thoral-49538a230/"
-        target="_blank"
-        rel="me"
-      >linkedin</a>
-    </nav>
-  </div>
-</header><main
-      class="prose prose-neutral dark:prose-invert relative mx-auto min-h-[calc(100vh-9rem)] max-w-(--w) px-8 pt-14 pb-16"
-    ><article>
-  <header class="mb-14">
-    <h1 class="!my-0 pb-2.5">Unpacked: Eigenvalues &amp; Eigenvectors</h1><div class="text-xs antialiased opacity-60"></div></header>
-
-  <section><div style="text-align: justify">
-<p>I&rsquo;ve heard the terms <strong>eigenvalues</strong> and <strong>eigenvectors</strong> countless times, but if I&rsquo;m being honest, I&rsquo;ve never truly grasped their meaning. That&rsquo;s kind of a bummer as they seem to appear everywhere from plain mathematics to machine learning which makes it feel like something worth understanding.</p>
-<p>This is my attempt to break them down in a way that makes sense, not just mathematically but intuitively. Let&rsquo;s start from the basics and build up from there.</p>
-<h1 id="introduction">Introduction</h1>
-<p>Let&rsquo;s start with the basics:</p>
-<ul>
-<li>The <em>eigenvalues</em> of a matrix $A$ are obtained by solving the following equation $\text{det}(A-\lambda I) = 0$, called the <strong>characteristic equation</strong>, with $I$ the <em>identity matrix</em>, and $\lambda$ the variable representing the eigenvalues.</li>
-<li>The <em>eigenvectors</em> of $A$ are obtained by solving $A\bold{v} = \lambda \bold{v}$</li>
-</ul>
-<h3 id="what-does-it-look-like-with-a-basic-example-">What does it look like with a basic example ?</h3>
-<p>Take the following matrix:</p>
-$$
+This is my attempt to break them down in a way that makes sense, not just mathematically but intuitively. Let&rsquo;s start from the basics and build up from there."><meta name=author content=" "><link rel="preload stylesheet" as=style href=../../main.min.css><link rel=preload as=image href=../../theme.svg><link rel=preload as=image href=../../github.svg><link rel=preload as=image href=../../linkedin.svg><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css integrity=sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI crossorigin=anonymous><script defer src=https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js integrity=sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t crossorigin=anonymous></script><script defer src=https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js integrity=sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05 crossorigin=anonymous></script><script>document.addEventListener("DOMContentLoaded",()=>renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1}],throwOnError:!1}))</script><link rel=icon href=../../favicon.ico><link rel=apple-touch-icon href=../../apple-touch-icon.png><meta name=generator content="Hugo 0.145.0"><meta itemprop=name content="Unpacked: Eigenvalues & Eigenvectors"><meta itemprop=description content="I’ve heard the terms eigenvalues and eigenvectors countless times, but if I’m being honest, I’ve never truly grasped their meaning. That’s kind of a bummer as they seem to appear everywhere from plain mathematics to machine learning which makes it feel like something worth understanding.
+This is my attempt to break them down in a way that makes sense, not just mathematically but intuitively. Let’s start from the basics and build up from there."><meta itemprop=datePublished content="2025-03-01T00:00:00+00:00"><meta itemprop=dateModified content="2025-03-01T00:00:00+00:00"><meta itemprop=wordCount content="698"><meta property="og:url" content="/post/eigenvalues_and_eigenvectors/"><meta property="og:site_name" content="Silly Goose's Thoughts"><meta property="og:title" content="Unpacked: Eigenvalues & Eigenvectors"><meta property="og:description" content="I’ve heard the terms eigenvalues and eigenvectors countless times, but if I’m being honest, I’ve never truly grasped their meaning. That’s kind of a bummer as they seem to appear everywhere from plain mathematics to machine learning which makes it feel like something worth understanding.
+This is my attempt to break them down in a way that makes sense, not just mathematically but intuitively. Let’s start from the basics and build up from there."><meta property="og:locale" content="en_us"><meta property="og:type" content="article"><meta property="article:section" content="post"><meta property="article:published_time" content="2025-03-01T00:00:00+00:00"><meta property="article:modified_time" content="2025-03-01T00:00:00+00:00"><meta name=twitter:card content="summary"><meta name=twitter:title content="Unpacked: Eigenvalues & Eigenvectors"><meta name=twitter:description content="I’ve heard the terms eigenvalues and eigenvectors countless times, but if I’m being honest, I’ve never truly grasped their meaning. That’s kind of a bummer as they seem to appear everywhere from plain mathematics to machine learning which makes it feel like something worth understanding.
+This is my attempt to break them down in a way that makes sense, not just mathematically but intuitively. Let’s start from the basics and build up from there."><link rel=canonical href=../../post/eigenvalues_and_eigenvectors/></head><body class="text-black duration-200 ease-out dark:text-white"><header class="mx-auto flex h-[4.5rem] max-w-(--w) px-8 whitespace-nowrap lg:justify-center"><div class="relative z-50 flex items-center ltr:mr-auto rtl:ml-auto"><a class="-translate-y-[1px] text-2xl font-medium" href=../../>Silly Goose's Thoughts</a><div class="btn-dark text-[0px] ltr:ml-4 rtl:mr-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.svg)_left_center/cover_no-repeat] dark:invert dark:[background-position:right]" role=button aria-label=Dark></div></div><div class="btn-menu relative z-50 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden ltr:-mr-8 rtl:-ml-8" role=button aria-label=Menu></div><script>const htmlClass=document.documentElement.classList;setTimeout(()=>{htmlClass.remove("not-ready")},10);const btnMenu=document.querySelector(".btn-menu");btnMenu.addEventListener("click",()=>{htmlClass.toggle("open")});const metaTheme=document.querySelector('meta[name="theme-color"]'),lightBg="#faf8f1".replace(/"/g,""),setDark=e=>{metaTheme.setAttribute("content",e?"#000":lightBg),htmlClass[e?"add":"remove"]("dark"),localStorage.setItem("dark",e)},darkScheme=window.matchMedia("(prefers-color-scheme: dark)");if(htmlClass.contains("dark"))setDark(!0);else{const e=localStorage.getItem("dark");setDark(e?e==="true":darkScheme.matches)}darkScheme.addEventListener("change",e=>{setDark(e.matches)});const btnDark=document.querySelector(".btn-dark");btnDark.addEventListener("click",()=>{setDark(localStorage.getItem("dark")!=="true")})</script><div class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full flex-col justify-center pb-16 duration-200 select-none lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none dark:bg-black"><nav class="mt-12 flex justify-center space-x-10 lg:mt-0 lg:items-center ltr:lg:ml-14 rtl:space-x-reverse rtl:lg:mr-14 dark:invert"><a class="h-7 w-7 text-[0px] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6" style=--url:url(./github.svg) href=https://github.com/gaspardthrl target=_blank rel=me>github</a>
+<a class="h-7 w-7 text-[0px] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6" style=--url:url(./linkedin.svg) href=https://linkedin.com/in/gaspard-thoral-49538a230/ target=_blank rel=me>linkedin</a></nav></div></header><main class="prose prose-neutral dark:prose-invert relative mx-auto min-h-[calc(100vh-9rem)] max-w-(--w) px-8 pt-14 pb-16"><article><header class=mb-14><h1 class="!my-0 pb-2.5">Unpacked: Eigenvalues & Eigenvectors</h1><div class="text-xs antialiased opacity-60"></div></header><section><div style=text-align:justify><p>I&rsquo;ve heard the terms <strong>eigenvalues</strong> and <strong>eigenvectors</strong> countless times, but if I&rsquo;m being honest, I&rsquo;ve never truly grasped their meaning. That&rsquo;s kind of a bummer as they seem to appear everywhere from plain mathematics to machine learning which makes it feel like something worth understanding.</p><p>This is my attempt to break them down in a way that makes sense, not just mathematically but intuitively. Let&rsquo;s start from the basics and build up from there.</p><h1 id=introduction>Introduction</h1><p>Let&rsquo;s start with the basics:</p><ul><li>The <em>eigenvalues</em> of a matrix $A$ are obtained by solving the following equation $\text{det}(A-\lambda I) = 0$, called the <strong>characteristic equation</strong>, with $I$ the <em>identity matrix</em>, and $\lambda$ the variable representing the eigenvalues.</li><li>The <em>eigenvectors</em> of $A$ are obtained by solving $A\bold{v} = \lambda \bold{v}$</li></ul><h3 id=what-does-it-look-like-with-a-basic-example->What does it look like with a basic example ?</h3><p>Take the following matrix:</p>$$
 A = \begin{bmatrix}
 2 & 1 \\
 1 & 2
 \end{bmatrix}
-$$<ol>
-<li>We first compute $A - \lambda I$</li>
-</ol>
-$$
+$$<ol><li>We first compute $A - \lambda I$</li></ol>$$
 A - \lambda I =
 \begin{bmatrix}
 2 & 1 \\
@@ -199,91 +22,17 @@ A - \lambda I =
 2 - \lambda & 1 \\
 1 & 2 - \lambda
 \end{bmatrix}
-$$<ol start="2">
-<li>
-<p>Then, the <em>determinant</em></p>
-$$
-   \text{det} \begin{bmatrix}
-   2 - \lambda & 1 \\
+$$<ol start=2><li><p>Then, the <em>determinant</em></p>$$
+\text{det} \begin{bmatrix}
+2 - \lambda & 1 \\
    1 & 2 - \lambda
    \end{bmatrix} = \lambda^2 - 4\lambda + 3
-   $$<p>and its <strong>roots</strong> which gives us $\lambda_1 = 3$ and $\lambda_2 = 1$</p>
-</li>
-<li>
-<p>Now we want to find $\bold{v_1}$ and $\bold{v_2}$ which happen to be</p>
-$$
-   \bold{v_1} = \begin{bmatrix}
-   1 \\
-   1
-   \end{bmatrix}; \bold{v_2} = \begin{bmatrix}
-   1 \\
-   -1
-   \end{bmatrix}
-   $$</li>
-</ol>
-<p>You might be tempted to ask &ldquo;But what does this <em>actually</em> look like ?&rdquo;</p>
-<table>
-  <thead>
-      <tr>
-          <th style="text-align: center">Before transformation</th>
-          <th style="text-align: center">After transformation</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td style="text-align: center"><img src="../../eigenvalues_and_eigenvectors/before_transformation.png" alt=""></td>
-          <td style="text-align: center"><img src="../../eigenvalues_and_eigenvectors/after_transformation.png" alt=""></td>
-      </tr>
-  </tbody>
-</table>
-<p>$\bold{v_1}$ is our <strong>initial</strong> eigenvector and $\bold{v_r}$ is a <strong>random</strong> vector. See what happens when we multiply both vector by our matrix $A$ ? Both vectors are <strong>scaled</strong> but only $\bold{v_r}$ <strong>rotated</strong>.</p>
-<p>That&rsquo;s it ! An eigenvector is a vector that, when multiplied by its corresponding matrix, has its <strong>direction unchanged</strong> (or <strong>reversed</strong>).</p>
-<p>In truth, we should be talking about the eigenvalues and eigenvectors of a <strong>linear transformation</strong> $T$ which is more general than a mere matrix. We&rsquo;ll keep our focus on matrices for now.</p>
-<h3 id="the-intuition-behind-the-characteristic-equation">The intuition behind the characteristic equation</h3>
-<p>Great, now we understand a bit better what eigenvalues and eigenvectors represent. But why are eigenvalues the roots of this <strong>characteristic equation</strong> ?</p>
-<p>Well, let&rsquo;s approach our problem the other way around: We want to find a vector $\bold{v}$ that does not undergo rotation when multiplied by $A$. In other words we want to find: $A\bold{v} = \lambda \bold{v}$ We multiply $\bold{v}$ by a scalar $\lambda$ as we only care about rotations.</p>
-<p>By rearranging the terms we find that this is equivalent to $\underbrace{(A - \lambda I)}_M\bold{v} = 0$</p>
-<p>An obvious solution is the vector</p>
-$$\begin{bmatrix} | \\ 0 \\ | \end{bmatrix}$$<p>(i.e., the <em>trivial solution</em>).</p>
-<p>We do not care about this one, as it does not tell us anything about $A$, and therefore would like this equation to have <strong>non-zero solutions</strong>. In other words, we want $M$ to have <strong>singular matrix</strong>, that is to have no inverse (Because for any invertible matrix the <em>linear transformation</em> mapping $\bold{x}$ to $A \bold{x}$ is <strong>bijective</strong>). We know that a matrix is singular if and only if its <strong>determinant equals zero</strong>.</p>
-<p>There we have it:</p>
-<p>For $M\bold{v}$ to have non-zero solutions it must satisfy $\text{det}M = 0$.</p>
-<hr>
-<p>As we wrap-up this introduction one might be tempted to ask what&rsquo;s next. And I could not really blame them&hellip; I mean we just explained what eigenvalues and eigenvectors represent, how to compute them, and why does this computation actually makes sense.</p>
-<p>However, think about it for a second, sure it&rsquo;s cool to know that there exist vectors that, when a given linear transformation is applied to them, do not rotate. But isn&rsquo;t there more to it ? Why would someone look for such a specific thing without further utility. To that I would answer that <em>the mathematics have their reasons that reason ignores</em> but if it was just for the sake of finding some mathematic bizarerie we would probably not find these two notions in fields like machine learning or physics.</p>
-</section>
-
-  <div class="mt-24" id="graphcomment"></div>
-  <script type="text/javascript">
-    var __semio__params = {
-      graphcommentId: 'YOUR_GRAPH_COMMENT_ID',
-      behaviour: {
-        
-      },
-      
-    };
-
-    function __semio__onload() {
-      __semio__gc_graphlogin(__semio__params);
-    }
-
-    (function () {
-      var gc = document.createElement('script');
-      gc.type = 'text/javascript';
-      gc.async = true;
-      gc.onload = __semio__onload;
-      gc.defer = true;
-      gc.src =
-        'https://integration.graphcomment.com/gc_graphlogin.js?' + Date.now();
-      (
-        document.getElementsByTagName('head')[0] ||
-        document.getElementsByTagName('body')[0]
-      ).appendChild(gc);
-    })();
-  </script></article></main><footer
-  class="mx-auto flex h-[4.5rem] max-w-(--w) items-center px-8 text-xs tracking-wider uppercase opacity-60"
->
-  <div class="mr-auto">&copy;2025<a class="link" href="../../"> Learning Out Loud - (LOL)</a></div>
-</footer>
-</body>
-</html>
+$$<p>and its <strong>roots</strong> which gives us $\lambda_1 = 3$ and $\lambda_2 = 1$</p></li><li><p>Now we want to find $\bold{v_1}$ and $\bold{v_2}$ which happen to be</p>$$
+\bold{v_1} = \begin{bmatrix}
+1 \\
+1
+\end{bmatrix}; \bold{v_2} = \begin{bmatrix}
+1 \\
+-1
+\end{bmatrix}
+$$</li></ol><p>You might be tempted to ask &ldquo;But what does this <em>actually</em> look like ?&rdquo;</p><table><thead><tr><th style=text-align:center>Before transformation</th><th style=text-align:center>After transformation</th></tr></thead><tbody><tr><td style=text-align:center><img src=../../eigenvalues_and_eigenvectors/before_transformation.png alt></td><td style=text-align:center><img src=../../eigenvalues_and_eigenvectors/after_transformation.png alt></td></tr></tbody></table><p>$\bold{v_1}$ is our <strong>initial</strong> eigenvector and $\bold{v_r}$ is a <strong>random</strong> vector. See what happens when we multiply both vector by our matrix $A$ ? Both vectors are <strong>scaled</strong> but only $\bold{v_r}$ <strong>rotated</strong>.</p><p>That&rsquo;s it ! An eigenvector is a vector that, when multiplied by its corresponding matrix, has its <strong>direction unchanged</strong> (or <strong>reversed</strong>).</p><p>In truth, we should be talking about the eigenvalues and eigenvectors of a <strong>linear transformation</strong> $T$ which is more general than a mere matrix. We&rsquo;ll keep our focus on matrices for now.</p><h3 id=the-intuition-behind-the-characteristic-equation>The intuition behind the characteristic equation</h3><p>Great, now we understand a bit better what eigenvalues and eigenvectors represent. But why are eigenvalues the roots of this <strong>characteristic equation</strong> ?</p><p>Well, let&rsquo;s approach our problem the other way around: We want to find a vector $\bold{v}$ that does not undergo rotation when multiplied by $A$. In other words we want to find: $A\bold{v} = \lambda \bold{v}$ We multiply $\bold{v}$ by a scalar $\lambda$ as we only care about rotations.</p><p>By rearranging the terms we find that this is equivalent to $\underbrace{(A - \lambda I)}_M\bold{v} = 0$</p><p>An obvious solution is the vector</p>$$\begin{bmatrix} | \\ 0 \\ | \end{bmatrix}$$<p>(i.e., the <em>trivial solution</em>).</p><p>We do not care about this one, as it does not tell us anything about $A$, and therefore would like this equation to have <strong>non-zero solutions</strong>. In other words, we want $M$ to have <strong>singular matrix</strong>, that is to have no inverse (Because for any invertible matrix the <em>linear transformation</em> mapping $\bold{x}$ to $A \bold{x}$ is <strong>bijective</strong>). We know that a matrix is singular if and only if its <strong>determinant equals zero</strong>.</p><p>There we have it:</p><p>For $M\bold{v}$ to have non-zero solutions it must satisfy $\text{det}M = 0$.</p><hr><p>As we wrap-up this introduction one might be tempted to ask what&rsquo;s next. And I could not really blame them&mldr; I mean we just explained what eigenvalues and eigenvectors represent, how to compute them, and why does this computation actually makes sense.</p><p>However, think about it for a second, sure it&rsquo;s cool to know that there exist vectors that, when a given linear transformation is applied to them, do not rotate. But isn&rsquo;t there more to it ? Why would someone look for such a specific thing without further utility. To that I would answer that <em>the mathematics have their reasons that reason ignores</em> but if it was just for the sake of finding some mathematic bizarerie we would probably not find these two notions in fields like machine learning or physics.</p></section><div class=mt-24 id=graphcomment></div><script type=text/javascript>var __semio__params={graphcommentId:"YOUR_GRAPH_COMMENT_ID",behaviour:{}};function __semio__onload(){__semio__gc_graphlogin(__semio__params)}(function(){var e=document.createElement("script");e.type="text/javascript",e.async=!0,e.onload=__semio__onload,e.defer=!0,e.src="https://integration.graphcomment.com/gc_graphlogin.js?"+Date.now(),(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(e)})()</script></article></main><footer class="mx-auto flex h-[4.5rem] max-w-(--w) items-center px-8 text-xs tracking-wider uppercase opacity-60"><div class=mr-auto>&copy;2025<a class=link href=../../>Silly Goose's Thoughts</a></div></footer></body></html>

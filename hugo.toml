@@ -1,6 +1,6 @@
 adbaseURL = 'https://learning-out-loud.vercel.app/'
 languageCode = 'en-us'
-title = ' Learning Out Loud - (LOL)'
+title = "Silly Goose's Thoughts"
 theme = 'paper'
 renderer.unsafe= true
 relativeURLs = true
@@ -25,12 +25,12 @@ canonifyURLs = true
   color = 'linen'                           # linen, wheat, gray, light
 
   # header social icons
-  github = 'gaspardthrl'                 # github.com/YOUR_GITHUB_ID
+  github = 'gaspardthrl'                
   linkedin = 'gaspard-thoral-49538a230/'
 
   # home page profile
-  name = 'Gaspard Thoral'
-  bio = "I realised that there is a lot I don't understand. Let's not understand together :)"
+  name = ' '
+  bio = """The purpose of this so-called blog is mainly for me to better grasp different concepts. Feel free to read it but be aware that everything is potentially a work-in-progress."""
 
 
   # misc

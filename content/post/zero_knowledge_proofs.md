@@ -1,13 +1,13 @@
 +++
 title = 'Unpacked: Zero-Knowledge Proofs'
-date = '2025-03-14'
+date = '2025-03-30'
 [params]
   math = true
 +++
 
 <div style="text-align: justify">
 
-Before anything, don't worry if you don't understand anything. As the title suggests this post will provide you with **zero knowledge**.
+Before anything, don't worry if you don't understand anything. As the title suggests this post will provide you with **zero knowledge**. In fact, one may call them **negative-knowledge proofs** as they are one of the rare things that will leave you will _less brain cells_ than at the begining.
 
 ---
 
@@ -21,13 +21,13 @@ A proof is a **logical argument** that **demonstrates the truth of a statement**
 
 To **formally describe** proofs, especially in computational complexity and cryptography, we break them down into four key components:
 
-- **Language** $(L)$ - It consists of _all valid inputs_ that satisfy a given property.
+- **Language** $(\mathcal{L})$ - It consists of _all valid inputs_ that satisfy a given property.
 
   _Example_: Consider the set of all composite numbers (i.e., not prime). The language here is
 
-  $$L = \{x | x \text{ is not a prime number}\}$$
+  $$\mathcal{L} = \{x | x \text{ is not a prime number}\}$$
 
-- **Verifier** $(V)$ - A function (which can be thought of as an _algorithm_) that checks whether a given statement belongs to the language. It takes an _input_ and a _proof_ and determines whether the proof is valid.
+- **Verifier** $(\mathcal{V})$ - A function (which can be thought of as an _algorithm_) that checks whether a given statement belongs to the language. It takes an _input_ and a _proof_ and determines whether the proof is valid.
 
   _Example_: A verifier for composite numbers might check whether a given number has any divisors other than $1$ and itself.
 
@@ -35,9 +35,9 @@ To **formally describe** proofs, especially in computational complexity and cryp
 
   _Example_: If someone claims that $91$ is not prime, a witness could be a divisor like $7$ (since $91 = 7 \times 13$)
 
-- **Prover** $(P)$ - The entity that constructs and presents a proof to convince the verifier
+- **Prover** $(\mathcal{P})$ - The entity that constructs and presents a proof to convince the verifier
 
-  _Example_: The prover knows $w = 7$ and want to convince the verifier that $91$ belongs to $L$ (i.e. that $91$ is _composite_).
+  _Example_: The prover knows $w = 7$ and want to convince the verifier that $91$ belongs to $\mathcal{L}$ (i.e. that $91$ is _composite_).
 
 Note that we will only consider [NP-Complete](https://en.wikipedia.org/wiki/NP-completeness) problems here. I won't elaborate on them, but just think of them as all problems for which a solution is **easy to verify** but **hard to find** (e.g., a _sudoku_). If you're interested, [here](https://www.claymath.org/millennium/p-vs-np/)'s an easy way to make some _pocket money_.
 
@@ -46,9 +46,11 @@ Note that we will only consider [NP-Complete](https://en.wikipedia.org/wiki/NP-c
 ---
 
 # What does it mean for a proof to be _zero-knowledge_?
+
 _We refer to people following the protocol properly as honest_.
 
 For the proof a given statement to be _zero-knowledge_ it must satisfy **three properties**:
+
 - **Completeness** - If a statement is **true**, then an _honest verifier_ will be convinced of this fact by an _honest prover_ .
 
   In other words, if what you claim to be true is true, the verifier will always validate your claim.
@@ -63,15 +65,22 @@ For the proof a given statement to be _zero-knowledge_ it must satisfy **three p
 
 <img src="/zero_knowledge_proofs/introduction_meme.png" style="display: block; margin: auto;" />
 
-
 Zero-knowledge proofs can be subdivided into **two categories**:
+
 - **Interactive** - This means that the _prover_ and the _verifier_ exchange **multiple** messages.
 
 - **Non-interactive** - This means that the _verifier_ is convinced by a **single** message.
 
 # Interactive zero-knowledge proofs
 
-We will start by picturing what an interactive proof looks like and how can it reveal no information using the [Ali Baba Cave](https://en.wikipedia.org/wiki/Zero-knowledge_proof#The_Ali_Baba_cave) example.
+We define an _interactive proof_ as follows:
+
+$(\mathcal{P}, \mathcal{V})$ is an interactive proof for $\mathcal{L}$ (our language), if $V$ is $probabilistic-poly(|x|)$ and:
+
+- $x\in \mathcal{L} \Rightarrow \Pr[(\mathcal{P}, \mathcal{V})(x) = \text{accept}] \ge c$
+- $x \notin \mathcal{L} \Rightarrow \forall \ \mathcal{P}^* , \ \Pr[(\mathcal{P}^*, \mathcal{V})(x) = \text{accept}] \le s$
+
+We will start by picturing what an interactive proof looks like and how can it reveal no information using the [Ali Baba Cave](https://en.wikipedia.org/wiki/Zero-knowledge_proof#The_Ali_Baba_cave) example as well as the [Hamiltonian Cycle](https://en.wikipedia.org/wiki/Zero-knowledge_proof#Hamiltonian_cycle_for_a_large_graph) example.
 
 ## Ali Baba and his cave
 
@@ -86,6 +95,7 @@ You, the _prover_, claim to know the password. I, the _verifier_, want to confir
 How can I be sure that you indeed know the password without you telling me the password and trying out myself ?
 
 Here's how we can achieve this:
+
 - You enter the cave without me seeing which path you take.
 - I then ask you to exit the cave using a **specific path**, say $A$.
 
@@ -108,5 +118,35 @@ $$
 
 Obvisouly we don't repeat this experience an infinite amount of time but we do so **until this probability becomes too small for us to care**.
 
----
+Now what about a more math-focused example ?
 
+## Hamiltonian cycle for a graph
+
+Let there be a _graph_ $G$ which is very large.
+
+You, the _prover_, claim to know a **Hamiltonian cycle** (that is, a path that visits each vertex exactly once) for $G$. I, the _verifier_, want to confirm this without you revealing this cycle to me.
+
+<img src="/zero_knowledge_proofs/hamiltonian_cycle_example.png" style="display: block; margin: auto;" />
+
+To achieve this, we will modify our previous _cave adventure_ and do the following for **each round**:
+
+- You create a graph $H_i$ which is **isomorphic** to $G$ (that is, the same graph as $G$ except the vertices have different names).
+
+  $\Rightarrow$ It's easy to translate a Hamiltonian cycle between isomorphic graphs and thus you also know a Hamiltonian cycle for $H_i$.
+
+- You **commit** $H_i$ such that you cannot modify it afterward.
+
+- I then ask you to show either the **isomorphism** between $H_i$ and $G$ or a **Hamiltonian cycle** in $H_i$.
+
+I you do know a Hamiltonian cycle in $G$, then it is pretty easy for you to submit a graph $H_i$ that is **isomorphic** to $G$ and for which you know a Hamiltonian cycle.
+
+On the other hand, if you don't know any Hamiltonian cycle in $G$, you have to take a guess on which question I am going to ask:
+
+- If you think that I will ask you to show the _isomorphism_ between $H_i$ and $G$, you simply need to submit a graph $H_i$ _isomorph_ to $G$.
+- If you think that I will ask you to show a _Hamiltonian cycle_ in $H_i$, you simply need to submit a graph $H_i$ for which you know a Hamiltonian cycle.
+
+There is basically no way for you to correctly answer my question if your prediction is incorrect.
+
+Once again, you might be lucky at first but as the number of iterations increases, the probability that you do not know a Hamiltonian cycle in $G$ becomes negligible.
+
+Note that $H_i$ is different **for each iteration**. If it was not, I could deduct the Hamiltonian cycle in $G$ in only two iterations by first asking you about a Hamiltonian cycle in $H_i$, and then asking about an isomorphism between this same $H_i$ and $G$.
