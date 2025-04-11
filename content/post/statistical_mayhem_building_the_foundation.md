@@ -147,6 +147,14 @@ $$
 
 As said above, taking the **square root** of the variance is great as it gives us the original unit of measure !
 
+A lot of people also like working with the **coefficient of variation** defined as :
+
+$$
+CV = \frac{\sigma}{\mu}
+$$
+
+This measure is very useful because the standard deviation must always be understood in the context of the mean of the data. Indeed, a standard deviation of $100\$$ when you deal with millions of dollars is much more acceptable than when working with tens of dollars.
+
 ---
 
 Awesome, we now have a way to better understand a random variable ! But hear me out: What if... what if we are working with **multiple random variables** ?
