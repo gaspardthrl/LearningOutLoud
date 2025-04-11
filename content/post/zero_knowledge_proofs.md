@@ -7,7 +7,7 @@ date = '2025-03-30'
 
 <div style="text-align: justify">
 
-Before anything, don't worry if you don't understand anything. As the title suggests this post will provide you with **zero knowledge**. In fact, one may call them **negative-knowledge proofs** as they are one of the rare things that will leave you will _less brain cells_ than at the begining.
+Before anything, don't worry if you don't understand anything. As the title suggests this post will provide you with **zero knowledge**. In fact, one may call them **negative-knowledge proofs** as they are one of the rare things that will leave you will _fewer brain cells_ than at the beginning.
 
 ---
 
@@ -55,7 +55,7 @@ For the proof a given statement to be _zero-knowledge_ it must satisfy **three p
 
   In other words, if what you claim to be true is true, the verifier will always validate your claim.
 
-- **Soundness** - If the statement is false, then no _cheating prover_ can convince an _honest verifier_ thet it is true, **except with some small probability**.
+- **Soundness** - If the statement is false, then no _cheating prover_ can convince an _honest verifier_ that it is true, **except with some small probability**.
 
   In other words, if what you claim to be true is false, the verifier will almost always reject your claim. While probabilistic, the error probability is so small that we are okay with this not being true exactly 100% of the time.
 
@@ -116,7 +116,7 @@ $$
 \lim_{n \to \infty}{\frac{1}{2^n}} = 0
 $$
 
-Obvisouly we don't repeat this experience an infinite amount of time but we do so **until this probability becomes too small for us to care**.
+Obviously we don't repeat this experience an infinite amount of time but we do so **until this probability becomes too small for us to care**.
 
 Now what about a more math-focused example ?
 
@@ -150,3 +150,20 @@ There is basically no way for you to correctly answer my question if your predic
 Once again, you might be lucky at first but as the number of iterations increases, the probability that you do not know a Hamiltonian cycle in $G$ becomes negligible.
 
 Note that $H_i$ is different **for each iteration**. If it was not, I could deduct the Hamiltonian cycle in $G$ in only two iterations by first asking you about a Hamiltonian cycle in $H_i$, and then asking about an isomorphism between this same $H_i$ and $G$.
+
+---
+
+So what ? We showed for two different problems that we could provide a proof that did not reveal information. I can already picture you saying that the approaches were totally different and that it might be **difficult to do the same thing for every problem**.
+Well, you would be right to question this approach as it is **hard to generalize**. However, let me introduce you to a very cool concept from theory of computation: **reductions**.
+
+This concept is a bit tricky and I won't go into details but **BASICALLY**, it means that a problem $A$ can be converted to a problem $B$ if $B$ is at least as hard as $A$.
+
+<img src="/zero_knowledge_proofs/reduction_spider_man_meme.png" style="display: block; margin: auto;" />
+
+Furthermore, we have one category of problems that are referred to as "satisfiability problems" which ask if a problem has a solution. Satisfiability problems are actually very hard and that's great because it is relatively easy to go from a problem $A$ to one of these problems (you ~~just~~ need to formulate your problem correctly).
+
+Take a step back, take a deep breath, and think about it: That's amazing because now, we only need to develop one (or just a few) algorithm that let us prove a solution to a satisfiability problem without revealing it.
+
+Think of it this way: You know how to go from Rome to somewhere in the desert. The following great theorem "All roads lead to Rome" tells you that to go from anywhere in the world to this point in the desert you don't need to find a new route. You just need to go to Rome and then go to the point in the desert.
+
+What about achieving the same result as before but without interactions ? Well, it's possible and we call this **Zero-Knowledge Succinct Non-Interactive Argument of Knowledge** a.k.a. **zk-SNARK**.
