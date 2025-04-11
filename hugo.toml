@@ -30,7 +30,7 @@ canonifyURLs = true
 
   # home page profile
   name = ' '
-  bio = """The purpose of this so-called blog is mainly for me to better grasp different concepts. Feel free to read it but be aware that everything is potentially a work-in-progress."""
+  bio = """I realised there is a lot I don't understand... Let's not understand together :)"""
 
 
   # misc
