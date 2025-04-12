@@ -1,5 +1,5 @@
 +++
-title = 'Unpacked: Zero-Knowledge Proofs'
+title = "It's Okay, Nobody Gets It  Either: Zero-Knowledge Proofs"
 date = '2025-03-30'
 [params]
   math = true

@@ -1,5 +1,5 @@
 +++
-title = 'Unpacked: Eigenvalues & Eigenvectors'
+title = 'The Way of Data: Eigenvalues and Eigenvectors'
 date = '2025-03-01'
 [params]
   math = true

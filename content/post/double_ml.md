@@ -1,5 +1,5 @@
 +++
-title = 'Unpacked: Double Machine Learning'
+title = 'Who Needs RCTs? Use Double  ML Instead'
 date = '2025-03-14'
 [params]
   math = true
