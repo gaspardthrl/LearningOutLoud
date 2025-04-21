@@ -16,7 +16,11 @@ This morning I had a _wait moment_ (kind of like _DeepSeek_) regarding statistic
 
 Let's start with one if not **the most important** concept in statistics: _Expected Value_
 
+<div style="text-align: left">
+
 # Expected Value: The random variable's center of gravity
+
+<div style="text-align: justify">
 
 Expected value is a bit of a tricky one due to its simplicity... I mean this line on its Wikipedia article sums it up pretty well: "_Informally, the expected value is the mean of the possible values a random variable can take_".
 
@@ -51,7 +55,11 @@ $$
 
 Furthermore, we set $\Omega = \{(1, 1), (1, -1), (-1, 1), (-1, -1)\}$.
 
+<div style="text-align: left">
+
 ### Uniform distribution: The base case
+
+<div style="text-align: justify">
 
 Say that $\Omega$ follows a _uniform distribution_.
 
@@ -70,7 +78,11 @@ To better illustrate what I mean, I displayed the changing probability of each p
 
 See what is going on ? What happens if we adjust the probabilities, effectively shifting the 'mass' of the distribution?
 
+<div style="text-align: left">
+
 ### From uniform to non-uniform:
+
+<div style="text-align: justify">
 
 Let's now remove the uniform distribution and say that we now have the following probability distribution:
 
@@ -102,7 +114,11 @@ All this is great but check the following data points.
 
 Even though they have the same mean it is clear the yellow dots are closer to their mean than red dots. This observation leads us to an important question: how can we measure this difference in spread when the means are identical?
 
+<div style="text-align: left">
+
 # Variance: Measuring the Spread from Center
+
+<div style="text-align: justify">
 
 At first, one may be tempted to compute the difference of each element to the mean
 
@@ -159,7 +175,11 @@ This measure is very useful because the standard deviation must always be unders
 
 Awesome, we now have a way to better understand a random variable ! But hear me out: What if... what if we are working with **multiple random variables** ?
 
+<div style="text-align: left">
+
 # Covariance: Measuring How Two Variables Move Together
+
+<div style="text-align: justify">
 
 We define the _covariance_ between two random variables $X$ and $Y$ as:
 
@@ -167,11 +187,19 @@ $$
 \text{cov}(X, Y) = \mathbb{E}[(X - \mathbb{E}[X])(Y - \mathbb{E}[Y])]
 $$
 
+<div style="text-align: left">
+
 ### What does this mean ?
+
+<div style="text-align: justify">
 
 Covariance measures the extent to which two random variables vary together. If $X$ and $Y$ tend to increase and decrease together, their covariance is **positive**. If one tends to increase when the other decreases, their covariance is **negative**. If there is no discernible pattern, their covariance is **close to zero**.
 
+<div style="text-align: left">
+
 ### Intuition Behind the Formula
+
+<div style="text-align: justify">
 
 As you can see, under the hood this formula is actually the **expected value** of a third random variable $Z$ defined as:
 
@@ -187,7 +215,11 @@ To develop intuition, let’s consider an example:
 - We suspect that warmer temperatures might lead to higher ice cream sales.
 - The question is: **Do these variables actually move together?**
 
+<div style="text-align: left">
+
 #### Why Not Just Use $XY$?
+
+<div style="text-align: justify">
 
 If we only looked at $XY$, we'd face a problem:
 
@@ -275,7 +307,11 @@ We won't go into details but the other one you should know of is the **Spearman'
 
 Until now we've only discussed about **static data**. But what happens when data **evolves or fluctuates over time**? In the world of time-series data, it’s crucial to understand how signals relate to themselves or to each other over time. This is where **auto-covariance** and **cross-covariance** come into play.
 
+<div style="text-align: left">
+
 ### Auto-Covariance: Measuring Self-Similarity Over Time
+
+<div style="text-align: justify">
 
 _Auto-covariance_, defined as
 
@@ -287,7 +323,11 @@ measures **how a signal correlates with itself at different time lags**.
 
 It's a very interesting measure since it let's you detect **patterns** or **periodicity** as well as **persistence of past influences**.
 
+<div style="text-align: left">
+
 ### Cross-Covariance: Measuring Relationships Between Signals
+
+<div style="text-align: justify">
 
 We also define the _cross-covariance_, expressed as
 

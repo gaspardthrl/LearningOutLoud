@@ -1,0 +1,12 @@
+# This file is used internally by FFMPEG.
+file 'file:/Users/main/Desktop/Perso/LearningOutLoud/media/videos/kolmogorov_arnold_networks/1080p60/partial_movie_files/PerceptronAnimation/3529212410_3150061953_223132457.mp4'
+file 'file:/Users/main/Desktop/Perso/LearningOutLoud/media/videos/kolmogorov_arnold_networks/1080p60/partial_movie_files/PerceptronAnimation/3040924799_3811736717_3766266945.mp4'
+file 'file:/Users/main/Desktop/Perso/LearningOutLoud/media/videos/kolmogorov_arnold_networks/1080p60/partial_movie_files/PerceptronAnimation/3040924799_568952258_2358810818.mp4'
+file 'file:/Users/main/Desktop/Perso/LearningOutLoud/media/videos/kolmogorov_arnold_networks/1080p60/partial_movie_files/PerceptronAnimation/3040924799_1563329399_1524617159.mp4'
+file 'file:/Users/main/Desktop/Perso/LearningOutLoud/media/videos/kolmogorov_arnold_networks/1080p60/partial_movie_files/PerceptronAnimation/3040924799_800339460_1239748256.mp4'
+file 'file:/Users/main/Desktop/Perso/LearningOutLoud/media/videos/kolmogorov_arnold_networks/1080p60/partial_movie_files/PerceptronAnimation/3040924799_4149628045_2918782096.mp4'
+file 'file:/Users/main/Desktop/Perso/LearningOutLoud/media/videos/kolmogorov_arnold_networks/1080p60/partial_movie_files/PerceptronAnimation/3040924799_533779912_692614137.mp4'
+file 'file:/Users/main/Desktop/Perso/LearningOutLoud/media/videos/kolmogorov_arnold_networks/1080p60/partial_movie_files/PerceptronAnimation/3040924799_3072799802_3063405794.mp4'
+file 'file:/Users/main/Desktop/Perso/LearningOutLoud/media/videos/kolmogorov_arnold_networks/1080p60/partial_movie_files/PerceptronAnimation/3040924799_2104790501_2054202545.mp4'
+file 'file:/Users/main/Desktop/Perso/LearningOutLoud/media/videos/kolmogorov_arnold_networks/1080p60/partial_movie_files/PerceptronAnimation/3040924799_180099048_2595641536.mp4'
+file 'file:/Users/main/Desktop/Perso/LearningOutLoud/media/videos/kolmogorov_arnold_networks/1080p60/partial_movie_files/PerceptronAnimation/3040924799_2552855209_609031710.mp4'

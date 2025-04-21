@@ -186,7 +186,9 @@ tr:nth-child(even) {
 <hr>
 <p>You&rsquo;ve all heard about Machine Learning. Some say it&rsquo;s amazing; I say it&rsquo;s meh. I&rsquo;d rather <em>double it</em> and give it to the next person (See what I did there?). This next person happens to be you. You guessed it today we will talk about <strong>Double Machine Learning</strong></p>
 <p>For now, we’ll focus on how Double ML is used to compute the <strong>Average Treatment Effect (ATE)</strong>. Conditional ATE (CATE) might come later.</p>
+<div style="text-align: left">
 <h1 id="introduction-causation-vs-correlation">Introduction: Causation vs. Correlation</h1>
+<div style="text-align: justify">
 <p>Before diving into Double ML, let’s talk about <strong>causation</strong> and <strong>correlation</strong>.</p>
 <p>Imagine we have a population, and for each individual $i$ we observe an outcome $Y_i$ . Now, suppose we’re interested in understanding the effect of some treatment $T$ on an this outcome.</p>
 <p>Each $Y_i$ has <strong>two potential outcomes</strong>:</p>
@@ -202,7 +204,9 @@ $$<p>Since we can’t measure this for each individual, we instead try to estima
 $$
 E[Y(1) - Y(0)]
 $$<p>where the expectation is taken over the entire population.</p>
+<div style="text-align: left">
 <h3 id="why-you-cant-just-compare-treated-vs-untreated-groups">Why You Can’t Just Compare Treated vs. Untreated Groups</h3>
+<div style="text-align: justify">
 <p>A common mistake is to estimate the treatment effect using:</p>
 $$
 \begin{equation}
@@ -216,7 +220,9 @@ $$<p>By adding and subtracting $E[Y(0) | T = 1]$, we get:</p>
 $$
 \underbrace{E[Y(1) | T = 1] - E[Y(0) | T = 1]}_{\text{ATT (Average Treatment Effect on the Treated)}} + \underbrace{E[Y(0) | T = 1] - E[Y(0) | T = 0]}_{\text{Bias}}
 $$<p>The second term (Bias) represents the difference between treated and untreated individuals <strong>before</strong> treatment. It captures pre-existing differences (<em>confounders</em>) rather than the causal effect.</p>
+<div style="text-align: left">
 <h3 id="what-does-it-look-like-with-a-basic-example-">What does it look like with a basic example ?</h3>
+<div style="text-align: justify">
 <p>Let&rsquo;s say we want to understand the impact of a taking a specific <em>food supplement</em> on someone&rsquo;s height but we don&rsquo;t want to perform any <strong>randomized controlled trials</strong> or any experiment that would grant us new data. We only want to work with <strong>already available data</strong>.</p>
 <p>What we have is a population $Y$ inside which some people took this food supplement and others didn&rsquo;t.</p>
 <p><strong>NB:</strong> In our experiment, $Y_i$ represents the <strong>height</strong> of the $i^{\text{th}}$ individual.</p>
@@ -373,7 +379,9 @@ $$<p>The second term (Bias) represents the difference between treated and untrea
 <p>We were lucky to have our time machine to reveal the truth but as you may have noticed, we don&rsquo;t have that luxury in real life. Since we can never observe both outcomes $Y(0)$ and $Y(1)$ for the same individual, we must be extra cautious. Without a properly designed experiment, we risk mistaking correlation for causation, leading to completely false conclusions.</p>
 <p>This is why randomized controlled trials are so valuable: they <strong>help us separate real effects from misleading associations</strong>.</p>
 <p>But what if we cannot perform RCTs ?</p>
+<div style="text-align: left">
 <h1 id="individual-level-vs-population-level-outcome-model">Individual-Level vs Population-Level Outcome Model</h1>
+<div style="text-align: justify">
 <p>Let&rsquo;s recap a bit. We have our outcome $Y_i$ for each individual. It can be expressed as</p>
 $$
 Y_i(T) = T\tau_i + \bold{f}(\vec{X}_i)\vec{\beta}
@@ -414,7 +422,9 @@ $$<p>It&rsquo;s all fun and games until you find out that the previously introdu
 <p>However, we would like some sort of <strong>linear regression</strong> technique so that we can easily isolate $\tau$ in the final result.</p>
 <p>We are stuck with the following probematic: &ldquo;We want to use a linear model for regression to gain interpretability over a non-linear relation.&rdquo;</p>
 <p>Since our primary goal is estimating $\tau$, we might be tempted to ignore $\bold{f}(\bold{X})$ and fit a simple regression $\vec{Y} \sim \tau \vec{T}$. However, if $T$ is correlated with $\bold{X}$, omitting confounders introduces bias. Ideally, we&rsquo;d like to remove their effect before running the regression.</p>
+<div style="text-align: left">
 <h1 id="the-frisch-waugh-lovell-theorem">The Frisch-Waugh-Lovell Theorem</h1>
+<div style="text-align: justify">
 <p>This <a href="https://en.wikipedia.org/wiki/Frisch%E2%80%93Waugh%E2%80%93Lovell_theorem">beautiful theorem</a> states that in a linear regression model, the coefficients of a subset of regressors can be obtained by first partialling out the effects of the other regressors from both the dependent variable and the subset of interest, and then regressing the residuals of the dependent variable on the residuals of the subset. This simplifies the estimation of coefficients in the presence of multiple regressors.</p>
 <p>Essentially, we first remove the effects of $\bold{X}_2$ from $\vec{Y}$ and $\bold{X}_1$, then regress the residualized $\vec{Y}$ on the residualized $\bold{X}_1$ to estimate $\vec{\beta_1}$.</p>
 <p>Take the following expression:</p>
@@ -425,7 +435,9 @@ $$
 \bold{M_{X_2}}\vec{Y} = \bold{M_{X_2}X_1}\vec{\beta_1}
 $$<p>where the vector $\bold{M_{X_2}}\vec{Y}$ is the vector of residuals from the regression of $\vec{Y}$ on the columns of $\bold{X_2}$.</p>
 <p>The Frisch-Waugh-Lovell theorem gives us a clever way to estimate treatment effects in a linear regression setting, even in the presence of confounders. By first removing the influence of confounders and then regressing the residualized outcome on the residualized treatment, we could isolate the effect of treatment.</p>
+<div style="text-align: left">
 <h2 id="a-small-python-example">A small python example</h2>
+<div style="text-align: justify">
 <p>We will define the following relation between $\bold{X}_1$, $\bold{X}_2$, $\vec{T}$, and $\vec{Y}$:</p>
 $$
 \vec{Y} = 2 \vec{T} + 4 \bold{X}_1 + 3 \bold{X}_2
@@ -468,7 +480,9 @@ $$<p>where $\tau = 2$, $\vec{\beta}_1 = 4$, and $\vec{\beta}_2 = 3$.</p>
 </span></span></code></pre></div><p>Isn&rsquo;t this amazing ? Let me answer this for you: it is !</p>
 <hr>
 <p>But remember $\bold{f}$ ? In practice, it could be <strong>highly non-linear</strong> and <strong>high-dimensional</strong>. In theory, this is not a problem for this theorem if we are able to perfectly model $\bold{f}$.</p>
+<div style="text-align: left">
 <h2 id="a-second-small-python-example">A second small python example</h2>
+<div style="text-align: justify">
 <p>Let&rsquo;s now define the following relation:</p>
 $$
 \vec{Y} = 2 \vec{T} + 4 \sin{(\bold{X}_1)} + 3 \exp{(\bold{X}_2)}
@@ -498,7 +512,9 @@ $$<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color
 <hr>
 <p>There is one tiny issue though&hellip; In practice we never have this exact knowledge of what $\bold{f}$ is.</p>
 <p>So, what can we do? <strong>We estimate $\bold{f}$ using machine learning</strong>.</p>
+<div style="text-align: left">
 <h1 id="extending-fwl-with-machine-learning">Extending FWL with Machine Learning</h1>
+<div style="text-align: justify">
 <p>Rather than assuming a fixed, linear form for $\bold{f}(\bold{X})$, we let <strong>Machine Learning estimate it for us</strong>. The key insight is that if we can accurately capture the influence of confounders on both the outcome $Y$ and the treatment $T$, we can remove their effects before estimating the treatment effect.</p>
 <p>This leads to <strong>Double Machine Learning</strong>, which follows a two-step process:</p>
 <ol>
@@ -509,7 +525,9 @@ $$<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color
 <p>Partial out the confounders: Remove the estimated confounder effects and estimate $\tau$ from the residualized outcome and treatment.</p>
 </li>
 </ol>
+<div style="text-align: left">
 <h2 id="a-final-small-python-example">A final small python example</h2>
+<div style="text-align: justify">
 <p>Let&rsquo;s take back our previous setup with</p>
 $$
 \vec{Y} = 2 \vec{T} + 4 \sin{(\bold{X}_1)} + 3 \exp{(\bold{X}_2)}

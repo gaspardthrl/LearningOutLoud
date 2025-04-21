@@ -26,7 +26,11 @@ You've all heard about Machine Learning. Some say it's amazing; I say it's meh. 
 
 For now, we’ll focus on how Double ML is used to compute the **Average Treatment Effect (ATE)**. Conditional ATE (CATE) might come later.
 
+<div style="text-align: left">
+
 # Introduction: Causation vs. Correlation
+
+<div style="text-align: justify">
 
 Before diving into Double ML, let’s talk about **causation** and **correlation**.
 
@@ -53,7 +57,11 @@ $$
 
 where the expectation is taken over the entire population.
 
+<div style="text-align: left">
+
 ### Why You Can’t Just Compare Treated vs. Untreated Groups
+
+<div style="text-align: justify">
 
 A common mistake is to estimate the treatment effect using:
 
@@ -79,7 +87,11 @@ $$
 
 The second term (Bias) represents the difference between treated and untreated individuals **before** treatment. It captures pre-existing differences (_confounders_) rather than the causal effect.
 
+<div style="text-align: left">
+
 ### What does it look like with a basic example ?
+
+<div style="text-align: justify">
 
 Let's say we want to understand the impact of a taking a specific _food supplement_ on someone's height but we don't want to perform any **randomized controlled trials** or any experiment that would grant us new data. We only want to work with **already available data**.
 
@@ -151,7 +163,11 @@ This is why randomized controlled trials are so valuable: they **help us separat
 
 But what if we cannot perform RCTs ?
 
+<div style="text-align: left">
+
 # Individual-Level vs Population-Level Outcome Model
+
+<div style="text-align: justify">
 
 Let's recap a bit. We have our outcome $Y_i$ for each individual. It can be expressed as
 
@@ -213,7 +229,11 @@ We are stuck with the following probematic: "We want to use a linear model for r
 
 Since our primary goal is estimating $\tau$, we might be tempted to ignore $\bold{f}(\bold{X})$ and fit a simple regression $\vec{Y} \sim \tau \vec{T}$. However, if $T$ is correlated with $\bold{X}$, omitting confounders introduces bias. Ideally, we'd like to remove their effect before running the regression.
 
+<div style="text-align: left">
+
 # The Frisch-Waugh-Lovell Theorem
+
+<div style="text-align: justify">
 
 This [beautiful theorem](https://en.wikipedia.org/wiki/Frisch%E2%80%93Waugh%E2%80%93Lovell_theorem) states that in a linear regression model, the coefficients of a subset of regressors can be obtained by first partialling out the effects of the other regressors from both the dependent variable and the subset of interest, and then regressing the residuals of the dependent variable on the residuals of the subset. This simplifies the estimation of coefficients in the presence of multiple regressors.
 
@@ -235,7 +255,11 @@ where the vector $\bold{M_{X_2}}\vec{Y}$ is the vector of residuals from the reg
 
 The Frisch-Waugh-Lovell theorem gives us a clever way to estimate treatment effects in a linear regression setting, even in the presence of confounders. By first removing the influence of confounders and then regressing the residualized outcome on the residualized treatment, we could isolate the effect of treatment.
 
+<div style="text-align: left">
+
 ## A small python example
+
+<div style="text-align: justify">
 
 We will define the following relation between $\bold{X}_1$, $\bold{X}_2$, $\vec{T}$, and $\vec{Y}$:
 
@@ -292,7 +316,11 @@ Isn't this amazing ? Let me answer this for you: it is !
 
 But remember $\bold{f}$ ? In practice, it could be **highly non-linear** and **high-dimensional**. In theory, this is not a problem for this theorem if we are able to perfectly model $\bold{f}$.
 
+<div style="text-align: left">
+
 ## A second small python example
+
+<div style="text-align: justify">
 
 Let's now define the following relation:
 
@@ -336,7 +364,11 @@ There is one tiny issue though... In practice we never have this exact knowledge
 
 So, what can we do? **We estimate $\bold{f}$ using machine learning**.
 
+<div style="text-align: left">
+
 # Extending FWL with Machine Learning
+
+<div style="text-align: justify">
 
 Rather than assuming a fixed, linear form for $\bold{f}(\bold{X})$, we let **Machine Learning estimate it for us**. The key insight is that if we can accurately capture the influence of confounders on both the outcome $Y$ and the treatment $T$, we can remove their effects before estimating the treatment effect.
 
@@ -346,7 +378,11 @@ This leads to **Double Machine Learning**, which follows a two-step process:
 
 2. Partial out the confounders: Remove the estimated confounder effects and estimate $\tau$ from the residualized outcome and treatment.
 
+<div style="text-align: left">
+
 ## A final small python example
+
+<div style="text-align: justify">
 
 Let's take back our previous setup with
 

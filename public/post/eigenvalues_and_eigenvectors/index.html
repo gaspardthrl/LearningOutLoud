@@ -171,13 +171,17 @@ This is my attempt to break them down in a way that makes sense, not just mathem
   <section><div style="text-align: justify">
 <p>I&rsquo;ve heard the terms <strong>eigenvalues</strong> and <strong>eigenvectors</strong> countless times, but if I&rsquo;m being honest, I&rsquo;ve never truly grasped their meaning. That&rsquo;s kind of a bummer as they seem to appear everywhere from plain mathematics to machine learning which makes it feel like something worth understanding.</p>
 <p>This is my attempt to break them down in a way that makes sense, not just mathematically but intuitively. Let&rsquo;s start from the basics and build up from there.</p>
+<div style="text-align: left">
 <h1 id="introduction">Introduction</h1>
+<div style="text-align: justify">
 <p>Let&rsquo;s start with the basics:</p>
 <ul>
 <li>The <em>eigenvalues</em> of a matrix $A$ are obtained by solving the following equation $\text{det}(A-\lambda I) = 0$, called the <strong>characteristic equation</strong>, with $I$ the <em>identity matrix</em>, and $\lambda$ the variable representing the eigenvalues.</li>
 <li>The <em>eigenvectors</em> of $A$ are obtained by solving $A\bold{v} = \lambda \bold{v}$</li>
 </ul>
+<div style="text-align: left">
 <h3 id="what-does-it-look-like-with-a-basic-example-">What does it look like with a basic example ?</h3>
+<div style="text-align: justify">
 <p>Take the following matrix:</p>
 $$
 A = \begin{bmatrix}
@@ -239,7 +243,9 @@ $$
 <p>$\bold{v_1}$ is our <strong>initial</strong> eigenvector and $\bold{v_r}$ is a <strong>random</strong> vector. See what happens when we multiply both vector by our matrix $A$ ? Both vectors are <strong>scaled</strong> but only $\bold{v_r}$ <strong>rotated</strong>.</p>
 <p>That&rsquo;s it ! An eigenvector is a vector that, when multiplied by its corresponding matrix, has its <strong>direction unchanged</strong> (or <strong>reversed</strong>).</p>
 <p>In truth, we should be talking about the eigenvalues and eigenvectors of a <strong>linear transformation</strong> $T$ which is more general than a mere matrix. We&rsquo;ll keep our focus on matrices for now.</p>
+<div style="text-align: left">
 <h3 id="the-intuition-behind-the-characteristic-equation">The intuition behind the characteristic equation</h3>
+<div style="text-align: justify">
 <p>Great, now we understand a bit better what eigenvalues and eigenvectors represent. But why are eigenvalues the roots of this <strong>characteristic equation</strong> ?</p>
 <p>Well, let&rsquo;s approach our problem the other way around: We want to find a vector $\bold{v}$ that does not undergo rotation when multiplied by $A$. In other words we want to find: $A\bold{v} = \lambda \bold{v}$ We multiply $\bold{v}$ by a scalar $\lambda$ as we only care about rotations.</p>
 <p>By rearranging the terms we find that this is equivalent to $\underbrace{(A - \lambda I)}_M\bold{v} = 0$</p>

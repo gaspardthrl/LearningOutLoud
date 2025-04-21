@@ -15,7 +15,11 @@ Ever said _'On God'_ to someone, hoping they'd believe you even without any actu
 
 This topic is fairly complex. Before diving into what zero-knowledge proofs are, let's make sure that our foundations are rock solid.
 
+<div style="text-align: left">
+
 # Wait a minute... what is a proof?
+
+<div style="text-align: justify">
 
 A proof is a **logical argument** that **demonstrates the truth of a statement**. For example, what proves that I am French ? Most would say that it is my pretty face coupled with my love for bread, wine, and cheese. While I can't disagree, the strongest proof that I am French is my parentage. Indeed, In France, we have what is called _jus sanguinis_ (blood right), meaning that if one of your parents is French you are automatically granted the French nationality. My parents being both French and the _blood right_ being in effect, I am French.
 
@@ -45,7 +49,11 @@ Note that we will only consider [NP-Complete](https://en.wikipedia.org/wiki/NP-c
 
 ---
 
+<div style="text-align: left">
+
 # What does it mean for a proof to be _zero-knowledge_?
+
+<div style="text-align: justify">
 
 _We refer to people following the protocol properly as honest_.
 
@@ -71,7 +79,11 @@ Zero-knowledge proofs can be subdivided into **two categories**:
 
 - **Non-interactive** - This means that the _verifier_ is convinced by a **single** message.
 
+<div style="text-align: left">
+
 # Interactive zero-knowledge proofs
+
+<div style="text-align: justify">
 
 We define an _interactive proof_ as follows:
 
@@ -82,7 +94,11 @@ $(\mathcal{P}, \mathcal{V})$ is an interactive proof for $\mathcal{L}$ (our lang
 
 We will start by picturing what an interactive proof looks like and how can it reveal no information using the [Ali Baba Cave](https://en.wikipedia.org/wiki/Zero-knowledge_proof#The_Ali_Baba_cave) example as well as the [Hamiltonian Cycle](https://en.wikipedia.org/wiki/Zero-knowledge_proof#Hamiltonian_cycle_for_a_large_graph) example.
 
+<div style="text-align: left">
+
 ## Ali Baba and his cave
+
+<div style="text-align: justify">
 
 Picture this: You are in front of a cave with a single entrance that branches into two paths, $A$ and $B$. These paths are separated by a **password-protected door**. Without the password, one must **exit the cave using the same path they entered**.
 
@@ -120,7 +136,11 @@ Obviously we don't repeat this experience an infinite amount of time but we do s
 
 Now what about a more math-focused example ?
 
+<div style="text-align: left">
+
 ## Hamiltonian cycle for a graph
+
+<div style="text-align: justify">
 
 Let there be a _graph_ $G$ which is very large.
 

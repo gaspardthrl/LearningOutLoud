@@ -16,11 +16,18 @@
       <description>&lt;p&gt;I swear one day I will start updating it.&lt;/p&gt;</description>
     </item>
     <item>
-      <title>It&#39;s okay, nobody gets it  either: Zero-Knowledge Proofs</title>
+      <title>It&#39;s Okay, Nobody Gets It  Either: Zero-Knowledge Proofs</title>
       <link>//localhost:1313/post/zero_knowledge_proofs/</link>
       <pubDate>Sun, 30 Mar 2025 00:00:00 +0000</pubDate>
       <guid>//localhost:1313/post/zero_knowledge_proofs/</guid>
       <description>&lt;div style=&#34;text-align: justify&#34;&gt;&#xA;&lt;p&gt;Before anything, don&amp;rsquo;t worry if you don&amp;rsquo;t understand anything. As the title suggests this post will provide you with &lt;strong&gt;zero knowledge&lt;/strong&gt;. In fact, one may call them &lt;strong&gt;negative-knowledge proofs&lt;/strong&gt; as they are one of the rare things that will leave you will &lt;em&gt;fewer brain cells&lt;/em&gt; than at the beginning.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;Ever said &lt;em&gt;&amp;lsquo;On God&amp;rsquo;&lt;/em&gt; to someone, hoping they&amp;rsquo;d believe you even without any actual evidence? Well, zero-knowledge proofs are a bit similar. They let you prove that you know something &lt;strong&gt;without revealing it&lt;/strong&gt;.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Kolmogorov-Arnold Networks (KANs) : Gaining Interpretability inside Neural Networks</title>
+      <link>//localhost:1313/post/kolmogorov_arnold_networks/</link>
+      <pubDate>Sun, 30 Mar 2025 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/post/kolmogorov_arnold_networks/</guid>
+      <description>&lt;div style=&#34;text-align: justify&#34;&gt;&#xA;&lt;p&gt;If you’ve ever looked into neural networks at all, you’ll know they’re &lt;del&gt;a bit&lt;/del&gt; hard to interpret. They&amp;rsquo;re often described as &lt;strong&gt;black boxes&lt;/strong&gt;, which is a shame as they are extremely handy.&lt;/p&gt;&#xA;&lt;p&gt;About a year ago, a paper proposing an alternative to Multi-Layer Perceptrons was published and made quite some noise. It took inspiration from the &lt;a href=&#34;https://en.wikipedia.org/wiki/Kolmogorov%E2%80%93Arnold_representation_theorem&#34;&gt;Kolmogorov–Arnold representation theorem&lt;/a&gt; to build a &lt;em&gt;new kind of neural networks&lt;/em&gt;: &lt;strong&gt;Kolmogorov-Arnold Networks&lt;/strong&gt; (KANs)&lt;/p&gt;</description>
     </item>
     <item>
       <title>Statistical Mayhem: Building the Foundation</title>
@@ -30,7 +37,7 @@
       <description>&lt;div style=&#34;text-align: justify&#34;&gt;&#xA;&lt;p&gt;The best (or worst) thing about trying to dive deeper into&#xA;subjects &lt;em&gt;after college&lt;/em&gt; is that you may realize that &lt;strong&gt;passing a class is very different from actually understanding the subject&lt;/strong&gt; (though not incompatible).&lt;/p&gt;&#xA;&lt;p&gt;This morning I had a &lt;em&gt;wait moment&lt;/em&gt; (kind of like &lt;em&gt;DeepSeek&lt;/em&gt;) regarding statistics. Thus, I (and you alongside with me) will try to develop a deeper understanding of some &lt;strong&gt;fundamental&lt;/strong&gt; concepts.&lt;/p&gt;&#xA;&lt;img src=&#34;../statistical_mayhem/hold_up_meme.png&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&#xA;&lt;p&gt;Let&amp;rsquo;s start with one if not &lt;strong&gt;the most important&lt;/strong&gt; concept in statistics: &lt;em&gt;Expected Value&lt;/em&gt;&lt;/p&gt;</description>
     </item>
     <item>
-      <title>Causal Inference but you forgot to do RCTs ? Try Double Machine Learning</title>
+      <title>Who Needs RCTs? Use Double  ML Instead</title>
       <link>//localhost:1313/post/double_ml/</link>
       <pubDate>Fri, 14 Mar 2025 00:00:00 +0000</pubDate>
       <guid>//localhost:1313/post/double_ml/</guid>

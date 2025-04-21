@@ -11,14 +11,22 @@ I've heard the terms **eigenvalues** and **eigenvectors** countless times, but i
 
 This is my attempt to break them down in a way that makes sense, not just mathematically but intuitively. Let's start from the basics and build up from there.
 
+<div style="text-align: left">
+
 # Introduction
+
+<div style="text-align: justify">
 
 Let's start with the basics:
 
 - The _eigenvalues_ of a matrix $A$ are obtained by solving the following equation $\text{det}(A-\lambda I) = 0$, called the **characteristic equation**, with $I$ the _identity matrix_, and $\lambda$ the variable representing the eigenvalues.
 - The _eigenvectors_ of $A$ are obtained by solving $A\bold{v} = \lambda \bold{v}$
 
+<div style="text-align: left">
+
 ### What does it look like with a basic example ?
+
+<div style="text-align: justify">
 
 Take the following matrix:
 
@@ -80,7 +88,11 @@ That's it ! An eigenvector is a vector that, when multiplied by its correspondin
 
 In truth, we should be talking about the eigenvalues and eigenvectors of a **linear transformation** $T$ which is more general than a mere matrix. We'll keep our focus on matrices for now.
 
+<div style="text-align: left">
+
 ### The intuition behind the characteristic equation
+
+<div style="text-align: justify">
 
 Great, now we understand a bit better what eigenvalues and eigenvectors represent. But why are eigenvalues the roots of this **characteristic equation** ?
 

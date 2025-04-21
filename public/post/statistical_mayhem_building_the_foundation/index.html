@@ -177,7 +177,9 @@ subjects <em>after college</em> is that you may realize that <strong>passing a c
 <p>This morning I had a <em>wait moment</em> (kind of like <em>DeepSeek</em>) regarding statistics. Thus, I (and you alongside with me) will try to develop a deeper understanding of some <strong>fundamental</strong> concepts.</p>
 <img src="../../statistical_mayhem/hold_up_meme.png" style="display: block; margin: auto;" />
 <p>Let&rsquo;s start with one if not <strong>the most important</strong> concept in statistics: <em>Expected Value</em></p>
+<div style="text-align: left">
 <h1 id="expected-value-the-random-variables-center-of-gravity">Expected Value: The random variable&rsquo;s center of gravity</h1>
+<div style="text-align: justify">
 <p>Expected value is a bit of a tricky one due to its simplicity&hellip; I mean this line on its Wikipedia article sums it up pretty well: &ldquo;<em>Informally, the expected value is the mean of the possible values a random variable can take</em>&rdquo;.</p>
 <p>We will start with a quick reminder of the formulas. Given a <em>random variable</em> $X$:</p>
 <ul>
@@ -202,7 +204,9 @@ $$
 $$
 \mathbb{E}[\bold{X}] = \sum_{(x_i, y_i) \in \Omega}{(x_i, y_i)\mathbb{P}[\bold{X} = (x_i, y_i)]}
 $$<p>Furthermore, we set $\Omega = {(1, 1), (1, -1), (-1, 1), (-1, -1)}$.</p>
+<div style="text-align: left">
 <h3 id="uniform-distribution-the-base-case">Uniform distribution: The base case</h3>
+<div style="text-align: justify">
 <p>Say that $\Omega$ follows a <em>uniform distribution</em>.</p>
 <p>Computing its expected value</p>
 $$
@@ -215,7 +219,9 @@ To better illustrate what I mean, I displayed the changing probability of each p
     </div>
 
 <p>See what is going on ? What happens if we adjust the probabilities, effectively shifting the &lsquo;mass&rsquo; of the distribution?</p>
+<div style="text-align: left">
 <h3 id="from-uniform-to-non-uniform">From uniform to non-uniform:</h3>
+<div style="text-align: justify">
 <p>Let&rsquo;s now remove the uniform distribution and say that we now have the following probability distribution:</p>
 $$
 \mathbb{P}[\bold{X} = (x_i, y_i)] =
@@ -236,7 +242,9 @@ $$<p>we find that the expected value of $\bold{X}$ is the point $(-\frac{1}{2}, 
 <p>All this is great but check the following data points.</p>
 <img src="../../statistical_mayhem/same_mean.png" style="display: block; margin: auto;" />
 <p>Even though they have the same mean it is clear the yellow dots are closer to their mean than red dots. This observation leads us to an important question: how can we measure this difference in spread when the means are identical?</p>
+<div style="text-align: left">
 <h1 id="variance-measuring-the-spread-from-center">Variance: Measuring the Spread from Center</h1>
+<div style="text-align: justify">
 <p>At first, one may be tempted to compute the difference of each element to the mean</p>
 $$
 X - \mathbb{E}[X]
@@ -266,13 +274,19 @@ CV = \frac{\sigma}{\mu}
 $$<p>This measure is very useful because the standard deviation must always be understood in the context of the mean of the data. Indeed, a standard deviation of $100$$ when you deal with millions of dollars is much more acceptable than when working with tens of dollars.</p>
 <hr>
 <p>Awesome, we now have a way to better understand a random variable ! But hear me out: What if&hellip; what if we are working with <strong>multiple random variables</strong> ?</p>
+<div style="text-align: left">
 <h1 id="covariance-measuring-how-two-variables-move-together">Covariance: Measuring How Two Variables Move Together</h1>
+<div style="text-align: justify">
 <p>We define the <em>covariance</em> between two random variables $X$ and $Y$ as:</p>
 $$
 \text{cov}(X, Y) = \mathbb{E}[(X - \mathbb{E}[X])(Y - \mathbb{E}[Y])]
-$$<h3 id="what-does-this-mean-">What does this mean ?</h3>
+$$<div style="text-align: left">
+<h3 id="what-does-this-mean-">What does this mean ?</h3>
+<div style="text-align: justify">
 <p>Covariance measures the extent to which two random variables vary together. If $X$ and $Y$ tend to increase and decrease together, their covariance is <strong>positive</strong>. If one tends to increase when the other decreases, their covariance is <strong>negative</strong>. If there is no discernible pattern, their covariance is <strong>close to zero</strong>.</p>
+<div style="text-align: left">
 <h3 id="intuition-behind-the-formula">Intuition Behind the Formula</h3>
+<div style="text-align: justify">
 <p>As you can see, under the hood this formula is actually the <strong>expected value</strong> of a third random variable $Z$ defined as:</p>
 $$
 Z = (X - \mathbb{E}[X])(Y - \mathbb{E}[Y])
@@ -283,7 +297,9 @@ $$<p>You might ask why can&rsquo;t we simply take look at $Z = XY$ and why subtr
 <li>We suspect that warmer temperatures might lead to higher ice cream sales.</li>
 <li>The question is: <strong>Do these variables actually move together?</strong></li>
 </ul>
+<div style="text-align: left">
 <h4 id="why-not-just-use-xy">Why Not Just Use $XY$?</h4>
+<div style="text-align: justify">
 <p>If we only looked at $XY$, we&rsquo;d face a problem:</p>
 <ul>
 <li>The values of $X$ and $Y$ can be large or small, but without considering their typical (mean) values, we cannot determine their relative movement.</li>
@@ -344,13 +360,17 @@ $$<p>Let&rsquo;s modify our previous code to compute correlation</p>
 <p>We won&rsquo;t go into details but the other one you should know of is the <strong>Spearman&rsquo;s Rank correlation</strong>. This one is useful as it is a <em>non-parametric</em> correlation and does not assume a specific distribution.</p>
 <hr>
 <p>Until now we&rsquo;ve only discussed about <strong>static data</strong>. But what happens when data <strong>evolves or fluctuates over time</strong>? In the world of time-series data, it’s crucial to understand how signals relate to themselves or to each other over time. This is where <strong>auto-covariance</strong> and <strong>cross-covariance</strong> come into play.</p>
+<div style="text-align: left">
 <h3 id="auto-covariance-measuring-self-similarity-over-time">Auto-Covariance: Measuring Self-Similarity Over Time</h3>
+<div style="text-align: justify">
 <p><em>Auto-covariance</em>, defined as</p>
 $$
 \gamma_X(\tau) = \mathbb{E}[(X(t) - \mu)(X(t+\tau)-\mu)]
 $$<p>measures <strong>how a signal correlates with itself at different time lags</strong>.</p>
 <p>It&rsquo;s a very interesting measure since it let&rsquo;s you detect <strong>patterns</strong> or <strong>periodicity</strong> as well as <strong>persistence of past influences</strong>.</p>
+<div style="text-align: left">
 <h3 id="cross-covariance-measuring-relationships-between-signals">Cross-Covariance: Measuring Relationships Between Signals</h3>
+<div style="text-align: justify">
 <p>We also define the <em>cross-covariance</em>, expressed as</p>
 $$
 C_{XY}(\tau) = \mathbb{E}[(X(t) - \mu_X)(Y(t+\tau)-\mu_Y)]

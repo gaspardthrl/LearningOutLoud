@@ -1,0 +1,6 @@
+# This file is used internally by FFMPEG.
+file 'file:/Users/main/Desktop/Perso/LearningOutLoud/media/videos/kolmogorov_arnold_networks/480p15/partial_movie_files/PerceptronDecisionBoundaries/1185818338_1210249502_223132457.mp4'
+file 'file:/Users/main/Desktop/Perso/LearningOutLoud/media/videos/kolmogorov_arnold_networks/480p15/partial_movie_files/PerceptronDecisionBoundaries/624642324_2316526435_2624460507.mp4'
+file 'file:/Users/main/Desktop/Perso/LearningOutLoud/media/videos/kolmogorov_arnold_networks/480p15/partial_movie_files/PerceptronDecisionBoundaries/624642324_2711804421_47468916.mp4'
+file 'file:/Users/main/Desktop/Perso/LearningOutLoud/media/videos/kolmogorov_arnold_networks/480p15/partial_movie_files/PerceptronDecisionBoundaries/624642324_2030580808_2029607732.mp4'
+file 'file:/Users/main/Desktop/Perso/LearningOutLoud/media/videos/kolmogorov_arnold_networks/480p15/partial_movie_files/PerceptronDecisionBoundaries/624642324_2844360058_62508404.mp4'

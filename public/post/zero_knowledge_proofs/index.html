@@ -174,7 +174,9 @@ Ever said &lsquo;On God&rsquo; to someone, hoping they&rsquo;d believe you even 
 <hr>
 <p>Ever said <em>&lsquo;On God&rsquo;</em> to someone, hoping they&rsquo;d believe you even without any actual evidence? Well, zero-knowledge proofs are a bit similar. They let you prove that you know something <strong>without revealing it</strong>.</p>
 <p>This topic is fairly complex. Before diving into what zero-knowledge proofs are, let&rsquo;s make sure that our foundations are rock solid.</p>
+<div style="text-align: left">
 <h1 id="wait-a-minute-what-is-a-proof">Wait a minute&hellip; what is a proof?</h1>
+<div style="text-align: justify">
 <p>A proof is a <strong>logical argument</strong> that <strong>demonstrates the truth of a statement</strong>. For example, what proves that I am French ? Most would say that it is my pretty face coupled with my love for bread, wine, and cheese. While I can&rsquo;t disagree, the strongest proof that I am French is my parentage. Indeed, In France, we have what is called <em>jus sanguinis</em> (blood right), meaning that if one of your parents is French you are automatically granted the French nationality. My parents being both French and the <em>blood right</em> being in effect, I am French.</p>
 <p>To <strong>formally describe</strong> proofs, especially in computational complexity and cryptography, we break them down into four key components:</p>
 <ul>
@@ -198,7 +200,9 @@ $$\mathcal{L} = \{x | x \text{ is not a prime number}\}$$</li>
 <p>Note that we will only consider <a href="https://en.wikipedia.org/wiki/NP-completeness">NP-Complete</a> problems here. I won&rsquo;t elaborate on them, but just think of them as all problems for which a solution is <strong>easy to verify</strong> but <strong>hard to find</strong> (e.g., a <em>sudoku</em>). If you&rsquo;re interested, <a href="https://www.claymath.org/millennium/p-vs-np/">here</a>&rsquo;s an easy way to make some <em>pocket money</em>.</p>
 <img src="../../zero_knowledge_proofs/p_equals_np_meme.png" style="display: block; margin: auto;" />
 <hr>
+<div style="text-align: left">
 <h1 id="what-does-it-mean-for-a-proof-to-be-zero-knowledge">What does it mean for a proof to be <em>zero-knowledge</em>?</h1>
+<div style="text-align: justify">
 <p><em>We refer to people following the protocol properly as honest</em>.</p>
 <p>For the proof a given statement to be <em>zero-knowledge</em> it must satisfy <strong>three properties</strong>:</p>
 <ul>
@@ -225,7 +229,9 @@ $$\mathcal{L} = \{x | x \text{ is not a prime number}\}$$</li>
 <p><strong>Non-interactive</strong> - This means that the <em>verifier</em> is convinced by a <strong>single</strong> message.</p>
 </li>
 </ul>
+<div style="text-align: left">
 <h1 id="interactive-zero-knowledge-proofs">Interactive zero-knowledge proofs</h1>
+<div style="text-align: justify">
 <p>We define an <em>interactive proof</em> as follows:</p>
 <p>$(\mathcal{P}, \mathcal{V})$ is an interactive proof for $\mathcal{L}$ (our language), if $V$ is $probabilistic-poly(|x|)$ and:</p>
 <ul>
@@ -233,7 +239,9 @@ $$\mathcal{L} = \{x | x \text{ is not a prime number}\}$$</li>
 <li>$x \notin \mathcal{L} \Rightarrow \forall \ \mathcal{P}^* , \ \Pr[(\mathcal{P}^*, \mathcal{V})(x) = \text{accept}] \le s$</li>
 </ul>
 <p>We will start by picturing what an interactive proof looks like and how can it reveal no information using the <a href="https://en.wikipedia.org/wiki/Zero-knowledge_proof#The_Ali_Baba_cave">Ali Baba Cave</a> example as well as the <a href="https://en.wikipedia.org/wiki/Zero-knowledge_proof#Hamiltonian_cycle_for_a_large_graph">Hamiltonian Cycle</a> example.</p>
+<div style="text-align: left">
 <h2 id="ali-baba-and-his-cave">Ali Baba and his cave</h2>
+<div style="text-align: justify">
 <p>Picture this: You are in front of a cave with a single entrance that branches into two paths, $A$ and $B$. These paths are separated by a <strong>password-protected door</strong>. Without the password, one must <strong>exit the cave using the same path they entered</strong>.</p>
 <img src="../../zero_knowledge_proofs/ali_baba_cave_example.png" style="display: block; margin: auto;" />
 <br>
@@ -258,7 +266,9 @@ $$
 \lim_{n \to \infty}{\frac{1}{2^n}} = 0
 $$<p>Obviously we don&rsquo;t repeat this experience an infinite amount of time but we do so <strong>until this probability becomes too small for us to care</strong>.</p>
 <p>Now what about a more math-focused example ?</p>
+<div style="text-align: left">
 <h2 id="hamiltonian-cycle-for-a-graph">Hamiltonian cycle for a graph</h2>
+<div style="text-align: justify">
 <p>Let there be a <em>graph</em> $G$ which is very large.</p>
 <p>You, the <em>prover</em>, claim to know a <strong>Hamiltonian cycle</strong> (that is, a path that visits each vertex exactly once) for $G$. I, the <em>verifier</em>, want to confirm this without you revealing this cycle to me.</p>
 <img src="../../zero_knowledge_proofs/hamiltonian_cycle_example.png" style="display: block; margin: auto;" />
