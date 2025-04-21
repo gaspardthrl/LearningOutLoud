@@ -1,6 +1,6 @@
 +++
 title = 'Kolmogorov-Arnold Networks (KANs) : Gaining Interpretability inside Neural Networks'
-date = '2025-03-30'
+date = '2025-04-21'
 [params]
   math = true
 +++

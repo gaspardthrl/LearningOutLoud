@@ -1,54 +1,27 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Posts on Silly Goose&#39;s Thoughts</title>
-    <link>//localhost:1313/post/</link>
-    <description>Recent content in Posts on Silly Goose&#39;s Thoughts</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sun, 30 Mar 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="//localhost:1313/post/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Papers &amp; Articles I enjoyed</title>
-      <link>//localhost:1313/post/interesting_papers/</link>
-      <pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/post/interesting_papers/</guid>
-      <description>&lt;p&gt;I swear one day I will start updating it.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>It&#39;s Okay, Nobody Gets It  Either: Zero-Knowledge Proofs</title>
-      <link>//localhost:1313/post/zero_knowledge_proofs/</link>
-      <pubDate>Sun, 30 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/post/zero_knowledge_proofs/</guid>
-      <description>&lt;div style=&#34;text-align: justify&#34;&gt;&#xA;&lt;p&gt;Before anything, don&amp;rsquo;t worry if you don&amp;rsquo;t understand anything. As the title suggests this post will provide you with &lt;strong&gt;zero knowledge&lt;/strong&gt;. In fact, one may call them &lt;strong&gt;negative-knowledge proofs&lt;/strong&gt; as they are one of the rare things that will leave you will &lt;em&gt;fewer brain cells&lt;/em&gt; than at the beginning.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;Ever said &lt;em&gt;&amp;lsquo;On God&amp;rsquo;&lt;/em&gt; to someone, hoping they&amp;rsquo;d believe you even without any actual evidence? Well, zero-knowledge proofs are a bit similar. They let you prove that you know something &lt;strong&gt;without revealing it&lt;/strong&gt;.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Kolmogorov-Arnold Networks (KANs) : Gaining Interpretability inside Neural Networks</title>
-      <link>//localhost:1313/post/kolmogorov_arnold_networks/</link>
-      <pubDate>Sun, 30 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/post/kolmogorov_arnold_networks/</guid>
-      <description>&lt;div style=&#34;text-align: justify&#34;&gt;&#xA;&lt;p&gt;If you’ve ever looked into neural networks at all, you’ll know they’re &lt;del&gt;a bit&lt;/del&gt; hard to interpret. They&amp;rsquo;re often described as &lt;strong&gt;black boxes&lt;/strong&gt;, which is a shame as they are extremely handy.&lt;/p&gt;&#xA;&lt;p&gt;About a year ago, a paper proposing an alternative to Multi-Layer Perceptrons was published and made quite some noise. It took inspiration from the &lt;a href=&#34;https://en.wikipedia.org/wiki/Kolmogorov%E2%80%93Arnold_representation_theorem&#34;&gt;Kolmogorov–Arnold representation theorem&lt;/a&gt; to build a &lt;em&gt;new kind of neural networks&lt;/em&gt;: &lt;strong&gt;Kolmogorov-Arnold Networks&lt;/strong&gt; (KANs)&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Statistical Mayhem: Building the Foundation</title>
-      <link>//localhost:1313/post/statistical_mayhem_building_the_foundation/</link>
-      <pubDate>Sun, 23 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/post/statistical_mayhem_building_the_foundation/</guid>
-      <description>&lt;div style=&#34;text-align: justify&#34;&gt;&#xA;&lt;p&gt;The best (or worst) thing about trying to dive deeper into&#xA;subjects &lt;em&gt;after college&lt;/em&gt; is that you may realize that &lt;strong&gt;passing a class is very different from actually understanding the subject&lt;/strong&gt; (though not incompatible).&lt;/p&gt;&#xA;&lt;p&gt;This morning I had a &lt;em&gt;wait moment&lt;/em&gt; (kind of like &lt;em&gt;DeepSeek&lt;/em&gt;) regarding statistics. Thus, I (and you alongside with me) will try to develop a deeper understanding of some &lt;strong&gt;fundamental&lt;/strong&gt; concepts.&lt;/p&gt;&#xA;&lt;img src=&#34;../statistical_mayhem/hold_up_meme.png&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&#xA;&lt;p&gt;Let&amp;rsquo;s start with one if not &lt;strong&gt;the most important&lt;/strong&gt; concept in statistics: &lt;em&gt;Expected Value&lt;/em&gt;&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Who Needs RCTs? Use Double  ML Instead</title>
-      <link>//localhost:1313/post/double_ml/</link>
-      <pubDate>Fri, 14 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/post/double_ml/</guid>
-      <description>&lt;div style=&#34;text-align: justify&#34;&gt;&#xA;&lt;style&gt;&#xA;    table {&#xA;        width: 100%;&#xA;    }&#xA;    table :is(td, th) {&#xA;      padding: 0.3em;&#xA;    }&#xA;tr:nth-child(even) {&#xA;  background-color: lightgray;&#xA;}&#xA;&lt;/style&gt;&#xA;&lt;p&gt;Before anything I want to thank &lt;strong&gt;Matheus Facure Alves&lt;/strong&gt; for his material &lt;a href=&#34;https://matheusfacure.github.io/python-causality-handbook/landing-page.html#acknowledgments&#34;&gt;&lt;em&gt;Causal Inference for The Brave and True&lt;/em&gt;&lt;/a&gt; which was of great help to understand this topic.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;You&amp;rsquo;ve all heard about Machine Learning. Some say it&amp;rsquo;s amazing; I say it&amp;rsquo;s meh. I&amp;rsquo;d rather &lt;em&gt;double it&lt;/em&gt; and give it to the next person (See what I did there?). This next person happens to be you. You guessed it today we will talk about &lt;strong&gt;Double Machine Learning&lt;/strong&gt;&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>The Way of Data: Eigenvalues and Eigenvectors</title>
-      <link>//localhost:1313/post/eigenvalues_and_eigenvectors/</link>
-      <pubDate>Sat, 01 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/post/eigenvalues_and_eigenvectors/</guid>
-      <description>&lt;div style=&#34;text-align: justify&#34;&gt;&#xA;&lt;p&gt;I&amp;rsquo;ve heard the terms &lt;strong&gt;eigenvalues&lt;/strong&gt; and &lt;strong&gt;eigenvectors&lt;/strong&gt; countless times, but if I&amp;rsquo;m being honest, I&amp;rsquo;ve never truly grasped their meaning. That&amp;rsquo;s kind of a bummer as they seem to appear everywhere from plain mathematics to machine learning which makes it feel like something worth understanding.&lt;/p&gt;&#xA;&lt;p&gt;This is my attempt to break them down in a way that makes sense, not just mathematically but intuitively. Let&amp;rsquo;s start from the basics and build up from there.&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on Silly Goose's Thoughts</title><link>/post/</link><description>Recent content in Posts on Silly Goose's Thoughts</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Mon, 21 Apr 2025 00:00:00 +0000</lastBuildDate><atom:link href="/post/index.xml" rel="self" type="application/rss+xml"/><item><title>Papers &amp; Articles I enjoyed</title><link>/post/interesting_papers/</link><pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate><guid>/post/interesting_papers/</guid><description>&lt;p>I swear one day I will start updating it.&lt;/p></description></item><item><title>Kolmogorov-Arnold Networks (KANs) : Gaining Interpretability inside Neural Networks</title><link>/post/kolmogorov_arnold_networks/</link><pubDate>Mon, 21 Apr 2025 00:00:00 +0000</pubDate><guid>/post/kolmogorov_arnold_networks/</guid><description>&lt;div style="text-align: justify">
+&lt;p>If you’ve ever looked into neural networks at all, you’ll know they’re &lt;del>a bit&lt;/del> hard to interpret. They&amp;rsquo;re often described as &lt;strong>black boxes&lt;/strong>, which is a shame as they are extremely handy.&lt;/p>
+&lt;p>About a year ago, a paper proposing an alternative to Multi-Layer Perceptrons was published and made quite some noise. It took inspiration from the &lt;a href="https://en.wikipedia.org/wiki/Kolmogorov%E2%80%93Arnold_representation_theorem">Kolmogorov–Arnold representation theorem&lt;/a> to build a &lt;em>new kind of neural networks&lt;/em>: &lt;strong>Kolmogorov-Arnold Networks&lt;/strong> (KANs)&lt;/p></description></item><item><title>It's Okay, Nobody Gets It Either: Zero-Knowledge Proofs</title><link>/post/zero_knowledge_proofs/</link><pubDate>Sun, 30 Mar 2025 00:00:00 +0000</pubDate><guid>/post/zero_knowledge_proofs/</guid><description>&lt;div style="text-align: justify">
+&lt;p>Before anything, don&amp;rsquo;t worry if you don&amp;rsquo;t understand anything. As the title suggests this post will provide you with &lt;strong>zero knowledge&lt;/strong>. In fact, one may call them &lt;strong>negative-knowledge proofs&lt;/strong> as they are one of the rare things that will leave you will &lt;em>fewer brain cells&lt;/em> than at the beginning.&lt;/p>
+&lt;hr>
+&lt;p>Ever said &lt;em>&amp;lsquo;On God&amp;rsquo;&lt;/em> to someone, hoping they&amp;rsquo;d believe you even without any actual evidence? Well, zero-knowledge proofs are a bit similar. They let you prove that you know something &lt;strong>without revealing it&lt;/strong>.&lt;/p></description></item><item><title>Statistical Mayhem: Building the Foundation</title><link>/post/statistical_mayhem_building_the_foundation/</link><pubDate>Sun, 23 Mar 2025 00:00:00 +0000</pubDate><guid>/post/statistical_mayhem_building_the_foundation/</guid><description>&lt;div style="text-align: justify">
+&lt;p>The best (or worst) thing about trying to dive deeper into
+subjects &lt;em>after college&lt;/em> is that you may realize that &lt;strong>passing a class is very different from actually understanding the subject&lt;/strong> (though not incompatible).&lt;/p>
+&lt;p>This morning I had a &lt;em>wait moment&lt;/em> (kind of like &lt;em>DeepSeek&lt;/em>) regarding statistics. Thus, I (and you alongside with me) will try to develop a deeper understanding of some &lt;strong>fundamental&lt;/strong> concepts.&lt;/p>
+&lt;img src="../statistical_mayhem/hold_up_meme.png" style="display: block; margin: auto;" />
+&lt;p>Let&amp;rsquo;s start with one if not &lt;strong>the most important&lt;/strong> concept in statistics: &lt;em>Expected Value&lt;/em>&lt;/p></description></item><item><title>Who Needs RCTs? Use Double ML Instead</title><link>/post/double_ml/</link><pubDate>Fri, 14 Mar 2025 00:00:00 +0000</pubDate><guid>/post/double_ml/</guid><description>&lt;div style="text-align: justify">
+&lt;style>
+ table {
+ width: 100%;
+ }
+ table :is(td, th) {
+ padding: 0.3em;
+ }
+tr:nth-child(even) {
+ background-color: lightgray;
+}
+&lt;/style>
+&lt;p>Before anything I want to thank &lt;strong>Matheus Facure Alves&lt;/strong> for his material &lt;a href="https://matheusfacure.github.io/python-causality-handbook/landing-page.html#acknowledgments">&lt;em>Causal Inference for The Brave and True&lt;/em>&lt;/a> which was of great help to understand this topic.&lt;/p>
+&lt;hr>
+&lt;p>You&amp;rsquo;ve all heard about Machine Learning. Some say it&amp;rsquo;s amazing; I say it&amp;rsquo;s meh. I&amp;rsquo;d rather &lt;em>double it&lt;/em> and give it to the next person (See what I did there?). This next person happens to be you. You guessed it today we will talk about &lt;strong>Double Machine Learning&lt;/strong>&lt;/p></description></item><item><title>The Way of Data: Eigenvalues and Eigenvectors</title><link>/post/eigenvalues_and_eigenvectors/</link><pubDate>Sat, 01 Mar 2025 00:00:00 +0000</pubDate><guid>/post/eigenvalues_and_eigenvectors/</guid><description>&lt;div style="text-align: justify">
+&lt;p>I&amp;rsquo;ve heard the terms &lt;strong>eigenvalues&lt;/strong> and &lt;strong>eigenvectors&lt;/strong> countless times, but if I&amp;rsquo;m being honest, I&amp;rsquo;ve never truly grasped their meaning. That&amp;rsquo;s kind of a bummer as they seem to appear everywhere from plain mathematics to machine learning which makes it feel like something worth understanding.&lt;/p>
+&lt;p>This is my attempt to break them down in a way that makes sense, not just mathematically but intuitively. Let&amp;rsquo;s start from the basics and build up from there.&lt;/p></description></item></channel></rss>
